@@ -1,4 +1,5 @@
 import { cache } from 'react';
+import { getImageAlt, readSeoSettings } from './seoSettings';
 import type { Metadata } from 'next';
 
 import { API_BASE, MEDIA_BASE } from './api';
@@ -15,7 +16,7 @@ import { resolveScooterImage, resolveScooterRouteId } from './displayScooter';
 const DEFAULT_SITE_URL = 'https://bali.bike';
 const SITE_NAME = 'BALI-RENT';
 const DEFAULT_OG_IMAGE = '/logo1.svg';
-const SEO_REVALIDATE_SECONDS = 60 * 10;
+const SEO_REVALIDATE_SECONDS = 60;
 
 const INDEXED_PAGE_KEYS = ['home', 'catalog', 'prices', 'how', 'locations', 'contacts', 'news'] as const;
 const NOINDEX_PAGE_KEYS = ['booking', 'payment', 'login', 'register', 'profile'] as const;
@@ -71,7 +72,7 @@ export function toAbsoluteMediaUrl(path?: string | null) {
 }
 
 export function createSeoDescription(value?: string | null, fallback?: string) {
-  const normalized = collapseWhitespace(String(value || fallback || ''));
+  const normalized = collapseWhitespace(String(value || fallback || '').replace(/<[^>]*>/g, ' '));
   if (!normalized) return fallback || '';
   if (normalized.length <= 160) return normalized;
   return `${normalized.slice(0, 157).trimEnd()}...`;
@@ -105,13 +106,22 @@ async function fetchApiJson<T>(path: string, options?: { lang?: string; query?: 
   return response.json() as Promise<T>;
 }
 
-export const getSeoPageSettings = cache(async () => {
+export const getSeoBootstrap = cache(async () => {
   try {
-    const bootstrap = await fetchApiJson<ApiBootstrap>('/public/bootstrap/', { lang: 'en' });
-    return buildPageSettings('en', bootstrap.pageSettings);
+    return await fetchApiJson<ApiBootstrap>('/public/bootstrap/', { lang: 'en' });
   } catch {
-    return buildPageSettings('en');
+    return null;
   }
+});
+
+export const getSeoPageSettings = cache(async () => {
+  const bootstrap = await getSeoBootstrap();
+  return buildPageSettings('en', bootstrap?.pageSettings);
+});
+
+export const getSeoSettings = cache(async () => {
+  const bootstrap = await getSeoBootstrap();
+  return readSeoSettings(bootstrap?.dictionaryOverrides);
 });
 
 export const getNewsArticleForSeo = cache(async (slug: string) => {
@@ -143,8 +153,8 @@ export const getSitemapScooters = cache(async () => {
   return Array.isArray(response) ? response : response.results || [];
 });
 
-function defaultImages(title: string): SeoImage[] {
-  return [{ url: toAbsoluteUrl(DEFAULT_OG_IMAGE), alt: title }];
+function defaultImages(title: string, alts: Record<string, string> = {}): SeoImage[] {
+  return [{ url: toAbsoluteUrl(DEFAULT_OG_IMAGE), alt: getImageAlt(alts, DEFAULT_OG_IMAGE, title) }];
 }
 
 function buildRobots(index: boolean): NonNullable<Metadata['robots']> {
@@ -192,9 +202,11 @@ export async function buildManagedPageMetadata(
   const pageSettings = await getSeoPageSettings();
   const definition = PAGE_SETTINGS_DEFINITION_MAP[pageKey];
   const canonicalPath = normalizePagePath(options?.canonicalPath, pageSettings[pageKey].path);
-  const title = options?.title || pageSettings[pageKey].title;
-  const description = createSeoDescription(options?.description, PAGE_DESCRIPTION_MAP[pageKey] || definition.description);
-  const images = options?.images?.length ? options.images : defaultImages(title);
+  const seo = await getSeoSettings();
+  const override = seo.pages[pageKey];
+  const title = options?.title || override?.title?.trim() || pageSettings[pageKey].title;
+  const description = override?.description?.trim() || createSeoDescription(options?.description, PAGE_DESCRIPTION_MAP[pageKey] || definition.description);
+  const images = (options?.images?.length ? options.images : defaultImages(title, seo.imageAlts)).map(image => ({ ...image, alt: getImageAlt(seo.imageAlts, image.url, image.alt || title) }));
   const index = options?.index ?? shouldIndexManagedPage(pageKey);
 
   return {
@@ -227,10 +239,12 @@ export async function buildNewsArticleMetadata(slug: string, canonicalPath?: str
   try {
     const article = await getNewsArticleForSeo(slug);
     const path = normalizePagePath(canonicalPath, joinPagePath(pageSettings.news.path, article.slug || slug));
-    const title = `${article.title} · ${SITE_NAME}`;
-    const description = createSeoDescription(article.description, PAGE_DESCRIPTION_MAP.news);
+    const seo = await getSeoSettings();
+    const override = seo.pages[`news_${article.id}`];
+    const title = override?.title?.trim() || `${article.title} · ${SITE_NAME}`;
+    const description = override?.description?.trim() || createSeoDescription(article.description, PAGE_DESCRIPTION_MAP.news);
     const image = toAbsoluteMediaUrl(article.image);
-    const images = image ? [{ url: image, alt: article.title }] : defaultImages(title);
+    const images = image ? [{ url: image, alt: getImageAlt(seo.imageAlts, image, article.title) }] : defaultImages(title, seo.imageAlts);
 
     return {
       title,
@@ -270,13 +284,15 @@ export async function buildScooterMetadata(idOrSlug: string): Promise<Metadata> 
     const scooter = await getScooterForSeo(idOrSlug);
     const routeId = resolveScooterRouteId(scooter.slug || scooter.id, scooter.title) || String(scooter.slug || scooter.id || idOrSlug);
     const path = `/scooter/${routeId}`;
-    const title = `${scooter.title} rental in Bali · ${SITE_NAME}`;
-    const description = createSeoDescription(
+    const seo = await getSeoSettings();
+    const override = seo.pages[`scooter_${scooter.id}`];
+    const title = override?.title?.trim() || `${scooter.title} rental in Bali · ${SITE_NAME}`;
+    const description = override?.description?.trim() || createSeoDescription(
       scooter.full_description || scooter.short_description,
       `Rent the ${scooter.title} in Bali with delivery, transparent pricing, and quick online booking.`
     );
     const image = toAbsoluteMediaUrl(scooter.main_image) || resolveScooterImage(scooter.slug || scooter.id, scooter.title);
-    const images = image ? [{ url: /^https?:\/\//i.test(image) ? image : toAbsoluteUrl(image), alt: scooter.title }] : defaultImages(title);
+    const images = image ? [{ url: /^https?:\/\//i.test(image) ? image : toAbsoluteUrl(image), alt: getImageAlt(seo.imageAlts, image, scooter.title) }] : defaultImages(title, seo.imageAlts);
 
     return {
       title,

@@ -1,4 +1,5 @@
 'use client';
+import SeoImage from '@/components/SeoImage';
 
 import Link from 'next/link';
 import { useEffect, useMemo, useState } from 'react';
@@ -619,7 +620,7 @@ export default function PricesPage() {
                     >
                       {group.imageUrl ? (
                         // eslint-disable-next-line @next/next/no-img-element
-                        <img
+                        <SeoImage
                           src={group.imageUrl}
                           alt={group.title}
                           loading="lazy"

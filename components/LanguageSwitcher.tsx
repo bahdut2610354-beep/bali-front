@@ -1,4 +1,5 @@
 'use client';
+import SeoImage from '@/components/SeoImage';
 import { useEffect, useRef, useState } from 'react';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
 import { LOCALES, Locale } from '@/lib/i18n/dictionaries';
@@ -69,7 +70,7 @@ function FlagIcon({ code, name, size }: { code: string; name: string; size: numb
         flexShrink: 0,
       }}
     >
-      <img
+      <SeoImage
         src={`/flags/${code}.svg`}
         alt={name}
         width={size}

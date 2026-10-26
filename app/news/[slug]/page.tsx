@@ -1,4 +1,5 @@
 'use client';
+import SeoImage, { useSeoSettings } from '@/components/SeoImage';
 
 import { useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
@@ -11,7 +12,7 @@ import { useLocale } from '@/lib/i18n/LocaleProvider';
 import { mediaUrl } from '@/lib/api';
 import { ArrowRightIcon } from '@/components/Icons';
 import { useSiteContentPreview } from '@/lib/siteContentPreview';
-import { PageTitleSync, usePagePath } from '@/lib/usePageSettings';
+import { usePagePath } from '@/lib/usePageSettings';
 
 function formatDate(dateStr: string, locale: string): string {
   try {
@@ -42,6 +43,7 @@ function SkeletonArticle() {
 
 export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string }) {
   const { locale, t } = useLocale();
+  const seo = useSeoSettings();
   const { marker } = useSiteContentPreview();
   const params = useParams<{ slug: string }>();
   const newsPath = usePagePath('news');
@@ -66,12 +68,13 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
   const articleTitle = article?.title || article?.translations?.find((t) => t.title)?.title || '';
   const articleDesc = article?.description || article?.translations?.find((t) => t.description)?.description || '';
 
+  const seoTitle = article ? seo.pages[`news_${article.id}`]?.title?.trim() : '';
   useEffect(() => {
     if (typeof document === 'undefined') return;
     if (articleTitle) {
-      document.title = `${articleTitle} · BALI-RENT`;
+      document.title = seoTitle || `${articleTitle} · BALI-RENT`;
     }
-  }, [articleTitle]);
+  }, [articleTitle, seoTitle]);
 
   const allImages = useMemo(() => {
     const list: string[] = [];
@@ -103,7 +106,7 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
 
   return (
     <>
-      <PageTitleSync pageKey="news" />
+
       <SiteHeader />
       <main style={{ minHeight: '100vh', background: '#FAFAF5', WebkitFontSmoothing: 'antialiased' }}>
 
@@ -181,7 +184,7 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
                     maxHeight: 540, position: 'relative', cursor: 'zoom-in',
                   }}
                 >
-                  <img
+                  <SeoImage
                     src={mediaUrl(allImages[0])}
                     alt={articleTitle}
                     style={{
@@ -210,7 +213,7 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
                         cursor: 'zoom-in', position: 'relative',
                       }}
                     >
-                      <img
+                      <SeoImage
                         src={mediaUrl(img)}
                         alt={`${article.title} - photo ${idx + 1}`}
                         style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 360ms ease' }}
@@ -231,7 +234,7 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
                       maxHeight: 480, position: 'relative', cursor: 'zoom-in',
                     }}
                   >
-                    <img
+                    <SeoImage
                       src={mediaUrl(allImages[0])}
                       alt={article.title}
                       style={{
@@ -272,7 +275,7 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
                             cursor: 'zoom-in', position: 'relative',
                           }}
                         >
-                          <img
+                          <SeoImage
                             src={mediaUrl(img)}
                             alt=""
                             style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 360ms ease' }}
@@ -454,7 +457,7 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
               alignItems: 'center', justifyContent: 'center',
             }}
           >
-            <img
+            <SeoImage
               src={mediaUrl(allImages[lightboxIndex])}
               alt=""
               style={{

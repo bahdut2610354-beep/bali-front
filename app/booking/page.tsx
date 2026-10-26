@@ -1,4 +1,5 @@
 'use client';
+import SeoImage from '@/components/SeoImage';
 
 import type { CSSProperties, ReactNode } from 'react';
 import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
@@ -409,7 +410,7 @@ function BookingPageInner() {
                   <div style={{ borderRadius: 16, background: '#F5F5F5', minHeight: 120, overflow: 'hidden', display: 'grid', placeItems: 'center' }}>
                     {displayImage ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img src={displayImage} alt={displayName} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 12 }} />
+                      <SeoImage src={displayImage} alt={displayName} style={{ width: '100%', height: '100%', objectFit: 'contain', padding: 12 }} />
                     ) : (
                       <div className="br-mono" style={{ color: 'rgba(0,0,0,0.45)', fontSize: 12 }}><span {...marker('booking.photo')}>{copy.photo}</span></div>
                     )}

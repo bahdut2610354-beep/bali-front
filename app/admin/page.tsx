@@ -1,4 +1,6 @@
 'use client';
+import { Suspense } from 'react';
+import AdminSeoSettings from '@/components/AdminSeoSettings';
 
 import { CSSProperties, ReactNode, useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
@@ -118,7 +120,7 @@ const NAV: { id: AdminView; icon: ReactNode; label: string }[] = [
   { id: 'categories', icon: <TagIcon size={18} />, label: 'Categories' },
   { id: 'locations', icon: <EyeIcon size={18} />, label: 'Locations' },
   { id: 'site', icon: <EyeIcon size={18} />, label: 'Site Content' },
-  { id: 'pages', icon: <TagIcon size={18} />, label: 'Page Settings' },
+  { id: 'pages', icon: <TagIcon size={18} />, label: 'Pages & SEO' },
   { id: 'appContent', icon: <EyeIcon size={18} />, label: 'App Content' },
   { id: 'currencies', icon: <DollarIcon size={18} />, label: 'Currencies' },
   { id: 'socials', icon: <MessageIcon size={18} />, label: 'Socials' },
@@ -4001,6 +4003,10 @@ function PromoCodesView({ isMobile }: { isMobile: boolean }) {
 }
 
 export default function AdminPage() {
+  return <Suspense fallback={null}><AdminPageContent /></Suspense>;
+}
+
+function AdminPageContent() {
   const { user, loading: authLoading, signOut } = useAuth();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -4188,10 +4194,11 @@ export default function AdminPage() {
   }, [authLoading, user, canOpenAdmin]);
 
   useEffect(() => {
+    if (authLoading || !user) return;
     if (!allowedNavItems.some((item) => item.id === view)) {
       setView(fallbackView);
     }
-  }, [allowedNavItems, fallbackView, view]);
+  }, [authLoading, user, allowedNavItems, fallbackView, view]);
 
   useEffect(() => {
     if (view !== 'support' || !activeThreadId) return;
@@ -5151,7 +5158,7 @@ function PageSettingsView({ isMobile }: { isMobile: boolean }) {
   return (
     <div style={{ overflowY: 'auto', height: '100%', padding: isMobile ? 16 : '28px 32px' }}>
       <SectionHeader
-        title={ta('Page Settings')}
+        title={ta('Pages & SEO')}
         subtitle={ta('Manage shared public paths and localized public titles for the main site pages and scooter detail pages.')}
         action={
           <Button
@@ -5163,6 +5170,8 @@ function PageSettingsView({ isMobile }: { isMobile: boolean }) {
           </Button>
         }
       />
+
+      <AdminSeoSettings />
 
       <ErrorBanner error={error} onClose={() => setError(null)} />
 

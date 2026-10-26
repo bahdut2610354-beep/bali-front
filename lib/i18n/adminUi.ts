@@ -25,6 +25,7 @@ const EXACT_TRANSLATIONS: Record<string, TranslationPair> = {
   'Categories': { ru: 'Категории', id: 'Kategori' },
   'Locations': { ru: 'Локации', id: 'Lokasi' },
   'Site Content': { ru: 'Контент сайта', id: 'Konten situs' },
+  'Pages & SEO': { ru: 'Страницы и SEO', id: 'Halaman & SEO' },
   'Page Settings': { ru: 'Настройки страниц', id: 'Pengaturan halaman' },
   'App Content': { ru: 'Контент приложения', id: 'Konten aplikasi' },
   'Currencies': { ru: 'Валюты', id: 'Mata uang' },

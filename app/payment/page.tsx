@@ -1,4 +1,5 @@
 'use client';
+import SeoImage from '@/components/SeoImage';
 
 import type { CSSProperties, ReactNode } from 'react';
 import { Suspense, useEffect, useMemo, useState } from 'react';
@@ -461,7 +462,7 @@ function PaymentInner() {
         <div className="br-payment-side" style={{ background: surf, padding: 40 }}>
           {draft?.image ? (
             // eslint-disable-next-line @next/next/no-img-element
-            <img src={draft.image} alt={bookingName} style={{ width: '100%', height: 200, objectFit: 'contain', borderRadius: 12, background: '#fff', padding: 12 }} />
+            <SeoImage src={draft.image} alt={bookingName} style={{ width: '100%', height: 200, objectFit: 'contain', borderRadius: 12, background: '#fff', padding: 12 }} />
           ) : (
             <div {...marker('payment.bookingLabel')}>
               <BRPhoto tone="sand" label={copy.bookingLabel} style={{ height: 200, borderRadius: 12 }} />

@@ -1,4 +1,5 @@
 'use client';
+import SeoImage from '@/components/SeoImage';
 import { CSSProperties, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
@@ -288,7 +289,7 @@ export default function ScooterDetailPage() {
                 overflow: 'hidden',
               }}
             >
-              <img
+              <SeoImage
                 src={photoSrc}
                 alt={scooter.name}
                 style={{
@@ -339,7 +340,7 @@ export default function ScooterDetailPage() {
                 style={{ flex: 1, height: 88, padding: 0, border: photoIdx === i ? `2px solid #000` : `1px solid ${border}`, borderRadius: 8, overflow: 'hidden', cursor: 'pointer', background: 'linear-gradient(180deg, #fbfaf6 0%, #f1ebdc 100%)' }}>
                 {gallery.length ? (
                   // eslint-disable-next-line @next/next/no-img-element
-                  <img src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center bottom', display: 'block', padding: '6px 8px 10px' }} />
+                  <SeoImage src={src} alt="" style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center bottom', display: 'block', padding: '6px 8px 10px' }} />
                 ) : (
                   <BRPhoto tone={src} style={{ height: '100%' }} />
                 )}

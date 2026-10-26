@@ -1,7 +1,8 @@
 import './globals.css';
 import type { Metadata } from 'next';
 import Providers from '@/components/Providers';
-import { buildManagedPageMetadata, getSiteUrl } from '@/lib/seo';
+import { SeoProvider } from '@/components/SeoImage';
+import { buildManagedPageMetadata, getSiteUrl, getSeoSettings } from '@/lib/seo';
 
 const GOOGLE_TAG_MANAGER_ID = 'GTM-M6JD3FLW';
 const GOOGLE_ANALYTICS_ID = 'G-NH1PZRH7XL';
@@ -32,7 +33,8 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const seoSettings = await getSeoSettings();
   return (
     <html lang="en">
       <head>
@@ -85,7 +87,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           />
         </noscript>
 
-        <Providers>{children}</Providers>
+        <SeoProvider settings={seoSettings}><Providers>{children}</Providers></SeoProvider>
+        <script src="/bali-bike-messenger-conversions.js" defer />
       </body>
     </html>
   );

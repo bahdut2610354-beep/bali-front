@@ -1,4 +1,5 @@
 'use client';
+import SeoImage from '@/components/SeoImage';
 import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import { formatGroupedAmount, useCurrency } from '@/lib/i18n/CurrencyProvider';
@@ -34,7 +35,7 @@ export function BRLogo({
         boxShadow: withBackdrop ? '0 8px 24px rgba(0,0,0,0.16)' : 'none',
       }}
     >
-      <img
+      <SeoImage
         src="/logo-tropical-bikes.png"
         alt="Tropical Bikes Bali Scooter Rental"
         style={{

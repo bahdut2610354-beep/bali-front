@@ -168,7 +168,6 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth();
   const [rates, setRatesState] = useState<Record<string, number>>(DEFAULT_CURRENCY_RATES);
   const [currency, setCurrencyState] = useState<string>('IDR');
-  const [hydrated, setHydrated] = useState(false);
 
   const applyRates = useCallback((nextRatesRaw: Record<string, number>, options?: { persist?: boolean }) => {
     const normalizedRates = normalizeCurrencyRates(nextRatesRaw);
@@ -217,7 +216,6 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     setCurrencyState(detectInitial(user?.currency, rates));
-    setHydrated(true);
   }, [rates, user?.currency]);
 
   const setCurrency = useCallback((c: string) => {
@@ -284,7 +282,7 @@ export function CurrencyProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <CurrencyCtx.Provider value={value}>
-      {hydrated ? children : null}
+      {children}
     </CurrencyCtx.Provider>
   );
 }

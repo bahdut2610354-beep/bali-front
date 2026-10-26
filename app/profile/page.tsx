@@ -1,4 +1,5 @@
 'use client';
+import { Suspense } from 'react';
 import Link from 'next/link';
 import type { CSSProperties, FormEvent, ReactNode } from 'react';
 import { useEffect, useMemo, useRef, useState } from 'react';
@@ -54,6 +55,10 @@ function canUseBrowserNotifications() {
 }
 
 export default function ProfilePage() {
+  return <Suspense fallback={null}><ProfilePageContent /></Suspense>;
+}
+
+function ProfilePageContent() {
   const { t, locale } = useLocale();
   const copy = PROFILE_COPY[locale as keyof typeof PROFILE_COPY] || PROFILE_COPY.en;
   const { user, loading: authLoading, signOut, refresh } = useAuth();

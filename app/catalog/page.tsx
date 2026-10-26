@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useMemo, useState } from 'react';
+import { Suspense, useCallback, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { BREyebrow } from '@/components/BR';
 import ScooterCard from '@/components/ScooterCard';
@@ -28,12 +28,19 @@ function deriveFallbackCategories(scooters: DisplayScooter[]): ApiVehicleType[] 
     });
 }
 
+function CatalogQuery({ onChange }: { onChange: (type: string) => void }) {
+  const searchParams = useSearchParams();
+  const type = searchParams.get('type')?.trim().toLowerCase() || 'all';
+  useEffect(() => { onChange(type); }, [type, onChange]);
+  return null;
+}
+
 export default function CatalogPage() {
   const { t, locale, tr } = useLocale();
   const { marker } = useSiteContentPreview();
-  const searchParams = useSearchParams();
-  const requestedTypeFilter = searchParams.get('type')?.trim().toLowerCase() || 'all';
-  const [filter, setFilter] = useState(requestedTypeFilter);
+  const [requestedTypeFilter, setRequestedTypeFilter] = useState('all');
+  const onQueryChange = useCallback((type: string) => setRequestedTypeFilter(type), []);
+  const [filter, setFilter] = useState('all');
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState('featured');
   const [scooters, setScooters] = useState<DisplayScooter[] | null>(null);
@@ -106,6 +113,7 @@ export default function CatalogPage() {
 
   return (
     <div style={{ background: bg, color: fg, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <Suspense fallback={null}><CatalogQuery onChange={onQueryChange} /></Suspense>
       <PageTitleSync pageKey="catalog" />
       <SiteHeader />
 

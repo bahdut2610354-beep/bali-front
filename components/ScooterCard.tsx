@@ -1,4 +1,5 @@
 'use client';
+import SeoImage from '@/components/SeoImage';
 import Link from 'next/link';
 import { BRPhoto, BRChip, BRPrice } from './BR';
 import { GaugeIcon, LightningIcon, WeightIcon } from './Icons';
@@ -47,7 +48,7 @@ export default function ScooterCard({ s, dark = false, large = false }: { s: Dis
       >
         {hasImage ? (
           // eslint-disable-next-line @next/next/no-img-element
-          <img
+          <SeoImage
             src={s.imageUrl}
             alt={s.name}
             loading="lazy"

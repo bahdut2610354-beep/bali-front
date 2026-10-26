@@ -1,4 +1,5 @@
 'use client';
+import SeoImage from '@/components/SeoImage';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
@@ -57,7 +58,7 @@ function NewsCard({ article, locale, readMoreLabel, href }: { article: ApiNewsAr
       >
         <div style={{ position: 'relative', width: '100%', paddingTop: '62%', background: '#F5F3EF', overflow: 'hidden', flexShrink: 0 }}>
           {imgSrc ? (
-            <img
+            <SeoImage
               src={imgSrc}
               alt={title}
               className="br-news-card-img"
