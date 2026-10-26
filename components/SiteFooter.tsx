@@ -1,6 +1,7 @@
 'use client';
 import Link from 'next/link';
 import { BRLogo } from './BR';
+import { TelegramIcon } from './Icons';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
 import { useCurrency } from '@/lib/i18n/CurrencyProvider';
 import { useSiteContentPreview } from '@/lib/siteContentPreview';
@@ -63,7 +64,6 @@ export default function SiteFooter() {
   ].filter(Boolean).join(' · ');
   const extraSocials = [
     { key: 'instagram', label: 'Instagram', href: socialLinks.instagram },
-    { key: 'telegram', label: 'Telegram', href: socialLinks.telegram },
     { key: 'wechat', label: 'WeChat', href: socialLinks.wechat },
     { key: 'tiktok', label: 'TikTok', href: socialLinks.tiktok },
     { key: 'facebook', label: 'Facebook', href: socialLinks.facebook },
@@ -81,6 +81,11 @@ export default function SiteFooter() {
           <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" style={{ marginTop: 20, background: '#25D366', color: '#fff', borderRadius: 999, padding: '12px 18px', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
             <span style={{ fontSize: 18 }}>◉</span> <span {...marker('footer.whatsappButton')}>{footer.whatsappButton || 'WhatsApp · +62 813-5915-173'}</span>
           </a>
+          {socialLinks.telegram ? (
+            <a href={socialLinks.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram" style={{ marginTop: 20, marginLeft: 10, background: '#2AABEE', color: '#fff', borderRadius: 999, padding: '12px 18px', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
+              <TelegramIcon size={18} color="#fff" /> <span>Telegram</span>
+            </a>
+          ) : null}
           {extraSocials.length ? (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>
               {extraSocials.map((item) => (
