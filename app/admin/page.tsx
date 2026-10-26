@@ -62,6 +62,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import {
   DEFAULT_ADDRESS_SETTINGS,
   DEFAULT_SOCIAL_LINKS,
+  normalizeSocialLinks,
   SITE_ADDRESS_SETTINGS_STORAGE_KEY,
   SITE_SETTINGS_SYNC_EVENT,
   SITE_SOCIAL_LINKS_STORAGE_KEY,
@@ -516,17 +517,7 @@ const ADDRESS_SETTING_LABELS: Record<AddressSettingKey, string> = {
 };
 
 function normalizeAdminSocialLinks(raw: unknown): SocialLinks {
-  if (!raw || typeof raw !== 'object' || Array.isArray(raw)) {
-    return { ...DEFAULT_SOCIAL_LINKS };
-  }
-
-  const next: SocialLinks = { ...DEFAULT_SOCIAL_LINKS };
-  for (const key of Object.keys(DEFAULT_SOCIAL_LINKS) as SocialLinkKey[]) {
-    next[key] = typeof (raw as Record<string, unknown>)[key] === 'string'
-      ? String((raw as Record<string, unknown>)[key] || '').trim()
-      : DEFAULT_SOCIAL_LINKS[key];
-  }
-  return next;
+  return normalizeSocialLinks(raw);
 }
 
 function normalizeAdminAddressSettings(raw: unknown): AddressSettings {

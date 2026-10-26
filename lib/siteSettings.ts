@@ -6,7 +6,7 @@ import { useLocale } from './i18n/LocaleProvider';
 export const DEFAULT_SOCIAL_LINKS = {
   whatsapp: 'https://wa.me/628135915173',
   instagram: '',
-  telegram: '',
+  telegram: 'https://t.me/Tropical_bikes',
   wechat: '',
   tiktok: '',
   facebook: '',
@@ -36,7 +36,7 @@ function isPlainObject(value: unknown): value is Record<string, unknown> {
   return typeof value === 'object' && value !== null && !Array.isArray(value);
 }
 
-function normalizeSocialLinks(raw: unknown): SocialLinks {
+export function normalizeSocialLinks(raw: unknown): SocialLinks {
   if (!isPlainObject(raw)) {
     return { ...DEFAULT_SOCIAL_LINKS };
   }
@@ -46,6 +46,8 @@ function normalizeSocialLinks(raw: unknown): SocialLinks {
     const value = raw[key];
     next[key] = typeof value === 'string' ? value.trim() : DEFAULT_SOCIAL_LINKS[key];
   }
+  // Older saved settings contain an empty Telegram URL, disabling the contact button.
+  next.telegram = next.telegram || DEFAULT_SOCIAL_LINKS.telegram;
   return next;
 }
 
