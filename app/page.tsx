@@ -20,6 +20,7 @@ import { resolveHeroVideoUrl } from '@/lib/media';
 import { formatGroupedAmount, useCurrency } from '@/lib/i18n/CurrencyProvider';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
 import { endpoints } from '@/lib/endpoints';
+import { lowestDailyPriceIdr } from '@/lib/rentalRates';
 import {
   DisplayScooter,
   resolveScooterImage,
@@ -201,6 +202,16 @@ export default function LandingPage() {
 
   const faqs = apiFaqs.length ? apiFaqs : t.home.faqs;
   const homeReviews = t.home.reviews;
+  // "From Rp …/day" uses the cheapest tariff, exactly like the headline on the Prices page.
+  const [lowestRateIdr, setLowestRateIdr] = useState<number | null>(null);
+  useEffect(() => {
+    let cancelled = false;
+    endpoints.pricingRates()
+      .then((rates) => { if (!cancelled) setLowestRateIdr(lowestDailyPriceIdr(rates)); })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, []);
+
   const minPrice = useMemo(() => {
     if (featured.length > 0) {
       const prices = featured.map((f) => f.price).filter((p) => p > 0);
@@ -208,7 +219,9 @@ export default function LandingPage() {
     }
     return 0;
   }, [featured]);
-  const minPriceLabel = minPrice > 0 ? `Rp ${formatGroupedAmount(convertPrice(minPrice, 'IDR'), 0)}` : '…';
+  const minPriceLabel = lowestRateIdr
+    ? `Rp ${formatGroupedAmount(lowestRateIdr, 0)}`
+    : minPrice > 0 ? `Rp ${formatGroupedAmount(convertPrice(minPrice, 'IDR'), 0)}` : '…';
   const supportChatLabel = SUPPORT_CHAT_COPY[locale as keyof typeof SUPPORT_CHAT_COPY] || SUPPORT_CHAT_COPY.en;
   const supportChatLink = `${profilePath}?tab=support`;
   const heroVideoUrl = resolveHeroVideoUrl(t.media?.home?.heroVideo);
