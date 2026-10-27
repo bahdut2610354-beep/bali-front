@@ -23,8 +23,8 @@
 
   // === НАСТРОЙКИ: ЗАМЕНИТЕ значения на свои из Google Ads ===
   var SEND_TO = {
-    whatsapp: 'AW-18373201500/BhXQCILWiKodENycg71E',
-    telegram: 'AW-18373201500/dF_vCIXWiKodENycg71E'
+    whatsapp: 'AW-18373201500/BhXQCILWiKodENycg7lE',
+    telegram: 'AW-18373201500/dF_vCIXWiKodENycg7lE'
   };
   // ==========================================================
 
