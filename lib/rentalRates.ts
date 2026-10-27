@@ -175,3 +175,22 @@ export function formatAppliedTariffLabel(tariff?: ApiAppliedTariff | null, local
     default: return `${primary} · extra ${remainder} at the same rate`;
   }
 }
+
+/**
+ * Lowest per-day price across all tariffs, in IDR — the same figure the Prices page headline shows
+ * (the cheapest tier by effective daily price, read from the admin-entered price_idr).
+ */
+export function lowestDailyPriceIdr(rates: ApiScooterRentalRate[]): number | null {
+  let best: { usd: number; idr: number } | null = null;
+  for (const rate of rates) {
+    if (rate.price_idr == null) continue;
+    const billingDays = Math.max(1, Number(rate.billing_period_days) || 1);
+    const effectiveUsd = Number(rate.effective_daily_price_usd || 0) || Number(rate.price_usd || 0) / billingDays;
+    const idr = Math.round(Number(rate.price_idr) / billingDays);
+    if (!(idr > 0)) continue;
+    if (!best || effectiveUsd < best.usd || (effectiveUsd === best.usd && idr < best.idr)) {
+      best = { usd: effectiveUsd, idr };
+    }
+  }
+  return best ? best.idr : null;
+}
