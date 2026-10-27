@@ -15,6 +15,7 @@ import { resolveScooterImage, resolveScooterRouteId } from './displayScooter';
 import type { Locale } from './i18n/dictionaries';
 import { getRequestLocale } from './i18n/requestLocale';
 import { HREFLANG_BY_LOCALE, OG_LOCALE_BY_LOCALE, ROUTE_LOCALES, localizePath } from './i18n/routing';
+import { LEGAL_DOC_KEYS, LEGAL_PATHS, getLegalContent, type LegalDocKey } from './legal';
 
 const DEFAULT_SITE_URL = 'https://bali.bike';
 const SITE_NAME = 'TROPICAL BIKES';
@@ -429,11 +430,40 @@ export async function buildScooterMetadata(idOrSlug: string): Promise<Metadata> 
   }
 }
 
+/** Metadata for the Terms, Cancellation & Refund and Privacy pages in the URL language. */
+export function buildLegalMetadata(docKey: LegalDocKey): Metadata {
+  const locale = getRequestLocale();
+  const doc = getLegalContent(locale).docs[docKey];
+  const path = LEGAL_PATHS[docKey];
+  const title = `${doc.title} | ${SITE_NAME}`;
+  return {
+    title,
+    description: doc.description,
+    alternates: buildAlternates(path, locale),
+    openGraph: {
+      title,
+      description: doc.description,
+      url: toAbsoluteUrl(localizePath(path, locale)),
+      siteName: SITE_NAME,
+      type: 'website',
+      ...localizedOpenGraphLocale(locale),
+    },
+    robots: buildRobots(true),
+  };
+}
+
 export async function getSitemapStaticEntries() {
   const pageSettings = await getSeoPageSettings();
   const now = new Date();
 
-  return INDEXED_PAGE_KEYS.flatMap((pageKey) => {
+  const legalEntries = LEGAL_DOC_KEYS.flatMap((docKey) => ROUTE_LOCALES.map((locale) => ({
+    url: toAbsoluteUrl(localizePath(LEGAL_PATHS[docKey], locale)),
+    lastModified: now,
+    changeFrequency: 'yearly',
+    priority: 0.3,
+  } as const)));
+
+  return [...legalEntries, ...INDEXED_PAGE_KEYS.flatMap((pageKey) => {
     const definition = PAGE_SETTINGS_DEFINITION_MAP[pageKey];
     return ROUTE_LOCALES.map((locale) => ({
       url: toAbsoluteUrl(localizePath(pageSettings[pageKey].path, locale)),
@@ -441,7 +471,7 @@ export async function getSitemapStaticEntries() {
       changeFrequency: pageKey === 'news' ? 'daily' : 'weekly',
       priority: definition.key === 'home' ? 1 : definition.key === 'catalog' ? 0.9 : 0.8,
     } as const));
-  });
+  })];
 }
 
 export async function getNewsBasePath() {
