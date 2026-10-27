@@ -27,6 +27,7 @@ import { mapApiScooterDetail, DisplayScooter, pickTone, resolveScooterImage, res
 import { formatBillingLabel, formatRateRange } from '@/lib/rentalRates';
 import { useSiteContentPreview } from '@/lib/siteContentPreview';
 import { usePagePath } from '@/lib/usePageSettings';
+import { useScooterSeo } from '@/components/ScooterSeoContext';
 
 type AddonView = {
   id: string | number;
@@ -69,6 +70,7 @@ function getAddonName(addon: ApiAddon, locale: string): string {
 
 export default function ScooterDetailPage() {
   const params = useParams<{ id: string }>();
+  const seoInfo = useScooterSeo();
   const router = useRouter();
   const { t, locale } = useLocale();
   const { marker } = useSiteContentPreview();
@@ -209,6 +211,12 @@ export default function ScooterDetailPage() {
     return (
       <div style={{ background: bg, color: fg, minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         <SiteHeader />
+        {seoInfo ? (
+          <div style={{ padding: '80px 24px 0', textAlign: 'center' }}>
+            <h1 className="br-display" style={{ fontSize: 48, lineHeight: 0.98, margin: '0 0 12px', letterSpacing: '-0.03em' }}>{seoInfo.name}</h1>
+            {seoInfo.description ? <p style={{ maxWidth: 640, margin: '0 auto', color: sub, lineHeight: 1.6 }}>{seoInfo.description}</p> : null}
+          </div>
+        ) : null}
         <div className="br-mono" style={{ padding: 80, textAlign: 'center', color: sub }}>{t.common.loading}</div>
       </div>
     );
