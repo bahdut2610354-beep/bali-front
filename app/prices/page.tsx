@@ -54,6 +54,16 @@ function effectiveDailyPriceIdr(rate: ApiScooterRentalRate) {
   return Math.round(Number(rate.price_idr) / billingDays);
 }
 
+/** Heading shown while prices load, so search engines never see an empty price ("From ..."). */
+const PRICES_SEO_HEADING: Record<string, string> = {
+  en: 'Scooter rental prices in Bali',
+  ru: 'Цены на аренду скутеров на Бали',
+  zh: '巴厘岛摩托车租赁价格',
+  id: 'Harga sewa skuter di Bali',
+  de: 'Preise für Rollerverleih auf Bali',
+  fr: 'Prix de location de scooters à Bali',
+};
+
 export default function PricesPage() {
   const { t, locale } = useLocale();
   const { convertPrice, currency, symbol } = useCurrency();
@@ -435,9 +445,15 @@ export default function PricesPage() {
                 maxWidth: 820,
               }}
             >
-              <span>{t.pricing.title}</span>{' '}
-              <span style={{ color: '#FFD700' }}>{headlinePrice}</span>{' '}
-              <span>{t.pricing.titleSuffix}</span>
+              {loading ? (
+                <span>{PRICES_SEO_HEADING[locale] || PRICES_SEO_HEADING.en}</span>
+              ) : (
+                <>
+                  <span>{t.pricing.title}</span>{' '}
+                  <span style={{ color: '#FFD700' }}>{headlinePrice}</span>{' '}
+                  <span>{t.pricing.titleSuffix}</span>
+                </>
+              )}
             </h1>
             <p style={{ margin: '0 0 14px', maxWidth: 720, color: 'rgba(0,0,0,0.75)', lineHeight: 1.6, fontSize: 17 }}>
               {copy.lead}
