@@ -64,7 +64,6 @@ export default function SiteFooter() {
   ].filter(Boolean).join(' · ');
   const extraSocials = [
     { key: 'instagram', label: 'Instagram', href: socialLinks.instagram },
-    { key: 'wechat', label: 'WeChat', href: socialLinks.wechat },
     { key: 'tiktok', label: 'TikTok', href: socialLinks.tiktok },
     { key: 'facebook', label: 'Facebook', href: socialLinks.facebook },
     { key: 'youtube', label: 'YouTube', href: socialLinks.youtube },
