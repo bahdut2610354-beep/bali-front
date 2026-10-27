@@ -19,11 +19,11 @@ export const SITE_SOCIAL_LINKS_STORAGE_KEY = 'br_site_social_links';
 
 export const DEFAULT_ADDRESS_SETTINGS = {
   businessName: 'TROPICAL BIKES',
-  street: 'JL. PANTAI BERAWA',
-  district: 'CANGGU',
+  street: 'JL. SUNSET ROAD No 39B',
+  district: 'SEMINYAK, KEC. KUTA',
   postalCode: '80361',
   country: 'BALI, INDONESIA',
-  license: 'LIC. 04/2019',
+  license: '',
   copyright: '© 2026',
 } as const;
 
