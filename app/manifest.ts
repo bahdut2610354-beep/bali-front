@@ -24,8 +24,8 @@ export default async function manifest(): Promise<MetadataRoute.Manifest> {
   ];
 
   return {
-    name: 'BALI-RENT',
-    short_name: 'BALI-RENT',
+    name: 'TROPICAL BIKES',
+    short_name: 'TROPICAL BIKES',
     description: 'Premium scooter rental in Bali with delivery and 24/7 support.',
     start_url: startUrl,
     display: 'standalone',

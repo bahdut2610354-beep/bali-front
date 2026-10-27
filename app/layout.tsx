@@ -2,7 +2,8 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Providers from '@/components/Providers';
 import { SeoProvider } from '@/components/SeoImage';
-import { buildManagedPageMetadata, getSiteUrl, getSeoSettings } from '@/lib/seo';
+import { buildBusinessJsonLd, buildManagedPageMetadata, getSiteUrl, getSeoSettings, serializeJsonLd } from '@/lib/seo';
+import { getRequestRouteLocale } from '@/lib/i18n/requestLocale';
 
 const GOOGLE_TAG_MANAGER_ID = 'GTM-M6JD3FLW';
 const GOOGLE_ANALYTICS_ID = 'G-NH1PZRH7XL';
@@ -12,7 +13,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const metadata = await buildManagedPageMetadata('home');
   return {
     metadataBase: new URL(getSiteUrl()),
-    applicationName: 'BALI-RENT',
+    applicationName: 'TROPICAL BIKES',
     title: metadata.title,
     description: metadata.description,
     alternates: metadata.alternates,
@@ -35,8 +36,10 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const seoSettings = await getSeoSettings();
+  const routeLocale = getRequestRouteLocale();
+  const businessJsonLd = await buildBusinessJsonLd(routeLocale || 'en');
   return (
-    <html lang="en">
+    <html lang={routeLocale || 'en'}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -87,7 +90,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           />
         </noscript>
 
-        <SeoProvider settings={seoSettings}><Providers>{children}</Providers></SeoProvider>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(businessJsonLd) }}
+        />
+        <SeoProvider settings={seoSettings}><Providers routeLocale={routeLocale}>{children}</Providers></SeoProvider>
         <script src="/bali-bike-messenger-conversions.js" defer />
       </body>
     </html>
