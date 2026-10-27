@@ -1890,7 +1890,8 @@ function useAdminMoneyFormatter() {
     const normalizedAmount = Number.isFinite(amount) ? amount : 0;
     const convertedAmount = convertAmountValue(normalizedAmount, sourceCurrency, currency);
     const intlLocale = locale === 'ru' ? 'ru-RU' : locale === 'id' ? 'id-ID' : 'en-US';
-    const hasFraction = Math.abs(convertedAmount % 1) > 0.000001;
+    // Rupiah has no minor units in practice, so IDR amounts are always shown as whole numbers.
+    const hasFraction = currency !== 'IDR' && Math.abs(convertedAmount % 1) > 0.000001;
 
     return formatCurrencyAmount(convertedAmount, currency, intlLocale, {
       minimumFractionDigits: hasFraction ? 2 : 0,
@@ -4049,7 +4050,7 @@ function AdminPageContent() {
         endpoints.adminBookings(),
         endpoints.adminScooters(),
         endpoints.scooterModels(),
-        endpoints.adminUsers(),
+        endpoints.adminUsersAll(),
       ]);
 
       const bookings = unwrapList(bookingsRes);
@@ -7591,12 +7592,18 @@ function OverviewView({
   const paidBookings = bookings.filter(
     (item) => item.payment_status === 'paid' || item.latest_payment?.status === 'succeeded',
   );
-  const activeBookings = bookings.filter((item) =>
-    ['created', 'pending_payment', 'confirmed', 'delivery', 'active'].includes(item.status),
+  // Bookings whose scooter is out with a customer right now (delivered or in use, including overdue returns).
+  const activeBookings = bookings.filter((item) => ['delivery', 'active'].includes(item.status));
+  const upcomingBookings = bookings.filter((item) =>
+    ['created', 'pending_payment', 'confirmed'].includes(item.status)
+    && (!item.end_datetime || new Date(item.end_datetime).getTime() >= Date.now()),
   );
-  const utilization = scooters.length
-    ? Math.round((scooters.filter((item) => item.status !== 'available').length / scooters.length) * 100)
-    : 0;
+  // A scooter listing can stand for several identical units (`quantity`); inactive listings are out of the fleet.
+  const fleetUnits = scooters
+    .filter((item) => item.status !== 'inactive')
+    .reduce((sum, item) => sum + Math.max(Number(item.quantity) || 1, 1), 0);
+  const unitsInUse = Math.min(activeBookings.length, fleetUnits);
+  const utilization = fleetUnits ? Math.round((unitsInUse / fleetUnits) * 100) : 0;
   const averageBookingValue = paidBookings.length
     ? paidBookings.reduce((sum, item) => sum + Number(item.total_price || 0), 0) / paidBookings.length
     : 0;
@@ -7663,9 +7670,9 @@ function OverviewView({
     <div style={{ overflowY: 'auto', height: '100%', padding: pad }}>
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: isMobile ? 10 : 16, marginBottom: isMobile ? 16 : 28 }}>
         <StatCard label="Revenue" value={formatMoney(revenue.revenue)} helper={`${revenue.bookings_count} paid bookings`} icon={<DollarIcon size={18} color={A.g700} />} />
-        <StatCard label="Active Bookings" value={String(activeBookings.length)} helper="Current pipeline" icon={<ClipboardIcon size={18} color={A.g700} />} />
-        <StatCard label="Fleet Utilization" value={`${utilization}%`} helper={`${scooters.length} vehicles`} icon={<ScooterIcon size={18} color={A.g700} />} />
-        <StatCard label="Average Booking" value={formatMoney(averageBookingValue)} helper={`${payments.length} payments tracked`} icon={<DiamondIcon size={18} color={A.g700} />} />
+        <StatCard label="Active Bookings" value={String(activeBookings.length)} helper={`${upcomingBookings.length} upcoming confirmed`} icon={<ClipboardIcon size={18} color={A.g700} />} />
+        <StatCard label="Fleet Utilization" value={`${utilization}%`} helper={`${unitsInUse} of ${fleetUnits} units rented now`} icon={<ScooterIcon size={18} color={A.g700} />} />
+        <StatCard label="Average Booking" value={formatMoney(averageBookingValue)} helper={`${paidBookings.length} paid bookings`} icon={<DiamondIcon size={18} color={A.g700} />} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.6fr 1fr', gap: isMobile ? 12 : 16, marginBottom: isMobile ? 12 : 28 }}>
@@ -9106,53 +9113,103 @@ function CRMView({
   isMobile: boolean;
 }) {
   const formatMoney = useAdminMoneyFormatter();
-  const bookingStats = new Map<string, { bookings: number; total: number; last: string | null }>();
+  type CustomerRow = {
+    id: string;
+    name: string;
+    email: string;
+    phone: string;
+    segment: string;
+    notes: number;
+    interactions: number;
+    bookings: number;
+    total: number;
+    last: string | null;
+  };
+
+  const usersByEmail = new Map(users.map((item) => [item.email, item]));
+  const profileMap = new Map(profiles.map((item) => [item.user?.email || '', item]));
+  const isStaffEmail = (email?: string | null) => {
+    const account = email ? usersByEmail.get(email) : undefined;
+    return Boolean(account && account.role !== 'client');
+  };
+  const cleanPhone = (value?: string | null) => {
+    const digits = (value || '').replace(/\D/g, '');
+    return digits.length >= 8 ? (value || '').trim() : '';
+  };
+
+  // Bookings that staff enter by hand are saved under the staff account, so the real customer is the
+  // booking contact (name / phone). Client bookings belong to the client account.
+  const rowsByKey = new Map<string, CustomerRow>();
+  for (const item of users) {
+    if (item.role !== 'client') continue;
+    const profile = profileMap.get(item.email);
+    rowsByKey.set(`user:${item.email}`, {
+      id: `user:${item.id}`,
+      name: item.full_name || item.email,
+      email: item.email,
+      phone: item.phone || '—',
+      segment: profile?.segment?.name || 'Unassigned',
+      notes: profile?.notes?.length || 0,
+      interactions: profile?.interactions?.length || 0,
+      bookings: 0,
+      total: 0,
+      last: null,
+    });
+  }
   for (const booking of bookings) {
-    const key = booking.user || 'Guest';
-    const current = bookingStats.get(key) || { bookings: 0, total: 0, last: null };
-    current.bookings += 1;
-    current.total += Number(booking.total_price || 0);
-    const created = booking.created_at || null;
-    if (created && (!current.last || new Date(created) > new Date(current.last))) {
-      current.last = created;
+    if (booking.status === 'cancelled') continue;
+    const contactName = (booking.contact_name || '').trim();
+    const contactPhone = cleanPhone(booking.contact_phone);
+    let key: string;
+    if (booking.user && !isStaffEmail(booking.user)) {
+      key = `user:${booking.user}`;
+    } else if (contactName || contactPhone) {
+      key = `contact:${(contactName || contactPhone).toLowerCase().replace(/\s+/g, ' ')}`;
+    } else {
+      continue;
     }
-    bookingStats.set(key, current);
+    let row = rowsByKey.get(key);
+    if (!row) {
+      row = {
+        id: key,
+        name: contactName || contactPhone || booking.user || '—',
+        email: key.startsWith('user:') ? booking.user || '—' : '—',
+        phone: contactPhone || '—',
+        segment: 'Unassigned',
+        notes: 0,
+        interactions: 0,
+        bookings: 0,
+        total: 0,
+        last: null,
+      };
+      rowsByKey.set(key, row);
+    }
+    if (row.phone === '—' && contactPhone) row.phone = contactPhone;
+    row.bookings += 1;
+    row.total += Number(booking.total_price || 0);
+    const created = booking.created_at || null;
+    if (created && (!row.last || new Date(created) > new Date(row.last))) {
+      row.last = created;
+    }
   }
 
-  const profileMap = new Map(profiles.map((item) => [item.user?.email || '', item]));
-
-  const customerRows = users
-    .filter((item) => item.role === 'client' || profileMap.has(item.email) || bookingStats.has(item.email))
-    .map((item) => {
-      const profile = profileMap.get(item.email);
-      const stats = bookingStats.get(item.email) || { bookings: 0, total: 0, last: null };
-      return {
-        id: item.id,
-        name: item.full_name || item.email,
-        email: item.email,
-        phone: item.phone || '—',
-        segment: profile?.segment?.name || 'Unassigned',
-        notes: profile?.notes?.length || 0,
-        interactions: profile?.interactions?.length || 0,
-        bookings: stats.bookings,
-        total: stats.total,
-        last: stats.last,
-      };
-    })
+  const customerRows = Array.from(rowsByKey.values())
+    .filter((item) => item.bookings > 0 || item.segment !== 'Unassigned' || item.notes > 0 || item.interactions > 0 || item.email !== '—')
     .sort((left, right) => right.total - left.total);
+  const customersWithBookings = customerRows.filter((item) => item.bookings > 0);
 
   const vipCount = customerRows.filter((item) => item.segment && item.segment !== 'Unassigned').length;
-  const averageLtv = customerRows.length
-    ? customerRows.reduce((sum, item) => sum + item.total, 0) / customerRows.length
+  const averageLtv = customersWithBookings.length
+    ? customersWithBookings.reduce((sum, item) => sum + item.total, 0) / customersWithBookings.length
     : 0;
 
   return (
     <div style={{ overflowY: 'auto', height: '100%', padding: isMobile ? '16px' : '28px 32px' }}>
       <SectionHeader title="CRM" subtitle="Customer profiles, segments and booking history" />
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)', gap: 12, marginBottom: 24 }}>
-        <StatCard label="Customers" value={String(customerRows.length)} helper="Client accounts with CRM data or bookings" icon={<UsersIcon size={18} color={A.g700} />} />
+        <StatCard label="Customers" value={String(customerRows.length)} helper={`${customersWithBookings.length} with bookings`} icon={<UsersIcon size={18} color={A.g700} />} />
         <StatCard label="Segmented" value={String(vipCount)} helper="Profiles assigned to a segment" icon={<TagIcon size={18} color={A.g700} />} />
-        <StatCard label="Average LTV" value={formatMoney(averageLtv)} helper="Derived from bookings" icon={<DiamondIcon size={18} color={A.g700} />} />
+        <StatCard label="Average LTV" value={formatMoney(averageLtv)} helper="Per customer with bookings" icon={<DiamondIcon size={18} color={A.g700} />} />
       </div>
       {customerRows.length === 0 ? (
         <EmptyState label="No customer records available." />
