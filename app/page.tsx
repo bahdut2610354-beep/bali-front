@@ -10,7 +10,6 @@ import {
   ScooterIcon, StarIcon,
   SupportIcon,
   TelegramIcon,
-  WeChatIcon,
   WhatsAppIcon,
 } from '@/components/Icons';
 import ScooterCard from '@/components/ScooterCard';
@@ -306,28 +305,6 @@ export default function LandingPage() {
                 }}
               >
                 <TelegramIcon size={22} color="#2AABEE" />
-              </a>
-
-              <a
-                href={socialLinks.wechat || undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="WeChat"
-                title="WeChat"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  width: 'clamp(58px, 6vw, 68px)', height: 'clamp(58px, 6vw, 68px)',
-                  borderRadius: 16,
-                  background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: '#7BB32E',
-                  cursor: socialLinks.wechat ? 'pointer' : 'default',
-                  textDecoration: 'none',
-                  pointerEvents: socialLinks.wechat ? 'auto' : 'none',
-                  opacity: socialLinks.wechat ? 1 : 0.55,
-                }}
-              >
-                <WeChatIcon size={22} color="#7BB32E" />
               </a>
             </div>
           </motion.div>
