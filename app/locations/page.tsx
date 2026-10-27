@@ -27,6 +27,7 @@ type Zone = {
   name: string;
   freeDelivery?: boolean;
   deliveryFeeUSD?: number;
+  deliveryFeeIDR?: number;
   timeMinutes?: number;
 };
 
@@ -56,6 +57,7 @@ export default function LocationsPage() {
               id: z.id, name: z.name,
               freeDelivery: z.freeDelivery,
               deliveryFeeUSD: z.deliveryFeeUSD,
+              deliveryFeeIDR: z.deliveryFeeIDR,
               timeMinutes: z.timeMinutes,
             })),
           );
@@ -259,8 +261,8 @@ export default function LocationsPage() {
                       <>
                         <DeliveryIcon size={12} color="rgba(0,0,0,0.45)" />
                         <span className="br-mono" style={{ fontSize: 11, color: 'rgba(0,0,0,0.45)', letterSpacing: '0.1em' }}>
-                          {zone.deliveryFeeUSD
-                            ? deliveryCopy.paidFrom.replace('{price}', `Rp ${formatGroupedAmount(convertPrice(zone.deliveryFeeUSD, 'IDR'), 0)}`)
+                          {zone.deliveryFeeIDR || zone.deliveryFeeUSD
+                            ? deliveryCopy.paidFrom.replace('{price}', `Rp ${formatGroupedAmount(zone.deliveryFeeIDR || convertPrice(zone.deliveryFeeUSD || 0, 'IDR'), 0)}`)
                             : deliveryCopy.smallFee
                           }
                         </span>
