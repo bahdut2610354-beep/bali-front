@@ -91,7 +91,7 @@ export default function BookingPage() {
 }
 
 function BookingPageInner() {
-  const { t, locale } = useLocale();
+  const { t, locale, localizeHref } = useLocale();
   const { marker } = useSiteContentPreview();
   const { currency: selectedCurrency, convertPrice, convertAmountValue } = useCurrency();
   const copy = {
@@ -427,7 +427,7 @@ function BookingPageInner() {
                       {scooter?.engine_capacity ? ` · ${scooter.engine_capacity}cc` : ''}
                     </div>
                     <div style={{ marginTop: 14 }}>
-                      <Link href={routeId ? `/scooter/${routeId}` : '/catalog'} className="br-mono" style={{ color: '#000', fontSize: 12 }}>
+                      <Link href={localizeHref(routeId ? `/scooter/${routeId}` : '/catalog')} className="br-mono" style={{ color: '#000', fontSize: 12 }}>
                         <span {...marker('booking.changeScooter')}>{copy.changeScooter}</span>
                       </Link>
                     </div>
