@@ -8,6 +8,9 @@ export type BookingDraft = {
   end_datetime: string;
   delivery_time?: string;
   delivery_address?: string;
+  delivery_latitude?: number;
+  delivery_longitude?: number;
+  delivery_zone_id?: number | null;
   add_on_ids?: number[];
   promo_code?: string;
 };
