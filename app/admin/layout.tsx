@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 import AdminRouteShell from '@/components/AdminRouteShell';
 
 export const metadata: Metadata = {
-  title: 'Admin · BALI-RENT',
+  title: 'Admin · TROPICAL BIKES',
   robots: {
     index: false,
     follow: false,
