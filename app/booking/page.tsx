@@ -122,11 +122,38 @@ function BookingPageInner() {
   const [endTime, setEndTime] = useState(search.get('end_time') || '18:00');
 
   const [deliveryAddress, setDeliveryAddress] = useState('');
+  // Delivery area picked by the customer; its center point lets the server price the delivery.
+  const [deliveryZones, setDeliveryZones] = useState<DeliveryZoneOption[]>([]);
+  const [deliveryZoneId, setDeliveryZoneId] = useState<string>('');
   const [promoCode, setPromoCode] = useState('');
 
   const [quote, setQuote] = useState<ApiBookingQuote | null>(null);
   const [quoteLoading, setQuoteLoading] = useState(false);
   const [quoteError, setQuoteError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    endpoints.bootstrap(locale)
+      .then((bootstrap) => {
+        if (cancelled) return;
+        setDeliveryZones((bootstrap.deliveryZones || []).map((zone) => ({
+          id: zone.id,
+          name: zone.name,
+          free: zone.freeDelivery !== false,
+          feeIdr: zone.deliveryFeeIDR || 0,
+          latitude: zone.latitude ?? null,
+          longitude: zone.longitude ?? null,
+        })));
+      })
+      .catch(() => {});
+    return () => { cancelled = true; };
+  }, [locale]);
+
+  const selectedZone = useMemo(
+    () => deliveryZones.find((zone) => String(zone.id) === deliveryZoneId) || null,
+    [deliveryZones, deliveryZoneId],
+  );
+  const zoneCopy = DELIVERY_ZONE_COPY[locale] || DELIVERY_ZONE_COPY.en;
 
   useEffect(() => {
     let cancelled = false;
@@ -190,12 +217,15 @@ function BookingPageInner() {
       end_datetime: `${endDateKey}T${endTime}:00`,
       delivery_time: `${startDateKey}T${startTime}:00`,
       delivery_address: deliveryAddress.trim() || undefined,
+      delivery_latitude: selectedZone?.latitude ?? undefined,
+      delivery_longitude: selectedZone?.longitude ?? undefined,
       add_on_ids: selectedAddOnIds.length ? selectedAddOnIds : undefined,
       promo_code: promoCode.trim() || undefined,
       payment_method: 'online_card' as const,
     };
   }, [
     deliveryAddress,
+    selectedZone,
     effectiveScooterId,
     endDateKey,
     endTime,
@@ -248,7 +278,7 @@ function BookingPageInner() {
   }, [quoteKey, quoteRequest, t.auth.error]);
 
   function handleContinueToPayment() {
-    if (!deliveryAddress.trim() || !quoteRequest || !effectiveScooterId || !quote || quoteError) {
+    if (!deliveryAddress.trim() || !deliveryZoneId || !quoteRequest || !effectiveScooterId || !quote || quoteError) {
       return;
     }
 
@@ -262,6 +292,9 @@ function BookingPageInner() {
       end_datetime: quoteRequest.end_datetime,
       delivery_time: quoteRequest.delivery_time,
       delivery_address: quoteRequest.delivery_address,
+      delivery_latitude: quoteRequest.delivery_latitude,
+      delivery_longitude: quoteRequest.delivery_longitude,
+      delivery_zone_id: selectedZone?.id ?? null,
       add_on_ids: quoteRequest.add_on_ids,
       promo_code: quoteRequest.promo_code,
     });
@@ -380,7 +413,7 @@ function BookingPageInner() {
     .replace('${amount}', fmtIdr(addonsTotalIdr))
     .replace('{amount}', fmtIdr(addonsTotalIdr));
 
-  const canConfirmDates = Boolean(quote && !quoteLoading && !quoteError && isDateRangeValid && hasDeliveryAddress);
+  const canConfirmDates = Boolean(quote && !quoteLoading && !quoteError && isDateRangeValid && hasDeliveryAddress && deliveryZoneId);
 
   return (
     <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', background: '#fff', color: '#000' }}>
@@ -473,6 +506,24 @@ function BookingPageInner() {
                
               </div>
               <div style={{ display: 'grid', gap: 14, marginTop: 18 }}>
+                <Field label={zoneCopy.label}>
+                  <select
+                    value={deliveryZoneId}
+                    onChange={(e) => setDeliveryZoneId(e.target.value)}
+                    style={inputStyle}
+                  >
+                    <option value="">{zoneCopy.placeholder}</option>
+                    {deliveryZones.map((zone) => (
+                      <option key={zone.id} value={String(zone.id)}>
+                        {zone.name} — {zone.free ? zoneCopy.free : zone.feeIdr ? `Rp ${zone.feeIdr.toLocaleString('id-ID')}` : zoneCopy.onRequest}
+                      </option>
+                    ))}
+                    <option value="other">{zoneCopy.other}</option>
+                  </select>
+                </Field>
+                {!deliveryZoneId && isDateRangeValid ? (
+                  <div className="br-mono" style={{ color: '#B91C1C', fontSize: 12 }}>{zoneCopy.required}</div>
+                ) : null}
                 <Field label={copy.addressLabel} contentKey="booking.addressLabel">
                   <textarea
                     {...marker('booking.addressPlaceholder')}
@@ -950,6 +1001,24 @@ function Legend({ color, label, contentKey }: { color: string; label: string; co
     </span>
   );
 }
+
+type DeliveryZoneOption = {
+  id: number;
+  name: string;
+  free: boolean;
+  feeIdr: number;
+  latitude: number | null;
+  longitude: number | null;
+};
+
+const DELIVERY_ZONE_COPY: Record<string, { label: string; placeholder: string; free: string; onRequest: string; other: string; required: string }> = {
+  en: { label: 'Delivery area', placeholder: 'Choose your area', free: 'free', onRequest: 'price on request', other: 'Other area — price on request', required: 'Choose the delivery area.' },
+  ru: { label: 'Район доставки', placeholder: 'Выберите район', free: 'бесплатно', onRequest: 'цена по запросу', other: 'Другой район — цена по запросу', required: 'Выберите район доставки.' },
+  zh: { label: '送车区域', placeholder: '请选择区域', free: '免费', onRequest: '价格面议', other: '其他区域——价格面议', required: '请选择送车区域。' },
+  id: { label: 'Area pengantaran', placeholder: 'Pilih area', free: 'gratis', onRequest: 'harga sesuai permintaan', other: 'Area lain — harga sesuai permintaan', required: 'Pilih area pengantaran.' },
+  de: { label: 'Liefergebiet', placeholder: 'Gebiet wählen', free: 'kostenlos', onRequest: 'Preis auf Anfrage', other: 'Anderes Gebiet — Preis auf Anfrage', required: 'Bitte Liefergebiet wählen.' },
+  fr: { label: 'Zone de livraison', placeholder: 'Choisissez votre zone', free: 'gratuit', onRequest: 'prix sur demande', other: 'Autre zone — prix sur demande', required: 'Choisissez la zone de livraison.' },
+};
 
 function Field({ label, children, contentKey }: { label: string; children: ReactNode; contentKey?: string }) {
   const { marker } = useSiteContentPreview();
