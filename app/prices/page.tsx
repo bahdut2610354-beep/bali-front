@@ -65,7 +65,7 @@ const PRICES_SEO_HEADING: Record<string, string> = {
 };
 
 export default function PricesPage() {
-  const { t, locale } = useLocale();
+  const { t, locale, localizeHref } = useLocale();
   const { convertPrice, currency, symbol } = useCurrency();
   const { socialLinks } = useSiteSettings();
   const catalogPath = usePagePath('catalog');
@@ -691,7 +691,7 @@ export default function PricesPage() {
                       </div>
 
                       <Link
-                        href={`/scooter/${group.routeId}`}
+                        href={localizeHref(`/scooter/${group.routeId}`)}
                         className="br-mono"
                         style={{
                           position: 'absolute',
@@ -821,14 +821,14 @@ export default function PricesPage() {
 
                       <div style={{ marginTop: 'auto', display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                         <Link
-                          href={`/scooter/${group.routeId}`}
+                          href={localizeHref(`/scooter/${group.routeId}`)}
                           className="br-btn br-btn-primary"
                           style={{ flex: '1 1 200px', textDecoration: 'none', minHeight: 48 }}
                         >
                           {copy.book}
                         </Link>
                         <Link
-                          href={`/scooter/${group.routeId}`}
+                          href={localizeHref(`/scooter/${group.routeId}`)}
                           className="br-btn br-btn-outline"
                           style={{ flex: '1 1 170px', textDecoration: 'none', minHeight: 48 }}
                         >
