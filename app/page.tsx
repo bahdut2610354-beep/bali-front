@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { BR_LOCATIONS } from '@/lib/data';
 import { BRPhoto } from '@/components/BR';
@@ -122,6 +122,17 @@ const PAID_DELIVERY_LABEL: Record<string, string> = {
   id: 'BERBAYAR',
   de: 'GEBÜHR',
   fr: 'PAYANT',
+};
+
+/** Hero WhatsApp / Telegram buttons share one style so they are identical in size. */
+const heroMessengerStyle: CSSProperties = {
+  display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: 9,
+  minWidth: 150, boxSizing: 'border-box',
+  background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)',
+  border: '1px solid rgba(255,255,255,0.2)',
+  color: '#fff', fontFamily: 'var(--br-body)', fontSize: 15, fontWeight: 500,
+  textDecoration: 'none', whiteSpace: 'nowrap',
+  padding: '0 20px', height: 'clamp(58px, 6vw, 68px)', borderRadius: 16,
 };
 
 export default function LandingPage() {
@@ -273,17 +284,18 @@ export default function LandingPage() {
               <ArrowRightIcon size={17} color="#0A0A0F" strokeWidth={2.5} />
             </a>
 
-            <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" style={{
-              display: 'inline-flex', alignItems: 'center', gap: 9,
-              background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)',
-              border: '1px solid rgba(255,255,255,0.2)',
-              color: '#fff', fontFamily: 'var(--br-body)', fontSize: 15, fontWeight: 500,
-              textDecoration: 'none', whiteSpace: 'nowrap',
-              padding: '0 20px', height: 'clamp(58px, 6vw, 68px)', borderRadius: 16,
-            }}>
+            {/* WhatsApp and Telegram: same size, icon + name, side by side */}
+            <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" style={heroMessengerStyle}>
               <WhatsAppIcon size={18} color="#25D366" />
               WhatsApp
             </a>
+
+            {socialLinks.telegram ? (
+              <a href={socialLinks.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram" style={heroMessengerStyle}>
+                <TelegramIcon size={18} color="#2AABEE" />
+                Telegram
+              </a>
+            ) : null}
 
             <Link href={supportChatLink} style={{
               display: 'inline-flex', alignItems: 'center', gap: 9,
@@ -296,30 +308,6 @@ export default function LandingPage() {
               <SupportIcon size={18} color="#FFD700" />
               {supportChatLabel}
             </Link>
-
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
-              <a
-                href={socialLinks.telegram || undefined}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Telegram"
-                title="Telegram"
-                style={{
-                  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-                  width: 'clamp(58px, 6vw, 68px)', height: 'clamp(58px, 6vw, 68px)',
-                  borderRadius: 16,
-                  background: 'rgba(255,255,255,0.1)', backdropFilter: 'blur(8px)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  color: '#2AABEE',
-                  cursor: socialLinks.telegram ? 'pointer' : 'default',
-                  textDecoration: 'none',
-                  pointerEvents: socialLinks.telegram ? 'auto' : 'none',
-                  opacity: socialLinks.telegram ? 1 : 0.55,
-                }}
-              >
-                <TelegramIcon size={22} color="#2AABEE" />
-              </a>
-            </div>
           </motion.div>
 
           <motion.div
