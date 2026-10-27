@@ -662,6 +662,7 @@ const EXACT_TRANSLATIONS: Record<string, TranslationPair> = {
   'Customers': { ru: 'Клиенты', id: 'Pelanggan' },
   'Client accounts with CRM data or bookings': { ru: 'Аккаунты клиентов с CRM-данными или бронированиями', id: 'Akun pelanggan dengan data CRM atau booking' },
   'Profiles assigned to a segment': { ru: 'Профили, привязанные к сегменту', id: 'Profil yang ditetapkan ke segmen' },
+  'Per customer with bookings': { ru: 'На клиента с бронированиями', id: 'Per pelanggan dengan booking' },
   'Derived from bookings': { ru: 'Рассчитано по бронированиям', id: 'Dihitung dari booking' },
   'No customer records available.': { ru: 'Нет доступных карточек клиентов.', id: 'Tidak ada data pelanggan yang tersedia.' },
   'No fleet records available.': { ru: 'Нет доступных записей по парку.', id: 'Tidak ada data armada yang tersedia.' },
@@ -1135,6 +1136,24 @@ const DYNAMIC_TRANSLATIONS: DynamicRule[] = [
     translate: (match, locale) => locale === 'ru'
       ? `${match[1]} оплаченных бронирований`
       : `${match[1]} booking berbayar`,
+  },
+  {
+    pattern: /^(\d+) upcoming confirmed$/,
+    translate: (match, locale) => locale === 'ru'
+      ? `Ещё ${match[1]} подтверждённых впереди`
+      : `${match[1]} terkonfirmasi akan datang`,
+  },
+  {
+    pattern: /^(\d+) of (\d+) units rented now$/,
+    translate: (match, locale) => locale === 'ru'
+      ? `В аренде ${match[1]} из ${match[2]} единиц`
+      : `${match[1]} dari ${match[2]} unit sedang disewa`,
+  },
+  {
+    pattern: /^(\d+) with bookings$/,
+    translate: (match, locale) => locale === 'ru'
+      ? `${match[1]} с бронированиями`
+      : `${match[1]} dengan booking`,
   },
   {
     pattern: /^(\d+) payments tracked$/,
