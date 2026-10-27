@@ -1,4 +1,5 @@
 'use client';
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { BRLogo } from './BR';
 import { TelegramIcon } from './Icons';
@@ -8,6 +9,24 @@ import { useSiteContentPreview } from '@/lib/siteContentPreview';
 import { useSiteSettings } from '@/lib/siteSettings';
 import { usePagePath } from '@/lib/usePageSettings';
 import { COMPANY, LEGAL_PATHS } from '@/lib/legal/company';
+
+/** WhatsApp and Telegram buttons share one size so they line up as a pair. */
+const contactButtonStyle: CSSProperties = {
+  width: 'min(100%, 270px)',
+  height: 46,
+  boxSizing: 'border-box',
+  color: '#fff',
+  borderRadius: 999,
+  padding: '0 16px',
+  fontSize: 14,
+  fontWeight: 600,
+  display: 'inline-flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 8,
+  textDecoration: 'none',
+  whiteSpace: 'nowrap',
+};
 
 export default function SiteFooter() {
   const { t, localizeHref } = useLocale();
@@ -85,14 +104,16 @@ export default function SiteFooter() {
           <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', marginTop: 18, lineHeight: 1.55, maxWidth: 320 }}>
             <span {...marker('footer.tagline')}>{t.footer.tagline}</span>
           </p>
-          <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" style={{ marginTop: 20, background: '#25D366', color: '#fff', borderRadius: 999, padding: '12px 18px', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-            <span style={{ fontSize: 18 }}>◉</span> <span {...marker('footer.whatsappButton')}>{footer.whatsappButton || 'WhatsApp · +62 813-5915-173'}</span>
-          </a>
-          {socialLinks.telegram ? (
-            <a href={socialLinks.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram" style={{ marginTop: 20, marginLeft: 10, background: '#2AABEE', color: '#fff', borderRadius: 999, padding: '12px 18px', fontSize: 14, fontWeight: 600, display: 'inline-flex', alignItems: 'center', gap: 8, textDecoration: 'none' }}>
-              <TelegramIcon size={18} color="#fff" /> <span>Telegram</span>
+          <div className="br-footer-contact-buttons" style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginTop: 20 }}>
+            <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" style={{ ...contactButtonStyle, background: '#25D366' }}>
+              <span style={{ fontSize: 18, lineHeight: 1 }}>◉</span> <span {...marker('footer.whatsappButton')}>{footer.whatsappButton || 'WhatsApp · +62 813-5915-173'}</span>
             </a>
-          ) : null}
+            {socialLinks.telegram ? (
+              <a href={socialLinks.telegram} target="_blank" rel="noopener noreferrer" aria-label="Telegram @Tropical_bikes" style={{ ...contactButtonStyle, background: '#2AABEE' }}>
+                <TelegramIcon size={18} color="#fff" /> <span>Telegram · @Tropical_bikes</span>
+              </a>
+            ) : null}
+          </div>
           {extraSocials.length ? (
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8, marginTop: 14 }}>
               {extraSocials.map((item) => (
