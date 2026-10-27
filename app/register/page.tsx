@@ -131,7 +131,7 @@ export default function RegisterPage() {
         <div style={{ width: '100%', maxWidth: 400 }}>
 
           <Link href={homePath} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, color: 'rgba(0,0,0,0.38)', fontSize: 13, textDecoration: 'none', marginBottom: 40, fontFamily: 'var(--br-mono)', letterSpacing: '0.06em' }}>
-            ← Bali-Rent
+            ← Tropical Bikes
           </Link>
 
           <h1 style={{

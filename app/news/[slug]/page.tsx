@@ -72,7 +72,7 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
   useEffect(() => {
     if (typeof document === 'undefined') return;
     if (articleTitle) {
-      document.title = seoTitle || `${articleTitle} · BALI-RENT`;
+      document.title = seoTitle || `${articleTitle} · TROPICAL BIKES`;
     }
   }, [articleTitle, seoTitle]);
 

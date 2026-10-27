@@ -62,7 +62,7 @@ export default function AdminSeoSettings() {
 
   const targets = useMemo<Target[]>(() => {
     const pagePath = (key: string, fallback: string) => entries.find(e => e.key === `pageSettings.${key}.path` && e.language === 'all' && e.is_active)?.value || fallback;
-    const commonImages = [logo, { src: '/logo1.svg', label: 'Изображение для социальных сетей', fallback: 'BALI-RENT' }];
+    const commonImages = [logo, { src: '/logo1.svg', label: 'Изображение для социальных сетей', fallback: 'TROPICAL BIKES' }];
     return [
       ...PAGE_SETTINGS_DEFINITIONS.map(page => ({
         key: page.key, label: page.label, path: pagePath(page.key, page.defaultPath),
@@ -72,13 +72,13 @@ export default function AdminSeoSettings() {
       })),
       ...scooters.map(scooter => ({
         key: `scooter_${scooter.id}`, label: `Скутер: ${scooter.title}`, path: `/scooter/${scooter.slug || scooter.id}`,
-        title: `${scooter.title} rental in Bali · BALI-RENT`,
+        title: `${scooter.title} rental in Bali · TROPICAL BIKES`,
         images: imageItems([logo, { src: scooter.main_image ? mediaUrl(scooter.main_image) : '/placeholder-scooter.svg', label: 'Основное фото', fallback: scooter.title }, ...(scooter.gallery || []).map(img => ({ src: mediaUrl(img.image), label: `Фото ${img.id}`, fallback: img.alt_text || scooter.title }))]),
       })),
       ...news.map(article => {
         const title = article.translations?.find(t => t.language === 'en')?.title || article.title || article.slug;
         return {
-          key: `news_${article.id}`, label: `Новость: ${title}`, path: `${pagePath('news', '/news')}/${article.slug}`, title: `${title} · BALI-RENT`,
+          key: `news_${article.id}`, label: `Новость: ${title}`, path: `${pagePath('news', '/news')}/${article.slug}`, title: `${title} · TROPICAL BIKES`,
           images: imageItems([logo, ...(article.image ? [{ src: mediaUrl(article.image), label: 'Обложка', fallback: title }] : []), ...(article.images || []).map(img => ({ src: mediaUrl(img.image), label: `Фото ${img.id}`, fallback: img.alt_text || title }))]),
         };
       }),

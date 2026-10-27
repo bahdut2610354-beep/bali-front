@@ -4,6 +4,7 @@ import { dictionaries, Dict, Locale, LOCALES } from './dictionaries';
 import { endpoints } from '@/lib/endpoints';
 import { SITE_CONTENT_EXTRAS } from '@/lib/siteContentExtras';
 import { buildPageSettings, type ManagedPageKey, type PageSettingsMap } from '@/lib/pageSettings';
+import { localizePath, stripLocalePrefix } from './routing';
 
 type Ctx = {
   locale: Locale;
@@ -57,8 +58,9 @@ function deepMerge<T>(base: T, override: unknown): T {
   return result as T;
 }
 
-export function LocaleProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('en');
+export function LocaleProvider({ children, routeLocale = null }: { children: React.ReactNode; routeLocale?: Locale | null }) {
+  // On language URLs (/ru/...) the server already knows the language, so render it from the start.
+  const [locale, setLocaleState] = useState<Locale>(routeLocale || 'en');
   const [hydrated, setHydrated] = useState(false);
   const [dictionaryOverrides, setDictionaryOverrides] = useState<Record<string, unknown>>({});
   const [previewOverrides, setPreviewOverrides] = useState<Record<string, unknown>>({});
@@ -70,15 +72,28 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    setLocaleState(detectInitial());
+    const previewLocale = detectPreviewLocale();
+    if (routeLocale && !previewLocale) {
+      setLocaleState(routeLocale);
+      try { localStorage.setItem(STORAGE_KEY, routeLocale); } catch { /* storage unavailable */ }
+    } else {
+      setLocaleState(detectInitial());
+    }
     setHydrated(true);
-  }, []);
+  }, [routeLocale]);
 
   const setLocale = useCallback((l: Locale) => {
     setLocaleState(l);
     if (typeof window !== 'undefined') {
-      localStorage.setItem(STORAGE_KEY, l);
+      try { localStorage.setItem(STORAGE_KEY, l); } catch { /* storage unavailable */ }
       document.documentElement.lang = l;
+      // Each language has its own URL (/ru/..., /de/...); switching language opens that URL.
+      const { pathname, search, hash } = window.location;
+      const isSitePage = !pathname.startsWith('/admin') && !new URLSearchParams(search).has('sitePreview');
+      if (isSitePage) {
+        const target = localizePath(stripLocalePrefix(pathname), l);
+        if (target !== pathname) window.location.assign(`${target}${search}${hash}`);
+      }
     }
   }, []);
 
@@ -128,7 +143,16 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
     () => deepMerge(deepMerge(deepMerge(dictionaries[locale], SITE_CONTENT_EXTRAS[locale]), dictionaryOverrides), previewOverrides),
     [locale, dictionaryOverrides, previewOverrides],
   );
-  const pageSettings = useMemo(() => buildPageSettings(locale, pageSettingsOverrides), [locale, pageSettingsOverrides]);
+  const pageSettings = useMemo(() => {
+    const settings = buildPageSettings(locale, pageSettingsOverrides);
+    if (!routeLocale || routeLocale === 'en') return settings;
+    // Keep visitors on the language URLs: every site link gets the /ru, /de… prefix.
+    const localized = {} as PageSettingsMap;
+    for (const key of Object.keys(settings) as ManagedPageKey[]) {
+      localized[key] = { ...settings[key], path: localizePath(settings[key].path, routeLocale) };
+    }
+    return localized;
+  }, [locale, pageSettingsOverrides, routeLocale]);
   const tr = useCallback((template: string, vars?: Record<string, string | number>) => {
     if (!vars) return template;
     return template.replace(/\{(\w+)\}/g, (_, k) => (vars[k] !== undefined ? String(vars[k]) : `{${k}}`));

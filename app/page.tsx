@@ -237,7 +237,7 @@ export default function LandingPage() {
               color: '#fff', margin: '0 0 28px', fontWeight: 800,
             }}
           >
-            <span {...marker('home.title1')}>{t.home.title1}</span><br />
+            <span {...marker('home.title1')}>{t.home.title1}</span>{' '}<br />
             <span {...marker('home.title2')} style={{ color: '#FFD700' }}>{t.home.title2}</span>
           </motion.h1>
 

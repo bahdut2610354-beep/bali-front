@@ -18,7 +18,7 @@ export type SocialLinks = Record<SocialLinkKey, string>;
 export const SITE_SOCIAL_LINKS_STORAGE_KEY = 'br_site_social_links';
 
 export const DEFAULT_ADDRESS_SETTINGS = {
-  businessName: 'BALI-RENT',
+  businessName: 'TROPICAL BIKES',
   street: 'JL. PANTAI BERAWA',
   district: 'CANGGU',
   postalCode: '80361',

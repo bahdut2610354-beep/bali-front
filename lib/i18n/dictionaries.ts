@@ -37,7 +37,7 @@ export const en = {
   stats: { fleet: 'Scooters in fleet', riders: 'Riders this year', rating: 'Avg. rating', support: 'On-island support' },
   fleet: { eyebrow: '01 — FLEET', title: 'The lineup.', viewAll: 'View all →' },
   why: {
-    eyebrow: '02 — WHY BALI-RENT', title: 'Trust, in four words.',
+    eyebrow: '02 — WHY TROPICAL BIKES', title: 'Trust, in four words.',
     items: [
       ['Free delivery', 'To any villa, hotel, or beach club on the island.'],
       ['Best price guarantee', 'Find it cheaper, we match it. No haggling, no fine print.'],
@@ -234,7 +234,7 @@ export const en = {
   },
   news: {
     eyebrow: '09 — NEWS', title: 'News & Updates.',
-    desc: 'Stay up to date with the latest news, tips, and stories from Bali-Rent.',
+    desc: 'Stay up to date with the latest news, tips, and stories from Tropical Bikes.',
     loading: 'Loading news…', empty: 'No news yet.', error: 'Could not load news.',
     readMore: 'Read more →', backToNews: '← Back to news',
     adminTitle: 'News Management', addArticle: '+ Add article',
@@ -258,7 +258,7 @@ export const ru: typeof en = {
   stats: { fleet: 'Скутеров в парке', riders: 'Райдеров за год', rating: 'Средний рейтинг', support: 'Поддержка на острове' },
   fleet: { eyebrow: '01 — ПАРК', title: 'Наш модельный ряд.', viewAll: 'Все →' },
   why: {
-    eyebrow: '02 — ПОЧЕМУ BALI-RENT', title: 'Доверие в четырёх словах.',
+    eyebrow: '02 — ПОЧЕМУ TROPICAL BIKES', title: 'Доверие в четырёх словах.',
     items: [
       ['Бесплатная доставка', 'В любую виллу, отель или бич-клуб на острове.'],
       ['Гарантия лучшей цены', 'Нашли дешевле — сравняем. Без торга и мелкого шрифта.'],
@@ -445,7 +445,7 @@ export const ru: typeof en = {
   },
   news: {
     eyebrow: '09 — НОВОСТИ', title: 'Новости и обновления.',
-    desc: 'Будьте в курсе последних новостей, советов и историй от Bali-Rent.',
+    desc: 'Будьте в курсе последних новостей, советов и историй от Tropical Bikes.',
     loading: 'Загружаем новости…', empty: 'Новостей пока нет.', error: 'Не удалось загрузить новости.',
     readMore: 'Читать →', backToNews: '← Все новости',
     adminTitle: 'Управление новостями', addArticle: '+ Добавить статью',
@@ -572,7 +572,7 @@ export const zh: typeof en = {
     stickyBookNow: '立即预订',
   },
   common: { loading: '加载中…', tryAgain: '重试', currency: 'IDR', day: '天', noData: '暂无数据', statusLabels: { available: '可用', booked: '已订', partial: '部分', service: '维护', confirmed: '已确认', active: '进行中', completed: '已完成', cancelled: '已取消', created: '已创建' } },
-  news: { eyebrow: '09 — 新闻', title: '新闻动态。', desc: '随时了解 Bali-Rent 的最新新闻、技巧和故事。', loading: '加载新闻中…', empty: '暂无新闻。', error: '无法加载新闻。', readMore: '阅读更多 →', backToNews: '← 返回新闻', adminTitle: '新闻管理', addArticle: '+ 添加文章', editArticle: '编辑', deleteArticle: '删除', confirmDelete: '确认删除该文章？', slug: 'Slug', publishedAt: '发布日期', isActive: '已发布', sortOrder: '排序', translations: '翻译', titleLabel: '标题', descriptionLabel: '描述', save: '保存', cancel: '取消', imageLabel: '图片' },
+  news: { eyebrow: '09 — 新闻', title: '新闻动态。', desc: '随时了解 Tropical Bikes 的最新新闻、技巧和故事。', loading: '加载新闻中…', empty: '暂无新闻。', error: '无法加载新闻。', readMore: '阅读更多 →', backToNews: '← 返回新闻', adminTitle: '新闻管理', addArticle: '+ 添加文章', editArticle: '编辑', deleteArticle: '删除', confirmDelete: '确认删除该文章？', slug: 'Slug', publishedAt: '发布日期', isActive: '已发布', sortOrder: '排序', translations: '翻译', titleLabel: '标题', descriptionLabel: '描述', save: '保存', cancel: '取消', imageLabel: '图片' },
 };
 
 export const id: typeof en = {
@@ -580,7 +580,7 @@ export const id: typeof en = {
   hero: { eyebrow: 'JELAJAHI BALI. CARAMU.', title1: 'JELAJAHI BALI', title2: 'SESUAI', title3: 'AKALMU.', pickup: 'AMBIL', pickupDate: 'TANGGAL AMBIL', returnDate: 'TANGGAL KEMBALI', model: 'MODEL', cta: 'CEK KETERSEDIAAN', locations: '6 lokasi', available: '{n} tersedia' },
   stats: { fleet: 'Skuter di armada', riders: 'Pengendara tahun ini', rating: 'Peringkat rata-rata', support: 'Dukungan di pulau' },
   fleet: { eyebrow: '01 — ARMADA', title: 'Pilihan kami.', viewAll: 'Lihat semua →' },
-  why: { eyebrow: '02 — KENAPA BALI-RENT', title: 'Kepercayaan dalam empat kata.', items: [
+  why: { eyebrow: '02 — KENAPA TROPICAL BIKES', title: 'Kepercayaan dalam empat kata.', items: [
     ['Antar gratis', 'Ke vila, hotel, atau beach club di seluruh pulau.'],
     ['Jaminan harga terbaik', 'Lebih murah? Kami samakan. Tanpa tawar-menawar.'],
     ['Pesan cepat', 'Tiga langkah. Tiga menit. Dari browser ke gas.'],
@@ -691,7 +691,7 @@ export const id: typeof en = {
     stickyBookNow: 'Pesan sekarang',
   },
   common: { loading: 'Memuat…', tryAgain: 'Coba lagi', currency: 'IDR', day: 'hari', noData: 'Belum ada data', statusLabels: { available: 'TERSEDIA', booked: 'DIPESAN', partial: 'SEBAGIAN', service: 'SERVIS', confirmed: 'DIKONFIRMASI', active: 'AKTIF', completed: 'SELESAI', cancelled: 'DIBATALKAN', created: 'DIBUAT' } },
-  news: { eyebrow: '09 — BERITA', title: 'Berita & Update.', desc: 'Tetap update dengan berita, tips, dan cerita terbaru dari Bali-Rent.', loading: 'Memuat berita…', empty: 'Belum ada berita.', error: 'Gagal memuat berita.', readMore: 'Baca lebih →', backToNews: '← Kembali ke berita', adminTitle: 'Manajemen Berita', addArticle: '+ Tambah artikel', editArticle: 'Edit', deleteArticle: 'Hapus', confirmDelete: 'Hapus artikel ini?', slug: 'Slug', publishedAt: 'Tanggal terbit', isActive: 'Terbit', sortOrder: 'Urutan', translations: 'Terjemahan', titleLabel: 'Judul', descriptionLabel: 'Deskripsi', save: 'Simpan', cancel: 'Batal', imageLabel: 'Gambar' },
+  news: { eyebrow: '09 — BERITA', title: 'Berita & Update.', desc: 'Tetap update dengan berita, tips, dan cerita terbaru dari Tropical Bikes.', loading: 'Memuat berita…', empty: 'Belum ada berita.', error: 'Gagal memuat berita.', readMore: 'Baca lebih →', backToNews: '← Kembali ke berita', adminTitle: 'Manajemen Berita', addArticle: '+ Tambah artikel', editArticle: 'Edit', deleteArticle: 'Hapus', confirmDelete: 'Hapus artikel ini?', slug: 'Slug', publishedAt: 'Tanggal terbit', isActive: 'Terbit', sortOrder: 'Urutan', translations: 'Terjemahan', titleLabel: 'Judul', descriptionLabel: 'Deskripsi', save: 'Simpan', cancel: 'Batal', imageLabel: 'Gambar' },
 };
 
 export const de: typeof en = {
@@ -699,7 +699,7 @@ export const de: typeof en = {
   hero: { eyebrow: 'BALI ENTDECKEN. AUF DEINE ART.', title1: 'ERLEBE BALI', title2: 'NACH DEINEN', title3: 'REGELN.', pickup: 'ABHOLUNG', pickupDate: 'ABHOLDATUM', returnDate: 'RÜCKGABEDATUM', model: 'MODELL', cta: 'VERFÜGBARKEIT PRÜFEN', locations: '6 Standorte', available: '{n} verfügbar' },
   stats: { fleet: 'Roller im Bestand', riders: 'Fahrer dieses Jahr', rating: 'Ø Bewertung', support: 'Support vor Ort' },
   fleet: { eyebrow: '01 — FLOTTE', title: 'Unsere Auswahl.', viewAll: 'Alle ansehen →' },
-  why: { eyebrow: '02 — WARUM BALI-RENT', title: 'Vertrauen in vier Worten.', items: [
+  why: { eyebrow: '02 — WARUM TROPICAL BIKES', title: 'Vertrauen in vier Worten.', items: [
     ['Kostenlose Lieferung', 'An jede Villa, jedes Hotel, jeden Beach Club auf der Insel.'],
     ['Bestpreisgarantie', 'Günstiger gefunden? Wir gleichen an. Kein Feilschen, keine Kleingedrucktes.'],
     ['Schnelle Buchung', 'Drei Schritte. Drei Minuten. Vom Browser zum Gas.'],
@@ -810,7 +810,7 @@ export const de: typeof en = {
     stickyBookNow: 'Jetzt buchen',
   },
   common: { loading: 'Laden…', tryAgain: 'Erneut', currency: 'IDR', day: 'Tag', noData: 'Keine Daten', statusLabels: { available: 'VERFÜGBAR', booked: 'GEBUCHT', partial: 'TEILWEISE', service: 'SERVICE', confirmed: 'BESTÄTIGT', active: 'AKTIV', completed: 'ABGESCHLOSSEN', cancelled: 'STORNIERT', created: 'ERSTELLT' } },
-  news: { eyebrow: '09 — NEWS', title: 'News & Updates.', desc: 'Bleib auf dem Laufenden mit den neuesten Nachrichten, Tipps und Stories von Bali-Rent.', loading: 'News laden…', empty: 'Noch keine News.', error: 'News konnten nicht geladen werden.', readMore: 'Mehr lesen →', backToNews: '← Zurück zu den News', adminTitle: 'News-Verwaltung', addArticle: '+ Artikel hinzufügen', editArticle: 'Bearbeiten', deleteArticle: 'Löschen', confirmDelete: 'Diesen Artikel löschen?', slug: 'Slug', publishedAt: 'Veröffentlichungsdatum', isActive: 'Veröffentlicht', sortOrder: 'Reihenfolge', translations: 'Übersetzungen', titleLabel: 'Titel', descriptionLabel: 'Beschreibung', save: 'Speichern', cancel: 'Abbrechen', imageLabel: 'Bild' },
+  news: { eyebrow: '09 — NEWS', title: 'News & Updates.', desc: 'Bleib auf dem Laufenden mit den neuesten Nachrichten, Tipps und Stories von Tropical Bikes.', loading: 'News laden…', empty: 'Noch keine News.', error: 'News konnten nicht geladen werden.', readMore: 'Mehr lesen →', backToNews: '← Zurück zu den News', adminTitle: 'News-Verwaltung', addArticle: '+ Artikel hinzufügen', editArticle: 'Bearbeiten', deleteArticle: 'Löschen', confirmDelete: 'Diesen Artikel löschen?', slug: 'Slug', publishedAt: 'Veröffentlichungsdatum', isActive: 'Veröffentlicht', sortOrder: 'Reihenfolge', translations: 'Übersetzungen', titleLabel: 'Titel', descriptionLabel: 'Beschreibung', save: 'Speichern', cancel: 'Abbrechen', imageLabel: 'Bild' },
 };
 
 export const fr: typeof en = {
@@ -818,7 +818,7 @@ export const fr: typeof en = {
   hero: { eyebrow: 'EXPLORER BALI. À TA FAÇON.', title1: 'EXPLORE BALI', title2: 'À TES', title3: 'CONDITIONS.', pickup: 'PRISE EN CHARGE', pickupDate: 'DATE DE PRISE', returnDate: 'DATE DE RETOUR', model: 'MODÈLE', cta: 'VÉRIFIER LA DISPO', locations: '6 lieux', available: '{n} dispo' },
   stats: { fleet: 'Scooters en flotte', riders: 'Pilotes cette année', rating: 'Note moyenne', support: 'Support sur l\'île' },
   fleet: { eyebrow: '01 — FLOTTE', title: 'La gamme.', viewAll: 'Voir tout →' },
-  why: { eyebrow: '02 — POURQUOI BALI-RENT', title: 'Confiance en quatre mots.', items: [
+  why: { eyebrow: '02 — POURQUOI TROPICAL BIKES', title: 'Confiance en quatre mots.', items: [
     ['Livraison gratuite', 'Vers toute villa, hôtel ou beach club de l\'île.'],
     ['Meilleur prix garanti', 'Trouvé moins cher ? Nous alignons. Sans marchandage.'],
     ['Réservation rapide', 'Trois étapes. Trois minutes. Du navigateur à la poignée.'],
@@ -929,7 +929,7 @@ export const fr: typeof en = {
     stickyBookNow: 'Reserver',
   },
   common: { loading: 'Chargement…', tryAgain: 'Réessayer', currency: 'IDR', day: 'jour', noData: 'Aucune donnée', statusLabels: { available: 'DISPONIBLE', booked: 'RÉSERVÉ', partial: 'PARTIEL', service: 'SERVICE', confirmed: 'CONFIRMÉ', active: 'ACTIF', completed: 'TERMINÉ', cancelled: 'ANNULÉ', created: 'CRÉÉ' } },
-  news: { eyebrow: '09 — ACTUALITÉS', title: 'Actualités.', desc: 'Restez informé des dernières nouvelles, conseils et histoires de Bali-Rent.', loading: 'Chargement des actus…', empty: 'Aucune actualité pour le moment.', error: 'Impossible de charger les actus.', readMore: 'Lire plus →', backToNews: '← Retour aux actus', adminTitle: 'Gestion des actualités', addArticle: '+ Ajouter un article', editArticle: 'Modifier', deleteArticle: 'Supprimer', confirmDelete: 'Supprimer cet article ?', slug: 'Slug', publishedAt: 'Date de publication', isActive: 'Publié', sortOrder: 'Ordre', translations: 'Traductions', titleLabel: 'Titre', descriptionLabel: 'Description', save: 'Enregistrer', cancel: 'Annuler', imageLabel: 'Image' },
+  news: { eyebrow: '09 — ACTUALITÉS', title: 'Actualités.', desc: 'Restez informé des dernières nouvelles, conseils et histoires de Tropical Bikes.', loading: 'Chargement des actus…', empty: 'Aucune actualité pour le moment.', error: 'Impossible de charger les actus.', readMore: 'Lire plus →', backToNews: '← Retour aux actus', adminTitle: 'Gestion des actualités', addArticle: '+ Ajouter un article', editArticle: 'Modifier', deleteArticle: 'Supprimer', confirmDelete: 'Supprimer cet article ?', slug: 'Slug', publishedAt: 'Date de publication', isActive: 'Publié', sortOrder: 'Ordre', translations: 'Traductions', titleLabel: 'Titre', descriptionLabel: 'Description', save: 'Enregistrer', cancel: 'Annuler', imageLabel: 'Image' },
 };
 
 const SHARED_MEDIA: SharedMedia = {

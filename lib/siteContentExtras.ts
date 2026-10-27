@@ -594,7 +594,7 @@ export type PaymentExtraContent = WidenText<typeof PAYMENT_COPY.en>;
 
 const FOOTER_EXTRA_COPY = {
   whatsappButton: 'WhatsApp · +62 813-5915-173',
-  metaLine: 'BALI-RENT · JL. PANTAI BERAWA · CANGGU 80361 · LIC. 04/2019 · © 2026',
+  metaLine: 'TROPICAL BIKES · JL. PANTAI BERAWA · CANGGU 80361 · LIC. 04/2019 · © 2026',
   localesLine: 'EN · ID · RU · DE · FR · ZH',
 };
 

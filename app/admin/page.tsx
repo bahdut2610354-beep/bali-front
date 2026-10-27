@@ -4493,11 +4493,11 @@ function AdminPageContent() {
       <div style={{ padding: '24px 20px', borderBottom: '1px solid rgba(255,255,255,0.07)' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
           <div style={{ width: 30, height: 30, background: A.gold, borderRadius: 8, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontFamily: 'Sora, sans-serif', fontWeight: 900, fontSize: 15, color: A.black }}>S</span>
+            <span style={{ fontFamily: 'Sora, sans-serif', fontWeight: 900, fontSize: 15, color: A.black }}>T</span>
           </div>
           <div>
             <div style={{ fontFamily: 'Sora, sans-serif', fontWeight: 700, fontSize: 16, letterSpacing: '-0.03em', color: A.white }}>
-              SCOOT <span style={{ color: A.gold }}>BALI</span>
+              TROPICAL <span style={{ color: A.gold }}>BIKES</span>
             </div>
             <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 10, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.06em', marginTop: 1 }}>
               ADMIN PANEL
@@ -4587,10 +4587,10 @@ function AdminPageContent() {
           </button>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <div style={{ width: 22, height: 22, background: A.gold, borderRadius: 6, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <span style={{ fontFamily: 'Sora, sans-serif', fontWeight: 900, fontSize: 11, color: A.black }}>S</span>
+              <span style={{ fontFamily: 'Sora, sans-serif', fontWeight: 900, fontSize: 11, color: A.black }}>T</span>
             </div>
             <span style={{ fontFamily: 'Sora, sans-serif', fontWeight: 700, fontSize: 14, color: A.white }}>
-              SCOOT <span style={{ color: A.gold }}>BALI</span>
+              TROPICAL <span style={{ color: A.gold }}>BIKES</span>
             </span>
           </div>
           <button
