@@ -920,6 +920,8 @@ export const endpoints = {
     api<{ status: string }>(`/admin/bookings/${id}/complete/`, { method: 'POST', auth: true }),
   adminUsers: (params?: { page?: number; search?: string }) =>
     api<Paginated<ApiAdminUser> | ApiAdminUser[]>('/admin/users/', { auth: true, query: params }),
+  /** Every user account, following all result pages (the admin overview and CRM need the full list). */
+  adminUsersAll: () => apiAllPages<ApiAdminUser>('/admin/users/', { auth: true, query: { page_size: 100 } }),
   adminCreateUser: (body: Partial<ApiAdminUser> & { password?: string }) =>
     api<ApiAdminUser>('/admin/users/', { method: 'POST', body, auth: true }),
   adminUpdateUser: (id: number | string, body: Partial<ApiAdminUser> & { password?: string }) =>
