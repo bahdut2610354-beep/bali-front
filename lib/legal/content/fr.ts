@@ -28,7 +28,7 @@ const fr: LegalLocaleContent = {
           'Les prix sont fixés en roupies indonésiennes (IDR). Les montants dans d’autres devises sont indicatifs ; le débit est effectué en IDR ou au taux affiché sur la page de paiement. Votre banque peut appliquer ses propres frais de change.',
           'Le prix comprend le scooter, un casque, l’assistance de base et la livraison dans la zone gratuite. La livraison dans d’autres zones, les casques supplémentaires, la protection dommages et les autres options sont indiqués séparément avant le paiement.',
           'Vous pouvez payer en ligne par carte bancaire, QRIS, portefeuille électronique ou tout autre moyen proposé sur la page de paiement, en cryptomonnaie, ou en espèces à la livraison lorsque cette option est proposée. Les paiements par carte et QR sont traités par des prestataires de paiement agréés ; nous ne recevons ni ne conservons jamais vos données de carte complètes.',
-          'Nous ne demandons pas de caution et ne conservons pas votre passeport.',
+          'À la remise du scooter, nous demandons une caution remboursable de 100 $ ou 1,5 million IDR. Elle est intégralement restituée au retour du scooter, déduction faite des sommes dues au titre de l’article 7 (dommages, clés ou documents perdus, amendes impayées). Nous ne conservons pas votre passeport.',
         ] },
         { h: '4. Conditions pour le conducteur', p: [
           'Le conducteur doit avoir au moins 18 ans et détenir un permis valide pour les motos (catégorie A) accompagné d’un permis international, ou un SIM C indonésien. Vous êtes responsable du respect du code de la route indonésien.',

@@ -28,7 +28,7 @@ const id: LegalLocaleContent = {
           'Harga ditetapkan dalam Rupiah (IDR). Jumlah dalam mata uang lain hanya ditampilkan untuk kemudahan; penagihan dilakukan dalam IDR atau dengan kurs yang tertera di halaman pembayaran. Bank Anda dapat mengenakan biaya konversi sendiri.',
           'Harga sudah termasuk skuter, helm, bantuan darurat dasar, dan pengantaran di zona gratis. Pengantaran ke area lain, helm tambahan, proteksi kerusakan, dan layanan tambahan lainnya ditampilkan terpisah sebelum pembayaran.',
           'Pembayaran dapat dilakukan secara online dengan kartu bank, QRIS, dompet digital, atau metode lain di halaman pembayaran, dengan kripto, atau tunai saat pengantaran jika opsi tersebut tersedia. Pembayaran kartu dan QR diproses oleh penyedia jasa pembayaran berizin; kami tidak pernah menerima atau menyimpan data kartu lengkap Anda.',
-          'Kami tidak meminta deposit dan tidak menahan paspor Anda.',
+          'Saat serah terima kami meminta deposit yang dapat dikembalikan sebesar $100 atau Rp1,5 juta. Deposit dikembalikan penuh saat skuter dikembalikan, dikurangi jumlah yang terutang menurut bagian 7 (kerusakan, kunci atau dokumen hilang, denda yang belum dibayar). Kami tidak menahan paspor Anda.',
         ] },
         { h: '4. Persyaratan pengendara', p: [
           'Pengendara minimal berusia 18 tahun dan memiliki SIM yang berlaku untuk sepeda motor (kategori A) beserta International Driving Permit, atau SIM C Indonesia. Anda bertanggung jawab mematuhi peraturan lalu lintas Indonesia.',

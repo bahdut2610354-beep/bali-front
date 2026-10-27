@@ -28,7 +28,7 @@ const en: LegalLocaleContent = {
           'Prices are set in Indonesian rupiah (IDR). Amounts in other currencies are shown for convenience; the charge is made in IDR or at the rate shown on the payment page. Your bank may apply its own conversion fees.',
           'The price includes the scooter, a helmet, basic roadside support and delivery inside the free delivery zone. Delivery to other areas, additional helmets, damage protection and other extras are shown separately before payment.',
           'You can pay online by bank card, QRIS, e-wallet or other methods offered on the payment page, by cryptocurrency, or in cash on delivery where this option is offered. Online card and QR payments are processed by licensed payment providers; we never receive or store your full card details.',
-          'We do not take a security deposit and do not hold your passport.',
+          'At handover we take a refundable deposit of $100 or IDR 1.5 million. It is returned in full when the scooter is returned, less any amounts due under section 7 (damage, lost keys or documents, unpaid fines). We do not hold your passport.',
         ] },
         { h: '4. Requirements for the rider', p: [
           'The rider must be at least 18 years old and hold a valid driving licence that covers motorcycles (category A) together with an International Driving Permit, or an Indonesian SIM C. You are responsible for complying with Indonesian traffic law.',

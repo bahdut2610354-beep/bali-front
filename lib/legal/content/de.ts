@@ -28,7 +28,7 @@ const de: LegalLocaleContent = {
           'Die Preise werden in indonesischen Rupiah (IDR) festgelegt. Beträge in anderen Währungen dienen der Orientierung; belastet wird in IDR oder zu dem auf der Zahlungsseite angezeigten Kurs. Deine Bank kann eigene Umrechnungsgebühren erheben.',
           'Im Preis enthalten sind Roller, Helm, Basis-Pannenhilfe und Lieferung innerhalb der kostenlosen Zone. Lieferung in andere Gebiete, zusätzliche Helme, Schadenschutz und weitere Extras werden vor der Zahlung separat ausgewiesen.',
           'Bezahlt werden kann online per Bankkarte, QRIS, E-Wallet oder anderen auf der Zahlungsseite angebotenen Methoden, per Kryptowährung oder, sofern angeboten, bar bei Lieferung. Karten- und QR-Zahlungen werden von lizenzierten Zahlungsdienstleistern abgewickelt; wir erhalten oder speichern niemals deine vollständigen Kartendaten.',
-          'Wir verlangen keine Kaution und behalten deinen Reisepass nicht ein.',
+          'Bei der Übergabe nehmen wir eine rückzahlbare Kaution von 100 $ oder 1,5 Mio. IDR. Sie wird bei Rückgabe des Rollers vollständig erstattet, abzüglich der nach Abschnitt 7 geschuldeten Beträge (Schäden, verlorene Schlüssel oder Papiere, unbezahlte Bußgelder). Deinen Reisepass behalten wir nicht ein.',
         ] },
         { h: '4. Anforderungen an den Fahrer', p: [
           'Der Fahrer muss mindestens 18 Jahre alt sein und einen gültigen Führerschein für Motorräder (Klasse A) zusammen mit einem Internationalen Führerschein oder einen indonesischen SIM C besitzen. Du bist für die Einhaltung der indonesischen Verkehrsregeln verantwortlich.',
