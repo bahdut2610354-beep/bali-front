@@ -7,9 +7,13 @@ import { useCurrency } from '@/lib/i18n/CurrencyProvider';
 import { useSiteContentPreview } from '@/lib/siteContentPreview';
 import { useSiteSettings } from '@/lib/siteSettings';
 import { usePagePath } from '@/lib/usePageSettings';
+import { COMPANY, LEGAL_PATHS } from '@/lib/legal/company';
 
 export default function SiteFooter() {
-  const { t } = useLocale();
+  const { t, localizeHref } = useLocale();
+  const termsPath = localizeHref(LEGAL_PATHS.terms);
+  const refundPath = localizeHref(LEGAL_PATHS.refund);
+  const privacyPath = localizeHref(LEGAL_PATHS.privacy);
   const { availableCurrencies } = useCurrency();
   const { marker } = useSiteContentPreview();
   const { socialLinks, addresses } = useSiteSettings();
@@ -42,6 +46,10 @@ export default function SiteFooter() {
     ['Kontakt', contactsPath],
     ['Contacts', contactsPath],
     [t.nav.news, newsPath],
+    ...['Terms', 'Условия', '条款', 'Ketentuan', 'AGB', 'CGV'].map((label) => [label, termsPath] as [string, string]),
+    ...['Cancellation', 'Отмена', '取消', 'Pembatalan', 'Stornierung', 'Annulation'].map((label) => [label, refundPath] as [string, string]),
+    ...['Privacy', 'Конфиденциальность', '隐私', 'Privasi', 'Datenschutz', 'Confidentialité'].map((label) => [label, privacyPath] as [string, string]),
+    ...['Imprint', 'Реквизиты', '版本', 'Impressum', 'Mentions'].map((label) => [label, `${termsPath}#company`] as [string, string]),
   ]);
   const cols = Object.entries(t.footer.cols)
     .map(([heading, items]) => ({
@@ -120,6 +128,11 @@ export default function SiteFooter() {
             </div>
           </div>
         ))}
+      </div>
+      <div className="br-site-footer-legal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 24, gap: 16, flexWrap: 'wrap' }}>
+        <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
+          <strong style={{ color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>{COMPANY.name}</strong> · {COMPANY.address} · {COMPANY.email}
+        </div>
       </div>
       <div className="br-site-footer-meta" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 24, gap: 16, flexWrap: 'wrap' }}>
         <div {...marker('footer.metaLine')} className="br-mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{footerAddressLine || footer.metaLine}</div>
