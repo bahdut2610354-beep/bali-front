@@ -12,6 +12,8 @@ type Ctx = {
   t: Dict;
   tr: (template: string, vars?: Record<string, string | number>) => string;
   pageSettings: PageSettingsMap;
+  /** Adds the current language prefix to a site path (`/scooter/x` → `/ru/scooter/x` on Russian URLs). */
+  localizeHref: (path: string) => string;
 };
 
 const LocaleCtx = createContext<Ctx | null>(null);
@@ -158,7 +160,8 @@ export function LocaleProvider({ children, routeLocale = null }: { children: Rea
     return template.replace(/\{(\w+)\}/g, (_, k) => (vars[k] !== undefined ? String(vars[k]) : `{${k}}`));
   }, []);
 
-  const value = useMemo(() => ({ locale, setLocale, t, tr, pageSettings }), [locale, setLocale, t, tr, pageSettings]);
+  const localizeHref = useCallback((path: string) => (routeLocale ? localizePath(path, routeLocale) : path), [routeLocale]);
+  const value = useMemo(() => ({ locale, setLocale, t, tr, pageSettings, localizeHref }), [locale, setLocale, t, tr, pageSettings, localizeHref]);
   return <LocaleCtx.Provider value={value}>{children}</LocaleCtx.Provider>;
 }
 
