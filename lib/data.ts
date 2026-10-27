@@ -32,7 +32,6 @@ export const BR_ADDONS: Addon[] = [
   { id: 'lock',    name: 'U-lock',          price: 4,  icon: 'lock' },
   { id: 'rain',    name: 'Rain gear set',   price: 5,  icon: 'rain' },
   { id: 'box',     name: 'Top box (35L)',   price: 4,  icon: 'box' },
-  { id: 'insure',  name: 'Premium cover',   price: 8,  icon: 'shield' },
 ];
 
 export const BR_LOCATIONS = ['Canggu', 'Seminyak', 'Ubud', 'Uluwatu', 'Sanur', 'Denpasar Airport'];
