@@ -50,7 +50,7 @@ export const en = {
     steps: [
       ['Choose scooter', 'Browse the fleet by terrain, engine size, and vibe. Filter by what is available on your dates.'],
       ['Select dates', 'Tell us when. Pick a delivery window — we do 30-minute slots, on time.'],
-      ['Get it delivered', 'Tank full, helmets fitted, papers in the under-seat. We handle insurance, you handle the road.'],
+      ['Get it delivered', 'Tank full, helmets fitted, papers in the under-seat.'],
     ] as [string, string][],
   },
   pricing: {
@@ -59,7 +59,7 @@ export const en = {
     titleSuffix: '· all in.',
     desc: 'The price you see is the price you pay. Helmet, fuel, paperwork and roadside support are baked in. Add-ons are optional and itemised.',
     from: 'FROM',
-    inc: ['Helmet included', 'Full tank', 'Free delivery', 'Insurance optional'],
+    inc: ['Helmet included', 'Full tank', 'Free delivery', '24/7 roadside support'],
   },
   addons: {
     eyebrow: '05 — UPGRADE THE RIDE', title: 'Add-ons. Bring everything.',
@@ -94,7 +94,7 @@ export const en = {
     cols: {
       Explore: ['Catalog', 'Pricing', 'Locations', 'How it works'],
       Company: ['About', 'Journal', 'Press', 'Careers'],
-      Support: ['FAQ', 'Insurance', 'Cancellation', 'Contact'],
+      Support: ['FAQ', 'Cancellation', 'Contact'],
       Legal: ['Terms', 'Privacy', 'Cookies', 'Imprint'],
     } as Record<string, string[]>,
   },
@@ -184,7 +184,7 @@ export const en = {
     title2: 'Freely.',
     subtitle: 'Premium scooter rental with delivery to your villa — anywhere in Bali.',
     priceFrom: 'From',
-    trustBadges: ['Free cancellation 24h', 'Free delivery', '24/7 support', 'Fully insured'],
+    trustBadges: ['Free cancellation 24h', 'Free delivery', '24/7 support', 'Helmet included'],
     scroll: 'Scroll',
     viewFullFleet: 'View Full Fleet',
     whyLabel: '02 / WHY US',
@@ -195,7 +195,6 @@ export const en = {
     faqLabel: '07 / FAQ',
     stepLabel: 'STEP {n}',
     addonsFallback: [
-      { name: 'Insurance', description: 'Full coverage. Zero excess. Sleep easy.' },
       { name: 'Wi-Fi', description: 'Unlimited data across the island.' },
       { name: 'Premium Helmet', description: 'Sized to fit, cleaned and ready.' },
       { name: 'Phone Mount', description: 'Navigate hands-free on every route.' },
@@ -214,7 +213,7 @@ export const en = {
     faqTitle1: 'Frequently asked',
     faqTitle2: 'questions.',
     faqs: [
-      { q: "What's included in the rental?", a: 'Every rental includes a helmet, rain jacket, luggage lock, and 24/7 roadside support. Optional add-ons: insurance, Wi-Fi hotspot, premium helmet, and phone mount.' },
+      { q: "What's included in the rental?", a: 'Every rental includes a helmet, rain jacket, luggage lock, and 24/7 roadside support. Optional add-ons: Wi-Fi hotspot, premium helmet, and phone mount.' },
       { q: 'Do you deliver to my villa?', a: 'Yes. We deliver across South and Central Bali — Canggu, Seminyak, Ubud, Uluwatu, Sanur, Kuta, Jimbaran, Nusa Dua, and beyond. Delivery is free in most zones.' },
       { q: 'What documents do I need?', a: "A valid international driving permit or your home country's motorcycle license. For standard scooters under 150cc, we also accept a photo of your national ID." },
       { q: 'Can I extend or shorten my rental?', a: "Absolutely. Message us on WhatsApp and we will adjust your booking on the spot, subject to availability." },
@@ -271,7 +270,7 @@ export const ru: typeof en = {
     steps: [
       ['Выбери скутер', 'Просмотри парк по типу местности, кубатуре и стилю. Фильтр по доступности.'],
       ['Выбери даты', 'Скажи когда. Выбери окно доставки — мы работаем по 30-минутным слотам, без опозданий.'],
-      ['Получи доставку', 'Полный бак, шлемы по размеру, документы под сиденьем. Страховку берём на себя — дорогу на себя.'],
+      ['Получи доставку', 'Полный бак, шлемы по размеру, документы под сиденьем.'],
     ],
   },
   pricing: {
@@ -279,7 +278,7 @@ export const ru: typeof en = {
     title: 'От', titleSuffix: '· всё включено.',
     desc: 'Цена, которую видишь — это цена, которую платишь. Шлем, бензин, документы и поддержка уже включены. Дополнения — опционально и постатейно.',
     from: 'ОТ',
-    inc: ['Шлем включён', 'Полный бак', 'Бесплатная доставка', 'Страховка по желанию'],
+    inc: ['Шлем включён', 'Полный бак', 'Бесплатная доставка', 'Помощь на дороге 24/7'],
   },
   addons: { eyebrow: '05 — УЛУЧШИ ПОЕЗДКУ', title: 'Дополнения. Возьми всё.', note: 'ОПЦИОНАЛЬНО · ПОСТАТЕЙНО · ОТМЕНА В ЛЮБОЕ ВРЕМЯ' },
   delivery: {
@@ -311,7 +310,7 @@ export const ru: typeof en = {
     cols: {
       'Изучить': ['Каталог', 'Цены', 'Локации', 'Как это работает'],
       'Компания': ['О нас', 'Журнал', 'Пресса', 'Карьера'],
-      'Поддержка': ['FAQ', 'Страховка', 'Отмена', 'Контакты'],
+      'Поддержка': ['FAQ', 'Отмена', 'Контакты'],
       'Юридическое': ['Условия', 'Конфиденциальность', 'Cookies', 'Реквизиты'],
     },
   },
@@ -395,7 +394,7 @@ export const ru: typeof en = {
     title2: 'Свободно.',
     subtitle: 'Премиальная аренда скутеров с доставкой к вашей вилле — в любую точку Бали.',
     priceFrom: 'От',
-    trustBadges: ['Бесплатная отмена за 24ч', 'Бесплатная доставка', 'Поддержка 24/7', 'Полная страховка'],
+    trustBadges: ['Бесплатная отмена за 24ч', 'Бесплатная доставка', 'Поддержка 24/7', 'Шлем в комплекте'],
     scroll: 'Листай',
     viewFullFleet: 'Смотреть весь парк',
     whyLabel: '02 / ПОЧЕМУ МЫ',
@@ -406,7 +405,6 @@ export const ru: typeof en = {
     faqLabel: '07 / FAQ',
     stepLabel: 'ШАГ {n}',
     addonsFallback: [
-      { name: 'Страховка', description: 'Полное покрытие. Никакой франшизы. Спите спокойно.' },
       { name: 'Wi-Fi', description: 'Безлимитный интернет по всему острову.' },
       { name: 'Премиум-шлем', description: 'Подберем размер, все чисто и готово.' },
       { name: 'Держатель для телефона', description: 'Удобная навигация без рук на любом маршруте.' },
@@ -425,7 +423,7 @@ export const ru: typeof en = {
     faqTitle1: 'Часто задаваемые',
     faqTitle2: 'вопросы.',
     faqs: [
-      { q: 'Что входит в аренду?', a: 'В каждую аренду входят шлем, дождевик, замок для багажа и круглосуточная помощь на дороге. Дополнительно можно добавить страховку, Wi-Fi, премиум-шлем и держатель для телефона.' },
+      { q: 'Что входит в аренду?', a: 'В каждую аренду входят шлем, дождевик, замок для багажа и круглосуточная помощь на дороге. Дополнительно можно добавить Wi-Fi, премиум-шлем и держатель для телефона.' },
       { q: 'Вы доставляете на виллу?', a: 'Да. Мы доставляем по Южному и Центральному Бали — Чангу, Семиньяк, Убуд, Улувату, Санур, Кута, Джимбаран, Нуса-Дуа и дальше. В большинстве зон доставка бесплатна.' },
       { q: 'Какие документы нужны?', a: 'Нужны действующие международные права или мотоциклетные права вашей страны. Для стандартных скутеров до 150cc также подойдет фото национального удостоверения личности.' },
       { q: 'Можно продлить или сократить аренду?', a: 'Конечно. Напишите нам в WhatsApp, и мы сразу скорректируем бронирование, если есть доступность.' },
@@ -470,9 +468,9 @@ export const zh: typeof en = {
   process: { eyebrow: '03 — 流程', title: '三步，从别墅到油门。', steps: [
     ['选车', '按地形、排量和风格筛选。'],
     ['选日期', '告诉我们时间，30 分钟时间窗内准时送达。'],
-    ['送车上门', '满油、配头盔、文件齐全。保险我们包，路你来跑。'],
+    ['送车上门', '满油、配头盔、文件齐全。'],
   ]},
-  pricing: { eyebrow: '04 — 定价 · 无隐藏费用', title: '起价', titleSuffix: '· 全包。', desc: '所见即所付。头盔、燃油、文件和路边救援均已包含。附加项可选。', from: '起价', inc: ['含头盔', '满油', '免费送车', '保险可选'] },
+  pricing: { eyebrow: '04 — 定价 · 无隐藏费用', title: '起价', titleSuffix: '· 全包。', desc: '所见即所付。头盔、燃油、文件和路边救援均已包含。附加项可选。', from: '起价', inc: ['含头盔', '满油', '免费送车', '24/7 道路救援'] },
   addons: { eyebrow: '05 — 升级骑行', title: '附加项 · 一应俱全', note: '可选 · 明细 · 随时取消' },
   delivery: {
     eyebrow: '06 — 送车',
@@ -501,7 +499,7 @@ export const zh: typeof en = {
   footer: { tagline: '为把巴厘岛当作公路而非景点的旅人而生的高端摩托租赁。', cols: {
     '探索': ['车型', '价格', '地点', '如何使用'],
     '公司': ['关于', '日志', '媒体', '招聘'],
-    '支援': ['常见问题', '保险', '取消', '联系'],
+    '支援': ['常见问题', '取消', '联系'],
     '法律': ['条款', '隐私', 'Cookies', '版本'],
   }},
   catalog: { eyebrow: '车队 · {n} 辆', title: '车型', desc: '所有车型。每项参数、每分钱、每个可用日期 — 一清二楚。', types: { All: '全部', City: '城市', Touring: '旅行', Sport: '运动', Maxi: '大型', Heritage: '经典' }, searchPlaceholder: '搜索车型', clear: '清除', sort: '排序', sortFeatured: '推荐', sortPriceUp: '价格 ↑', sortPriceDown: '价格 ↓', sortEngine: '排量', sortRating: '评分', loading: '加载车队…', empty: '没有匹配的车型。', error: '无法加载，显示演示数据。', reserve: '预订 →', resetFilters: '重置筛选', from: '起' },
@@ -530,7 +528,7 @@ export const zh: typeof en = {
     title2: '随心出发。',
     subtitle: '高端踏板车租赁，可送车到您的别墅或巴厘岛任意地点。',
     priceFrom: '起价',
-    trustBadges: ['24小时免费取消', '免费送车', '24/7 支持', '全额保险'],
+    trustBadges: ['24小时免费取消', '免费送车', '24/7 支持', '含头盔'],
     scroll: '下滑',
     viewFullFleet: '查看全部车款',
     whyLabel: '02 / 为什么选我们',
@@ -541,7 +539,6 @@ export const zh: typeof en = {
     faqLabel: '07 / 常见问题',
     stepLabel: '第 {n} 步',
     addonsFallback: [
-      { name: '保险', description: '全面保障，零免赔，更安心。' },
       { name: 'Wi-Fi', description: '全岛不限量网络。' },
       { name: '高级头盔', description: '按尺寸准备，清洁后随时可用。' },
       { name: '手机支架', description: '全程免手持导航，更安全。' },
@@ -560,7 +557,7 @@ export const zh: typeof en = {
     faqTitle1: '常见',
     faqTitle2: '问题。',
     faqs: [
-      { q: '租车包含什么？', a: '每笔租赁都包含头盔、雨衣、行李锁和 24/7 道路救援。还可选加保险、Wi-Fi 热点、高级头盔和手机支架。' },
+      { q: '租车包含什么？', a: '每笔租赁都包含头盔、雨衣、行李锁和 24/7 道路救援。还可选加 Wi-Fi 热点、高级头盔和手机支架。' },
       { q: '可以送车到我的别墅吗？', a: '可以。我们覆盖巴厘岛南部和中部，包括仓古、塞米亚克、乌布、乌鲁瓦图、沙努尔、库塔、金巴兰、努沙杜瓦等地区。大多数区域免费送车。' },
       { q: '需要哪些证件？', a: '需要有效的国际驾照或您本国的摩托车驾照。150cc 以下标准踏板车也可接受您的身份证照片。' },
       { q: '可以延长或缩短租期吗？', a: '当然可以。通过 WhatsApp 联系我们，我们会在有车的情况下立即帮您调整订单。' },
@@ -589,9 +586,9 @@ export const id: typeof en = {
   process: { eyebrow: '03 — PROSES', title: 'Dari vila ke gas dalam tiga langkah.', steps: [
     ['Pilih skuter', 'Telusuri armada berdasarkan medan, cc, dan gaya.'],
     ['Pilih tanggal', 'Beri tahu kami kapan. Slot pengantaran 30 menit, tepat waktu.'],
-    ['Diantar ke lokasi', 'Tangki penuh, helm pas, dokumen di bawah jok. Asuransi kami urus.'],
+    ['Diantar ke lokasi', 'Tangki penuh, helm pas, dokumen di bawah jok.'],
   ]},
-  pricing: { eyebrow: '04 — HARGA · TANPA BIAYA TERSEMBUNYI', title: 'Mulai', titleSuffix: '· semua termasuk.', desc: 'Harga yang Anda lihat adalah harga yang Anda bayar. Helm, bahan bakar, dokumen, dan dukungan jalan sudah termasuk.', from: 'MULAI', inc: ['Helm termasuk', 'Tangki penuh', 'Antar gratis', 'Asuransi opsional'] },
+  pricing: { eyebrow: '04 — HARGA · TANPA BIAYA TERSEMBUNYI', title: 'Mulai', titleSuffix: '· semua termasuk.', desc: 'Harga yang Anda lihat adalah harga yang Anda bayar. Helm, bahan bakar, dokumen, dan dukungan jalan sudah termasuk.', from: 'MULAI', inc: ['Helm termasuk', 'Tangki penuh', 'Antar gratis', 'Bantuan darurat 24/7'] },
   addons: { eyebrow: '05 — UPGRADE', title: 'Tambahan. Bawa semuanya.', note: 'OPSIONAL · TERPERINCI · BATAL KAPAN SAJA' },
   delivery: {
     eyebrow: '06 — PENGANTARAN',
@@ -620,7 +617,7 @@ export const id: typeof en = {
   footer: { tagline: 'Sewa skuter premium untuk pelancong yang menganggap Bali sebagai jalan, bukan tujuan.', cols: {
     'Jelajahi': ['Katalog', 'Harga', 'Lokasi', 'Cara kerja'],
     'Perusahaan': ['Tentang', 'Jurnal', 'Pers', 'Karir'],
-    'Dukungan': ['FAQ', 'Asuransi', 'Pembatalan', 'Kontak'],
+    'Dukungan': ['FAQ', 'Pembatalan', 'Kontak'],
     'Hukum': ['Ketentuan', 'Privasi', 'Cookies', 'Imprint'],
   }},
   catalog: { eyebrow: 'ARMADA · {n} UNIT', title: 'Katalog.', desc: 'Setiap skuter di armada. Setiap spesifikasi, setiap dolar, setiap tanggal tersedia.', types: { All: 'Semua', City: 'Kota', Touring: 'Touring', Sport: 'Sport', Maxi: 'Maxi', Heritage: 'Klasik' }, searchPlaceholder: 'Cari skuter', clear: 'Hapus', sort: 'URUTKAN', sortFeatured: 'Unggulan', sortPriceUp: 'Harga ↑', sortPriceDown: 'Harga ↓', sortEngine: 'Mesin', sortRating: 'Rating', loading: 'Memuat armada…', empty: 'Tidak ada skuter cocok.', error: 'Gagal memuat — menampilkan demo.', reserve: 'Pesan →', resetFilters: 'Reset filter', from: 'MULAI' },
@@ -649,7 +646,7 @@ export const id: typeof en = {
     title2: 'Bebas.',
     subtitle: 'Sewa skuter premium dengan pengantaran ke vila Anda atau ke mana pun di Bali.',
     priceFrom: 'Mulai',
-    trustBadges: ['Batal gratis 24 jam', 'Antar gratis', 'Dukungan 24/7', 'Asuransi penuh'],
+    trustBadges: ['Batal gratis 24 jam', 'Antar gratis', 'Dukungan 24/7', 'Helm termasuk'],
     scroll: 'Gulir',
     viewFullFleet: 'Lihat semua armada',
     whyLabel: '02 / MENGAPA KAMI',
@@ -660,7 +657,6 @@ export const id: typeof en = {
     faqLabel: '07 / FAQ',
     stepLabel: 'LANGKAH {n}',
     addonsFallback: [
-      { name: 'Asuransi', description: 'Perlindungan penuh. Tanpa biaya tambahan. Lebih tenang.' },
       { name: 'Wi-Fi', description: 'Data tak terbatas di seluruh pulau.' },
       { name: 'Helm Premium', description: 'Ukuran pas, bersih, dan siap dipakai.' },
       { name: 'Dudukan Ponsel', description: 'Navigasi bebas genggam di setiap rute.' },
@@ -679,7 +675,7 @@ export const id: typeof en = {
     faqTitle1: 'Pertanyaan yang',
     faqTitle2: 'sering diajukan.',
     faqs: [
-      { q: 'Apa saja yang termasuk dalam sewa?', a: 'Setiap sewa sudah termasuk helm, jas hujan, kunci bagasi, dan bantuan darurat 24/7. Add-on opsional: asuransi, hotspot Wi-Fi, helm premium, dan dudukan ponsel.' },
+      { q: 'Apa saja yang termasuk dalam sewa?', a: 'Setiap sewa sudah termasuk helm, jas hujan, kunci bagasi, dan bantuan darurat 24/7. Add-on opsional: hotspot Wi-Fi, helm premium, dan dudukan ponsel.' },
       { q: 'Bisa diantar ke vila saya?', a: 'Bisa. Kami melayani pengantaran di Bali Selatan dan Tengah — Canggu, Seminyak, Ubud, Uluwatu, Sanur, Kuta, Jimbaran, Nusa Dua, dan sekitarnya. Di sebagian besar zona, pengantaran gratis.' },
       { q: 'Dokumen apa yang dibutuhkan?', a: 'Anda memerlukan SIM internasional yang berlaku atau SIM motor dari negara asal. Untuk skuter standar di bawah 150cc, foto identitas nasional juga bisa diterima.' },
       { q: 'Bisakah durasi sewa diperpanjang atau dipersingkat?', a: 'Tentu. Kirim pesan lewat WhatsApp dan kami akan menyesuaikan pesanan Anda saat itu juga, tergantung ketersediaan.' },
@@ -708,9 +704,9 @@ export const de: typeof en = {
   process: { eyebrow: '03 — ABLAUF', title: 'Von der Villa zum Gas in drei Schritten.', steps: [
     ['Roller wählen', 'Filtere die Flotte nach Gelände, Hubraum und Stil.'],
     ['Termin wählen', 'Sag uns wann. Wähle ein 30-Minuten-Lieferfenster.'],
-    ['Geliefert', 'Voller Tank, passende Helme, Papiere unter dem Sitz. Versicherung übernehmen wir.'],
+    ['Geliefert', 'Voller Tank, passende Helme, Papiere unter dem Sitz.'],
   ]},
-  pricing: { eyebrow: '04 — PREISE · OHNE VERSTECKTE GEBÜHREN', title: 'Ab', titleSuffix: '· alles inklusive.', desc: 'Der Preis, den du siehst, ist der Preis, den du zahlst. Helm, Sprit, Papiere und Pannenhilfe sind enthalten.', from: 'AB', inc: ['Helm inklusive', 'Voller Tank', 'Lieferung gratis', 'Versicherung optional'] },
+  pricing: { eyebrow: '04 — PREISE · OHNE VERSTECKTE GEBÜHREN', title: 'Ab', titleSuffix: '· alles inklusive.', desc: 'Der Preis, den du siehst, ist der Preis, den du zahlst. Helm, Sprit, Papiere und Pannenhilfe sind enthalten.', from: 'AB', inc: ['Helm inklusive', 'Voller Tank', 'Lieferung gratis', 'Pannenhilfe 24/7'] },
   addons: { eyebrow: '05 — UPGRADE', title: 'Extras. Alles dabei.', note: 'OPTIONAL · DETAILLIERT · JEDERZEIT KÜNDBAR' },
   delivery: {
     eyebrow: '06 — LIEFERUNG',
@@ -739,7 +735,7 @@ export const de: typeof en = {
   footer: { tagline: 'Premium-Rollerverleih für Reisende, die Bali als Straße sehen, nicht als Ziel.', cols: {
     'Entdecken': ['Katalog', 'Preise', 'Standorte', 'So funktioniert es'],
     'Unternehmen': ['Über uns', 'Journal', 'Presse', 'Karriere'],
-    'Support': ['FAQ', 'Versicherung', 'Stornierung', 'Kontakt'],
+    'Support': ['FAQ', 'Stornierung', 'Kontakt'],
     'Rechtliches': ['AGB', 'Datenschutz', 'Cookies', 'Impressum'],
   }},
   catalog: { eyebrow: 'FLOTTE · {n} ROLLER', title: 'Katalog.', desc: 'Jeder Roller in der Flotte. Jede Spezifikation, jeder Dollar, jedes verfügbare Datum.', types: { All: 'Alle', City: 'Stadt', Touring: 'Touring', Sport: 'Sport', Maxi: 'Maxi', Heritage: 'Klassik' }, searchPlaceholder: 'Roller suchen', clear: 'Löschen', sort: 'SORT.', sortFeatured: 'Empfohlen', sortPriceUp: 'Preis ↑', sortPriceDown: 'Preis ↓', sortEngine: 'Motor', sortRating: 'Bewertung', loading: 'Lade Flotte…', empty: 'Keine Roller passen.', error: 'Fehler beim Laden — Demo-Daten.', reserve: 'Reservieren →', resetFilters: 'Filter zurücksetzen', from: 'AB' },
@@ -768,7 +764,7 @@ export const de: typeof en = {
     title2: 'Frei.',
     subtitle: 'Premium-Roller mit Lieferung zu deiner Villa oder an jeden anderen Ort auf Bali.',
     priceFrom: 'Ab',
-    trustBadges: ['Kostenlose Storno 24h', 'Kostenlose Lieferung', 'Support 24/7', 'Voll versichert'],
+    trustBadges: ['Kostenlose Storno 24h', 'Kostenlose Lieferung', 'Support 24/7', 'Helm inklusive'],
     scroll: 'Scrollen',
     viewFullFleet: 'Gesamte Flotte ansehen',
     whyLabel: '02 / WARUM WIR',
@@ -779,7 +775,6 @@ export const de: typeof en = {
     faqLabel: '07 / FAQ',
     stepLabel: 'SCHRITT {n}',
     addonsFallback: [
-      { name: 'Versicherung', description: 'Volle Deckung. Kein Selbstbehalt. Ganz entspannt.' },
       { name: 'Wi-Fi', description: 'Unbegrenzte Daten auf der ganzen Insel.' },
       { name: 'Premium-Helm', description: 'Passende Groesse, gereinigt und bereit.' },
       { name: 'Handyhalterung', description: 'Freihändige Navigation auf jeder Strecke.' },
@@ -798,7 +793,7 @@ export const de: typeof en = {
     faqTitle1: 'Haeufig gestellte',
     faqTitle2: 'Fragen.',
     faqs: [
-      { q: 'Was ist in der Miete enthalten?', a: 'Jede Miete beinhaltet einen Helm, Regenjacke, Gepaeckschloss und Pannenhilfe rund um die Uhr. Optional dazu: Versicherung, Wi-Fi-Hotspot, Premium-Helm und Handyhalterung.' },
+      { q: 'Was ist in der Miete enthalten?', a: 'Jede Miete beinhaltet einen Helm, Regenjacke, Gepaeckschloss und Pannenhilfe rund um die Uhr. Optional dazu: Wi-Fi-Hotspot, Premium-Helm und Handyhalterung.' },
       { q: 'Liefert ihr zu meiner Villa?', a: 'Ja. Wir liefern in ganz Sued- und Zentralbali — Canggu, Seminyak, Ubud, Uluwatu, Sanur, Kuta, Jimbaran, Nusa Dua und darueber hinaus. In den meisten Zonen ist die Lieferung kostenlos.' },
       { q: 'Welche Dokumente brauche ich?', a: 'Du brauchst einen gueltigen internationalen Fuehrerschein oder den Motorradfuehrerschein deines Heimatlandes. Fuer Standardscooter unter 150cc akzeptieren wir auch ein Foto deines Ausweises.' },
       { q: 'Kann ich die Mietdauer verlaengern oder verkuerzen?', a: 'Ja, klar. Schreib uns einfach bei WhatsApp und wir passen deine Buchung sofort an, sofern Verfuegbarkeit besteht.' },
@@ -827,9 +822,9 @@ export const fr: typeof en = {
   process: { eyebrow: '03 — PROCESSUS', title: 'De la villa à la poignée en trois étapes.', steps: [
     ['Choisir le scooter', 'Parcours la flotte par terrain, cylindrée, style.'],
     ['Choisir les dates', 'Dis-nous quand. Choisis un créneau de 30 min, à l\'heure.'],
-    ['Livré', 'Plein fait, casques ajustés, papiers sous la selle. Assurance gérée.'],
+    ['Livré', 'Plein fait, casques ajustés, papiers sous la selle.'],
   ]},
-  pricing: { eyebrow: '04 — TARIFS · SANS FRAIS CACHÉS', title: 'À partir de', titleSuffix: '· tout inclus.', desc: 'Le prix affiché est le prix payé. Casque, essence, papiers et assistance inclus. Options à la carte.', from: 'DÈS', inc: ['Casque inclus', 'Plein fait', 'Livraison gratuite', 'Assurance optionnelle'] },
+  pricing: { eyebrow: '04 — TARIFS · SANS FRAIS CACHÉS', title: 'À partir de', titleSuffix: '· tout inclus.', desc: 'Le prix affiché est le prix payé. Casque, essence, papiers et assistance inclus. Options à la carte.', from: 'DÈS', inc: ['Casque inclus', 'Plein fait', 'Livraison gratuite', 'Assistance routière 24/7'] },
   addons: { eyebrow: '05 — UPGRADE', title: 'Options. Tout emporter.', note: 'OPTIONNEL · DÉTAILLÉ · ANNULATION LIBRE' },
   delivery: {
     eyebrow: '06 — LIVRAISON',
@@ -858,7 +853,7 @@ export const fr: typeof en = {
   footer: { tagline: 'Location de scooters premium pour les voyageurs qui voient Bali comme une route.', cols: {
     'Explorer': ['Catalogue', 'Tarifs', 'Lieux', 'Comment ça marche'],
     'Société': ['À propos', 'Journal', 'Presse', 'Carrières'],
-    'Support': ['FAQ', 'Assurance', 'Annulation', 'Contact'],
+    'Support': ['FAQ', 'Annulation', 'Contact'],
     'Légal': ['CGV', 'Confidentialité', 'Cookies', 'Mentions'],
   }},
   catalog: { eyebrow: 'FLOTTE · {n} SCOOTERS', title: 'Catalogue.', desc: 'Chaque scooter. Chaque spec, chaque dollar, chaque date dispo.', types: { All: 'Tous', City: 'Ville', Touring: 'Touring', Sport: 'Sport', Maxi: 'Maxi', Heritage: 'Classique' }, searchPlaceholder: 'Rechercher un scooter', clear: 'Effacer', sort: 'TRI', sortFeatured: 'Recommandés', sortPriceUp: 'Prix ↑', sortPriceDown: 'Prix ↓', sortEngine: 'Moteur', sortRating: 'Note', loading: 'Chargement…', empty: 'Aucun résultat.', error: 'Erreur — données démo.', reserve: 'Réserver →', resetFilters: 'Réinitialiser les filtres', from: 'DÈS' },
@@ -887,7 +882,7 @@ export const fr: typeof en = {
     title2: 'Libre.',
     subtitle: 'Location de scooters premium avec livraison a votre villa ou partout a Bali.',
     priceFrom: 'A partir de',
-    trustBadges: ['Annulation gratuite 24h', 'Livraison gratuite', 'Support 24/7', 'Entierement assure'],
+    trustBadges: ['Annulation gratuite 24h', 'Livraison gratuite', 'Support 24/7', 'Casque inclus'],
     scroll: 'Defiler',
     viewFullFleet: 'Voir toute la flotte',
     whyLabel: '02 / POURQUOI NOUS',
@@ -898,7 +893,6 @@ export const fr: typeof en = {
     faqLabel: '07 / FAQ',
     stepLabel: 'ETAPE {n}',
     addonsFallback: [
-      { name: 'Assurance', description: 'Couverture complete. Zero franchise. Voyage l esprit tranquille.' },
       { name: 'Wi-Fi', description: 'Donnees illimitees sur toute l ile.' },
       { name: 'Casque premium', description: 'A la bonne taille, propre et pret.' },
       { name: 'Support telephone', description: 'Navigation mains libres sur chaque trajet.' },
@@ -917,7 +911,7 @@ export const fr: typeof en = {
     faqTitle1: 'Questions',
     faqTitle2: 'frequentes.',
     faqs: [
-      { q: 'Qu est-ce qui est inclus dans la location ?', a: 'Chaque location comprend un casque, une veste de pluie, un antivol bagage et une assistance routiere 24/7. Options en supplement : assurance, hotspot Wi-Fi, casque premium et support telephone.' },
+      { q: 'Qu est-ce qui est inclus dans la location ?', a: 'Chaque location comprend un casque, une veste de pluie, un antivol bagage et une assistance routiere 24/7. Options en supplement : hotspot Wi-Fi, casque premium et support telephone.' },
       { q: 'Livrez-vous a ma villa ?', a: 'Oui. Nous livrons dans tout le sud et le centre de Bali — Canggu, Seminyak, Ubud, Uluwatu, Sanur, Kuta, Jimbaran, Nusa Dua et au-dela. La livraison est gratuite dans la plupart des zones.' },
       { q: 'Quels documents faut-il ?', a: 'Il faut un permis de conduire international valide ou un permis moto de votre pays. Pour les scooters standard de moins de 150cc, une photo de votre piece d identite nationale suffit aussi.' },
       { q: 'Puis-je prolonger ou raccourcir ma location ?', a: 'Bien sur. Ecrivez-nous sur WhatsApp et nous ajusterons votre reservation immediatement selon la disponibilite.' },
