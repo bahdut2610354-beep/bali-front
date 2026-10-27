@@ -72,7 +72,7 @@ export default function ScooterDetailPage() {
   const params = useParams<{ id: string }>();
   const seoInfo = useScooterSeo();
   const router = useRouter();
-  const { t, locale } = useLocale();
+  const { t, locale, localizeHref } = useLocale();
   const { marker } = useSiteContentPreview();
   const { convertPrice, symbol, currency } = useCurrency();
   const catalogPath = usePagePath('catalog');
@@ -198,7 +198,7 @@ export default function ScooterDetailPage() {
     query.set('price', String(scooter.price));
     const addonIds = selectedAddOnIds.join(',');
     if (addonIds) query.set('addons', addonIds);
-    router.push(`/booking?${query.toString()}`);
+    router.push(localizeHref(`/booking?${query.toString()}`));
   };
 
   function toggleAddOn(addOnId: number) {
@@ -238,7 +238,7 @@ export default function ScooterDetailPage() {
   const photoSrc = gallery[photoIdx];
   const fallbackTone = FALLBACK_TONES[photoIdx % FALLBACK_TONES.length];
   const breadcrumbTypeCode = scooter.typeCode || scooter.type.toLowerCase().replace(/[^a-z0-9]+/g, '_');
-  const breadcrumbScooterHref = `/scooter/${resolveScooterRouteId(scooter.id, scooter.name) || scooter.id}`;
+  const breadcrumbScooterHref = localizeHref(`/scooter/${resolveScooterRouteId(scooter.id, scooter.name) || scooter.id}`);
   const breadcrumbLinkStyle = {
     color: sub,
     textDecoration: 'none',
