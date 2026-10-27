@@ -80,15 +80,6 @@ export default function SiteFooter() {
     .filter((col) => col.items.length > 0);
   const footerGridTemplate = `minmax(0, 2fr) repeat(${Math.max(cols.length, 1)}, minmax(0, 1fr))`;
   const supportedCurrencies = availableCurrencies.join(' · ');
-  const footerAddressLine = [
-    addresses.businessName,
-    addresses.street,
-    addresses.district,
-    addresses.postalCode,
-    addresses.country,
-    addresses.license,
-    addresses.copyright,
-  ].filter(Boolean).join(' · ');
   const extraSocials = [
     { key: 'instagram', label: 'Instagram', href: socialLinks.instagram },
     { key: 'tiktok', label: 'TikTok', href: socialLinks.tiktok },
@@ -156,7 +147,8 @@ export default function SiteFooter() {
         </div>
       </div>
       <div className="br-site-footer-meta" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 24, gap: 16, flexWrap: 'wrap' }}>
-        <div {...marker('footer.metaLine')} className="br-mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{footerAddressLine || footer.metaLine}</div>
+        {/* The address is already shown in the company line above, so only the brand and copyright stay here. */}
+        <div className="br-mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{[addresses.businessName || COMPANY.brand, addresses.copyright || `© ${new Date().getFullYear()}`].join(' · ')}</div>
         <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
           <span {...marker('footer.localesLine')} className="br-mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)' }}>{footer.localesLine || 'EN · ID · RU · DE · FR · ZH'}</span>
           <span className="br-mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)' }}>{supportedCurrencies}</span>
