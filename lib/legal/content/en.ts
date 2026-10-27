@@ -26,7 +26,7 @@ const en: LegalLocaleContent = {
         ] },
         { h: '3. Prices and payment', p: [
           'Prices are set in Indonesian rupiah (IDR). Amounts in other currencies are shown for convenience; the charge is made in IDR or at the rate shown on the payment page. Your bank may apply its own conversion fees.',
-          'The price includes the scooter, a helmet, basic roadside support and delivery inside the free delivery zone. Delivery to other areas, additional helmets, damage protection and other extras are shown separately before payment.',
+          'The price includes the scooter, a helmet, basic roadside support and delivery inside the free delivery zone. Delivery to other areas, additional helmets and other extras are shown separately before payment.',
           'You can pay online by bank card, QRIS, e-wallet or other methods offered on the payment page, by cryptocurrency, or in cash on delivery where this option is offered. Online card and QR payments are processed by licensed payment providers; we never receive or store your full card details.',
           'At handover we take a refundable deposit of $100 or IDR 1.5 million. It is returned in full when the scooter is returned, less any amounts due under section 7 (damage, lost keys or documents, unpaid fines). We do not hold your passport.',
         ] },
@@ -45,7 +45,6 @@ const en: LegalLocaleContent = {
         ] },
         { h: '7. Damage, theft and fines', p: [
           'You are responsible for damage to the scooter, loss of the key or documents, and theft caused by negligence (for example, an unlocked scooter or a key left in the ignition) during the rental period. Repairs are charged at the price of an official service centre; lost keys and documents are charged at the actual cost of replacement.',
-          'If you purchased damage protection, your liability is limited to the amount stated in the booking, except for damage caused by riding without a valid licence, under the influence, or in breach of section 6.',
           'Traffic fines and penalties issued during the rental are paid by the rider. In case of an accident or theft, contact us immediately and, if required, the police.',
         ] },
         { h: '8. Our liability', p: [

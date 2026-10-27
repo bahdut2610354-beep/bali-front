@@ -26,7 +26,7 @@ const fr: LegalLocaleContent = {
         ] },
         { h: '3. Prix et paiement', p: [
           'Les prix sont fixés en roupies indonésiennes (IDR). Les montants dans d’autres devises sont indicatifs ; le débit est effectué en IDR ou au taux affiché sur la page de paiement. Votre banque peut appliquer ses propres frais de change.',
-          'Le prix comprend le scooter, un casque, l’assistance de base et la livraison dans la zone gratuite. La livraison dans d’autres zones, les casques supplémentaires, la protection dommages et les autres options sont indiqués séparément avant le paiement.',
+          'Le prix comprend le scooter, un casque, l’assistance de base et la livraison dans la zone gratuite. La livraison dans d’autres zones, les casques supplémentaires et les autres options sont indiqués séparément avant le paiement.',
           'Vous pouvez payer en ligne par carte bancaire, QRIS, portefeuille électronique ou tout autre moyen proposé sur la page de paiement, en cryptomonnaie, ou en espèces à la livraison lorsque cette option est proposée. Les paiements par carte et QR sont traités par des prestataires de paiement agréés ; nous ne recevons ni ne conservons jamais vos données de carte complètes.',
           'À la remise du scooter, nous demandons une caution remboursable de 100 $ ou 1,5 million IDR. Elle est intégralement restituée au retour du scooter, déduction faite des sommes dues au titre de l’article 7 (dommages, clés ou documents perdus, amendes impayées). Nous ne conservons pas votre passeport.',
         ] },
@@ -45,7 +45,6 @@ const fr: LegalLocaleContent = {
         ] },
         { h: '7. Dommages, vol et amendes', p: [
           'Pendant la location, vous êtes responsable des dommages au scooter, de la perte de la clé ou des documents, et du vol résultant d’une négligence (par exemple scooter non verrouillé ou clé laissée sur le contact). Les réparations sont facturées au tarif d’un atelier officiel ; les clés et documents perdus au coût réel de remplacement.',
-          'Si vous avez souscrit une protection dommages, votre responsabilité est limitée au montant indiqué dans la réservation, sauf pour les dommages causés en conduisant sans permis valide, sous l’emprise de l’alcool ou de drogues, ou en violation de l’article 6.',
           'Les amendes reçues pendant la location sont à la charge du conducteur. En cas d’accident ou de vol, contactez-nous immédiatement et, si nécessaire, la police.',
         ] },
         { h: '8. Notre responsabilité', p: [

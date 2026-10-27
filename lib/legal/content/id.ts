@@ -26,7 +26,7 @@ const id: LegalLocaleContent = {
         ] },
         { h: '3. Harga dan pembayaran', p: [
           'Harga ditetapkan dalam Rupiah (IDR). Jumlah dalam mata uang lain hanya ditampilkan untuk kemudahan; penagihan dilakukan dalam IDR atau dengan kurs yang tertera di halaman pembayaran. Bank Anda dapat mengenakan biaya konversi sendiri.',
-          'Harga sudah termasuk skuter, helm, bantuan darurat dasar, dan pengantaran di zona gratis. Pengantaran ke area lain, helm tambahan, proteksi kerusakan, dan layanan tambahan lainnya ditampilkan terpisah sebelum pembayaran.',
+          'Harga sudah termasuk skuter, helm, bantuan darurat dasar, dan pengantaran di zona gratis. Pengantaran ke area lain, helm tambahan, dan layanan tambahan lainnya ditampilkan terpisah sebelum pembayaran.',
           'Pembayaran dapat dilakukan secara online dengan kartu bank, QRIS, dompet digital, atau metode lain di halaman pembayaran, dengan kripto, atau tunai saat pengantaran jika opsi tersebut tersedia. Pembayaran kartu dan QR diproses oleh penyedia jasa pembayaran berizin; kami tidak pernah menerima atau menyimpan data kartu lengkap Anda.',
           'Saat serah terima kami meminta deposit yang dapat dikembalikan sebesar $100 atau Rp1,5 juta. Deposit dikembalikan penuh saat skuter dikembalikan, dikurangi jumlah yang terutang menurut bagian 7 (kerusakan, kunci atau dokumen hilang, denda yang belum dibayar). Kami tidak menahan paspor Anda.',
         ] },
@@ -45,7 +45,6 @@ const id: LegalLocaleContent = {
         ] },
         { h: '7. Kerusakan, pencurian, dan denda', p: [
           'Selama masa sewa Anda bertanggung jawab atas kerusakan skuter, hilangnya kunci atau dokumen, serta pencurian akibat kelalaian (misalnya skuter tidak dikunci atau kunci tertinggal di kontak). Perbaikan dikenakan biaya sesuai tarif bengkel resmi; kunci dan dokumen yang hilang dikenakan biaya penggantian aktual.',
-          'Jika Anda membeli proteksi kerusakan, tanggung jawab Anda dibatasi sesuai jumlah yang tertera di pemesanan, kecuali kerusakan akibat berkendara tanpa SIM yang berlaku, di bawah pengaruh alkohol atau narkoba, atau melanggar bagian 6.',
           'Denda lalu lintas selama masa sewa dibayar oleh pengendara. Jika terjadi kecelakaan atau pencurian, segera hubungi kami dan, bila diperlukan, polisi.',
         ] },
         { h: '8. Tanggung jawab kami', p: [
