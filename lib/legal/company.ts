@@ -3,7 +3,7 @@ export const COMPANY = {
   name: 'PT ART TREADING GLOBAL',
   brand: 'TROPICAL BIKES',
   address: 'Jl. Sunset Road No. 39B, Seminyak, Kuta, Badung, Bali 80361, Indonesia',
-  email: 'treadingglobalart@gmail.com',
+  email: 'info@bali.bike',
   phone: '+62 813-5915-173',
   whatsapp: 'https://wa.me/628135915173',
   site: 'bali.bike',
