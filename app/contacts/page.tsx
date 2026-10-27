@@ -12,7 +12,6 @@ import {
   ScooterIcon,
   SupportIcon,
   TelegramIcon,
-  WeChatIcon,
   WhatsAppIcon,
 } from '@/components/Icons';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
@@ -128,7 +127,6 @@ export default function ContactsPage() {
   const channels = [
     { key: 'whatsapp', label: 'WhatsApp', href: socialLinks.whatsapp, icon: <WhatsAppIcon size={23} color="#25D366" /> },
     { key: 'telegram', label: 'Telegram', href: socialLinks.telegram, icon: <TelegramIcon size={23} color="#2AABEE" /> },
-    { key: 'wechat', label: 'WeChat', href: socialLinks.wechat, icon: <WeChatIcon size={23} color="#7BB32E" /> },
     { key: 'instagram', label: 'Instagram', href: socialLinks.instagram, icon: <PhoneIcon size={23} color="#FFD700" /> },
     { key: 'tiktok', label: 'TikTok', href: socialLinks.tiktok, icon: <PhoneIcon size={23} color="#FFD700" /> },
     { key: 'facebook', label: 'Facebook', href: socialLinks.facebook, icon: <PhoneIcon size={23} color="#FFD700" /> },
