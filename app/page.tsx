@@ -115,6 +115,15 @@ const SUPPORT_CHAT_COPY = {
   fr: 'Chat support',
 } as const;
 
+const PAID_DELIVERY_LABEL: Record<string, string> = {
+  en: 'PAID',
+  ru: 'ПЛАТНО',
+  zh: '收费',
+  id: 'BERBAYAR',
+  de: 'GEBÜHR',
+  fr: 'PAYANT',
+};
+
 export default function LandingPage() {
   const { t, locale } = useLocale();
   const { marker } = useSiteContentPreview();
@@ -155,7 +164,11 @@ export default function LandingPage() {
         }));
         setFeatured(nextFeatured);
         setFeaturedLoading(false);
-        setZones((bootstrap.deliveryZones || []).map((z) => ({ id: z.id, name: z.name, freeDelivery: z.freeDelivery })));
+        setZones((bootstrap.deliveryZones || []).map((z) => ({
+          id: z.id,
+          name: z.name,
+          freeDelivery: z.freeDelivery,
+        })));
         setZonesLoading(false);
         const faqData = (bootstrap.content as Record<string, unknown> | undefined);
         const faqItems = (faqData?.home as Record<string, unknown> | undefined)?.faq;
@@ -540,13 +553,20 @@ export default function LandingPage() {
                   <div key={i} className="br-skeleton" style={{ height: 38, borderRadius: 10, background: 'rgba(255,255,255,0.06)' }} />
                 ))
               ) : activeZones.length > 0 ? (
-                activeZones.slice(0, 8).map((l) => (
-                  <div key={l} style={{ padding: '10px 14px', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 10, fontFamily: 'var(--br-mono)', fontSize: 11, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
-                    <span>{l}</span>
-                    <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-                      <CheckIcon size={10} color="#22C55E" strokeWidth={2.5} />
-                      <span {...marker('home.deliveryFree')} style={{ color: '#22C55E', fontSize: 10 }}>{t.home.deliveryFree}</span>
-                    </span>
+                zones.slice(0, 8).map((zone) => (
+                  <div key={zone.id} style={{ padding: '10px 14px', border: '1px solid rgba(255,255,255,0.09)', borderRadius: 10, fontFamily: 'var(--br-mono)', fontSize: 11, display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 8 }}>
+                    <span>{zone.name}</span>
+                    {zone.freeDelivery !== false ? (
+                      <span style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+                        <CheckIcon size={10} color="#22C55E" strokeWidth={2.5} />
+                        <span {...marker('home.deliveryFree')} style={{ color: '#22C55E', fontSize: 10 }}>{t.home.deliveryFree}</span>
+                      </span>
+                    ) : (
+                      // Paid zone: never label it "free"; the exact fee is in the description above.
+                      <span style={{ color: '#FFD700', fontSize: 10, whiteSpace: 'nowrap' }}>
+                        {PAID_DELIVERY_LABEL[locale] || PAID_DELIVERY_LABEL.en}
+                      </span>
+                    )}
                   </div>
                 ))
               ) : null}
