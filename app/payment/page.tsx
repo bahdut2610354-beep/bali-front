@@ -6,6 +6,7 @@ import { Suspense, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import { BRPhoto, BREyebrow, BRPrimary } from '@/components/BR';
+import LegalConsentLine from '@/components/LegalConsentLine';
 import { CheckIcon, CreditCardIcon, CryptoIcon, LockIcon, WalletIcon, stripLeadingSymbol } from '@/components/Icons';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
@@ -458,6 +459,7 @@ function PaymentInner() {
                           ? <span {...marker('payment.payCrypto')}>{copy.payCrypto.replace('{currency}', cryptoCurrency)}</span>
                           : <span {...marker('payment.pay')}>{tr(t.payment.pay, { amount: formatCurrencyAmount(summary.total, summary.currency) })}</span>}
                   </BRPrimary>
+                  <LegalConsentLine />
                 </div>
               </>
             )
