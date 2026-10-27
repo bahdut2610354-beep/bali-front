@@ -9,7 +9,7 @@ import { DisplayScooter, resolveScooterRouteId } from '@/lib/displayScooter';
 import { useSiteContentPreview } from '@/lib/siteContentPreview';
 
 export default function ScooterCard({ s, dark = false, large = false }: { s: DisplayScooter; dark?: boolean; large?: boolean }) {
-  const { t } = useLocale();
+  const { t, localizeHref } = useLocale();
   const { currency, convertPrice, symbol } = useCurrency();
   const { marker } = useSiteContentPreview();
   const fg = dark ? '#fff' : '#000';
@@ -24,7 +24,7 @@ export default function ScooterCard({ s, dark = false, large = false }: { s: Dis
     : `≈ ${symbol}${formatGroupedAmount(convertPrice(Number(s.price || 0)), 2)}`;
   return (
     <Link
-      href={`/scooter/${routeId}`}
+      href={localizeHref(`/scooter/${routeId}`)}
       className={`br-card br-scooter-card ${dark ? 'dark' : ''} ${hasImage ? 'has-cutout-image' : ''}`}
       style={{
         display: 'flex',
