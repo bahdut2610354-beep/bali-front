@@ -251,7 +251,7 @@ export default function SiteHeader({
           transition: 'background 280ms var(--br-easing), border-color 280ms, backdrop-filter 280ms',
         }}
       >
-        <BRLogo size={22} dark={dark || isTransparent} withBackdrop={isTransparent} />
+        <BRLogo size={isMobileViewport ? 26 : 30} dark={dark || isTransparent} withBackdrop={isTransparent} />
 
         {isMobileViewport && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginLeft: 'auto' }}>

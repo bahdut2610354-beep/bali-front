@@ -39,7 +39,8 @@ export function BRLogo({
         src="/logo-tropical-bikes.png"
         alt="Tropical Bikes Bali Scooter Rental"
         loading="eager"
-        sizes="200px"
+        sizes={`${Math.ceil(logoHeight)}px`}
+        webpQuality={90}
         style={{
           height: logoHeight,
           width: 'auto',
