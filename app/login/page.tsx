@@ -6,7 +6,7 @@ import { BRLogo } from '@/components/BR';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
 import { useAuth } from '@/lib/i18n/AuthProvider';
 import { ApiError } from '@/lib/api';
-import { CheckIcon, ScooterIcon, StarIcon } from '@/components/Icons';
+import { CheckIcon, ScooterIcon } from '@/components/Icons';
 import { useSiteContentPreview } from '@/lib/siteContentPreview';
 import { endpoints } from '@/lib/endpoints';
 import { PageTitleSync, usePagePath } from '@/lib/usePageSettings';
@@ -128,10 +128,6 @@ export default function LoginPage() {
             <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(255,215,0,0.12)', border: '1px solid rgba(255,215,0,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <ScooterIcon size={22} color="#FFD700" strokeWidth={1.8} />
             </div>
-            <div style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
-              {Array.from({ length: 5 }).map((_, i) => <StarIcon key={i} size={13} color="#FFD700" />)}
-              <span style={{ fontFamily: 'var(--br-mono)', fontSize: 12, color: 'rgba(255,255,255,0.4)', marginLeft: 6, letterSpacing: '0.06em' }}>4.97</span>
-            </div>
           </div>
 
           <h2 style={{
@@ -158,14 +154,6 @@ export default function LoginPage() {
           </div>
         </div>
 
-        <div style={{ borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 24 }}>
-          <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: 13, lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
-            <span {...marker('auth.loginQuote')}>"{t.auth.loginQuote}"</span>
-          </p>
-          <p style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em', marginTop: 8, textTransform: 'uppercase' }}>
-            <span {...marker('auth.loginQuoteMeta')}>{t.auth.loginQuoteMeta}</span>
-          </p>
-        </div>
       </div>
 
       {/* ── ПРАВАЯ ПАНЕЛЬ ────────────────────────────────────────── */}

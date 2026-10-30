@@ -66,7 +66,7 @@ export default async function GoogleReviews() {
   const buttonBase = { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', minHeight: 46, padding: '0 22px', borderRadius: 999, fontWeight: 600, fontSize: 15, textDecoration: 'none' } as const;
 
   return (
-    <section id="reviews" aria-labelledby="google-reviews-title" style={{ padding: 'clamp(52px, 7vw, 100px) clamp(16px, 5vw, 56px)', background: '#FAFAF5' }}>
+    <section id="reviews" aria-labelledby="google-reviews-title" style={{ padding: 'clamp(52px, 7vw, 100px) clamp(16px, 5vw, 56px)', background: '#F4F2ED' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'flex-end', justifyContent: 'space-between', gap: 24, marginBottom: 36 }}>
           <div>
