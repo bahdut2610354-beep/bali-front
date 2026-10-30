@@ -78,6 +78,10 @@ NEXT_PUBLIC_MEDIA_URL=https://your-media.example.com
 
 Production defaults point to the public Bali Bike API.
 
+Google reviews on the home page come from the Google Places API (New) and are refreshed once a day.
+Set `GOOGLE_PLACES_API_KEY` (a key restricted to the Places API (New)) and `GOOGLE_PLACE_ID`
+(the business's place ID, e.g. from Google's Place ID Finder) in the hosting environment; without them the block is hidden.
+
 ## Production build
 
 ~~~bash
