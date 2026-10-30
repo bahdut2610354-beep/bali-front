@@ -4,7 +4,6 @@ import Link from 'next/link';
 import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { BR_LOCATIONS } from '@/lib/data';
-import { BRPhoto } from '@/components/BR';
 import {
   ArrowRightIcon, CheckIcon,
   ScooterIcon, StarIcon,
@@ -202,7 +201,6 @@ export default function LandingPage({ reviews }: { reviews?: ReactNode } = {}) {
   const activeZones = useMemo(() => zones.map((z) => z.name), [zones]);
 
   const faqs = apiFaqs.length ? apiFaqs : t.home.faqs;
-  const homeReviews = t.home.reviews;
   // "From Rp …/day" uses the cheapest tariff, exactly like the headline on the Prices page.
   const [lowestRateIdr, setLowestRateIdr] = useState<number | null>(null);
   useEffect(() => {
@@ -481,63 +479,8 @@ export default function LandingPage({ reviews }: { reviews?: ReactNode } = {}) {
         </motion.div>
       </section>
 
-      {/* ── 04 ОТЗЫВЫ ───────────────────────────────────────────────── */}
-      <section style={{ padding: 'clamp(52px, 7vw, 100px) clamp(16px, 5vw, 56px)', background: '#F4F2ED' }}>
-        <motion.div
-          variants={stagger} initial="hidden" whileInView="visible"
-          viewport={{ once: true, margin: '-80px' }}
-          style={{ textAlign: 'center', marginBottom: 44 }}
-        >
-          <motion.h2 variants={fadeUp} className="br-display" style={{
-            margin: '0 0 10px', fontSize: 'clamp(28px, 5.5vw, 64px)',
-            lineHeight: 0.97, letterSpacing: '-0.035em', color: '#0A0A0F',
-          }}>
-            <span {...marker('reviews.title')}>{t.reviews.title}</span>
-          </motion.h2>
-          <motion.p variants={fadeUp} style={{ fontSize: 14, color: 'rgba(0,0,0,0.42)', margin: 0 }}>
-            <span {...marker('reviews.verified')}>{t.reviews.verified}</span>
-          </motion.p>
-        </motion.div>
-
-        <motion.div
-          variants={stagger} initial="hidden" whileInView="visible"
-          viewport={{ once: true, margin: '-60px' }}
-          className="br-home-reviews-grid"
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 18 }}
-        >
-          {([
-            { ...homeReviews[0], tone: 'sand' as const },
-            { ...homeReviews[1], tone: 'sunset' as const },
-            { ...homeReviews[2], tone: 'mist' as const },
-          ]).map((rev, i) => (
-            <motion.div key={i} variants={fadeUp}
-              style={{
-                background: '#fff', borderRadius: 20, padding: 'clamp(20px, 2.5vw, 32px) clamp(16px, 2vw, 28px)',
-                border: '1px solid rgba(0,0,0,0.06)', position: 'relative', overflow: 'hidden',
-              }}
-            >
-              <div aria-hidden style={{ position: 'absolute', top: 10, right: 18, fontFamily: 'var(--br-display)', fontSize: 80, lineHeight: 1, color: 'rgba(255,215,0,0.11)', fontWeight: 800, userSelect: 'none', pointerEvents: 'none' }}>"</div>
-              <div style={{ display: 'flex', gap: 3, marginBottom: 16 }}>
-                {Array.from({ length: 5 }).map((_, si) => <StarIcon key={si} size={13} color="#FFD700" />)}
-              </div>
-              <p {...marker('home.reviews')} style={{ fontSize: 'clamp(13px, 1.3vw, 16px)', lineHeight: 1.62, color: '#0A0A0F', margin: '0 0 24px', position: 'relative' }}>
-                "{rev.quote}"
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, paddingTop: 18, borderTop: '1px solid rgba(0,0,0,0.07)' }}>
-                <BRPhoto tone={rev.tone} style={{ width: 42, height: 42, borderRadius: 999, flexShrink: 0 }} />
-                <div>
-                  <div {...marker('home.reviews')} style={{ fontSize: 14, fontWeight: 600, color: '#0A0A0F' }}>{rev.name}</div>
-                  <div {...marker('home.reviews')} style={{ fontFamily: 'var(--br-mono)', fontSize: 12, color: 'rgba(0,0,0,0.38)', marginTop: 2 }}>{rev.meta}</div>
-                </div>
-                <div {...marker('home.reviewVerified')} style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 5, background: 'rgba(34,197,94,0.09)', color: '#16A34A', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em', padding: '5px 9px', borderRadius: 999, border: '1px solid rgba(34,197,94,0.18)', flexShrink: 0 }}>
-                  <CheckIcon size={11} color="#16A34A" strokeWidth={2.5} />
-                  {t.home.reviewVerified}
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </section>
+      {/* ── 04 ОТЗЫВЫ (Google) ──────────────────────────────────────── */}
+      {reviews}
 
       {/* ── 05 ДОСТАВКА ─────────────────────────────────────────────── */}
       <div id="delivery" className="br-home-delivery" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', background: '#0C0C12', color: '#fff' }}>
@@ -589,8 +532,6 @@ export default function LandingPage({ reviews }: { reviews?: ReactNode } = {}) {
           </div>
         </div>
       </div>
-
-      {reviews}
 
       {/* ── 06 FAQ ──────────────────────────────────────────────────── */}
       <section style={{ padding: 'clamp(52px, 7vw, 100px) clamp(16px, 5vw, 56px)', background: '#fff' }}>
