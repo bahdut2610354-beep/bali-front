@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useMemo, useState, type CSSProperties } from 'react';
+import { useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react';
 import { motion } from 'framer-motion';
 import { BR_LOCATIONS } from '@/lib/data';
 import { BRPhoto } from '@/components/BR';
@@ -137,7 +137,7 @@ const heroMessengerStyle: CSSProperties = {
   padding: '0 20px', height: 'clamp(58px, 6vw, 68px)', borderRadius: 16,
 };
 
-export default function LandingPage() {
+export default function LandingPage({ reviews }: { reviews?: ReactNode } = {}) {
   const { t, locale } = useLocale();
   const { marker } = useSiteContentPreview();
   const { convertPrice } = useCurrency();
@@ -589,6 +589,8 @@ export default function LandingPage() {
           </div>
         </div>
       </div>
+
+      {reviews}
 
       {/* ── 06 FAQ ──────────────────────────────────────────────────── */}
       <section style={{ padding: 'clamp(52px, 7vw, 100px) clamp(16px, 5vw, 56px)', background: '#fff' }}>
