@@ -419,7 +419,7 @@ export default function PricesPage() {
             <div
               className="br-mono"
               style={{
-                fontSize: 11,
+                fontSize: 12,
                 letterSpacing: '0.18em',
                 color: 'rgba(0,0,0,0.56)',
                 marginBottom: 18,
@@ -482,15 +482,15 @@ export default function PricesPage() {
             >
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: 12 }}>
                 <div>
-                  <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.48)' }}>{copy.metaModels}</div>
+                  <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.48)' }}>{copy.metaModels}</div>
                   <div className="br-display" style={{ marginTop: 10, fontSize: 'clamp(28px, 4vw, 40px)', lineHeight: 0.95 }}>{groups.length || '—'}</div>
                 </div>
                 <div>
-                  <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.48)' }}>{copy.metaBands}</div>
+                  <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.48)' }}>{copy.metaBands}</div>
                   <div className="br-display" style={{ marginTop: 10, fontSize: 'clamp(28px, 4vw, 40px)', lineHeight: 0.95 }}>{rates.length || '—'}</div>
                 </div>
                 <div>
-                  <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.48)' }}>{copy.metaValue}</div>
+                  <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.48)' }}>{copy.metaValue}</div>
                   <div className="br-display" style={{ marginTop: 10, fontSize: 'clamp(28px, 4vw, 40px)', lineHeight: 0.95 }}>
                           {lowestDailyUsd ? `${minDailyLabel}${copy.perDay}` : '—'}
                   </div>
@@ -590,7 +590,7 @@ export default function PricesPage() {
                 color: '#991B1B',
               }}
             >
-              <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.16em', opacity: 0.75 }}>{copy.error}</div>
+              <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.16em', opacity: 0.75 }}>{copy.error}</div>
               <div className="br-display" style={{ marginTop: 10, fontSize: 'clamp(28px, 4vw, 40px)', lineHeight: 1 }}>{error}</div>
             </div>
           ) : groups.length === 0 ? (
@@ -602,7 +602,7 @@ export default function PricesPage() {
                 background: 'linear-gradient(180deg, #ffffff 0%, #f7f5ef 100%)',
               }}
             >
-              <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.5)' }}>{copy.empty}</div>
+              <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.5)' }}>{copy.empty}</div>
             </div>
           ) : (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: 20 }}>
@@ -681,7 +681,7 @@ export default function PricesPage() {
                             borderRadius: 999,
                             background: 'rgba(255,255,255,0.82)',
                             border: '1px solid rgba(0,0,0,0.08)',
-                            fontSize: 10,
+                            fontSize: 12,
                             letterSpacing: '0.12em',
                           }}
                         >
@@ -705,7 +705,7 @@ export default function PricesPage() {
                           background: '#111',
                           color: '#fff',
                           textDecoration: 'none',
-                          fontSize: 11,
+                          fontSize: 12,
                           letterSpacing: '0.08em',
                         }}
                       >
@@ -717,7 +717,7 @@ export default function PricesPage() {
                     <div style={{ padding: 22, display: 'flex', flexDirection: 'column', gap: 18, flex: 1 }}>
                       <div style={{ display: 'flex', justifyContent: 'space-between', gap: 16, alignItems: 'flex-start', flexWrap: 'wrap' }}>
                         <div style={{ minWidth: 0 }}>
-                          <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.46)' }}>
+                          <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.46)' }}>
                             {copy.scooter}
                           </div>
                           <h3 className="br-display" style={{ margin: '8px 0 0', fontSize: 28, lineHeight: 0.98, letterSpacing: '-0.03em' }}>
@@ -734,15 +734,15 @@ export default function PricesPage() {
                             minWidth: 126,
                           }}
                         >
-                          <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.58)' }}>{copy.from}</div>
+                          <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(255,255,255,0.58)' }}>{copy.from}</div>
                           <div className="br-display" style={{ marginTop: 6, fontSize: 28, lineHeight: 0.95, letterSpacing: '-0.04em' }}>
                             {minDaily}
                           </div>
-                          <div className="br-mono" style={{ marginTop: 4, fontSize: 10, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.58)' }}>
+                          <div className="br-mono" style={{ marginTop: 4, fontSize: 12, letterSpacing: '0.1em', color: 'rgba(255,255,255,0.58)' }}>
                             {copy.perDay}
                           </div>
                           {minDailyApprox ? (
-                            <div className="br-mono" style={{ marginTop: 2, fontSize: 10, letterSpacing: '0.06em', color: 'rgba(255,255,255,0.46)' }}>
+                            <div className="br-mono" style={{ marginTop: 2, fontSize: 12, letterSpacing: '0.06em', color: 'rgba(255,255,255,0.46)' }}>
                               {minDailyApprox}
                             </div>
                           ) : null}
@@ -750,7 +750,7 @@ export default function PricesPage() {
                       </div>
 
                       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12, flexWrap: 'wrap' }}>
-                        <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.46)' }}>
+                        <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.46)' }}>
                           {copy.rateBands} · {group.rates.length}
                         </div>
                       </div>
@@ -779,7 +779,7 @@ export default function PricesPage() {
                               }}
                             >
                               <div style={{ minWidth: 0 }}>
-                                <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.12em', opacity: 0.7 }}>
+                                <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', opacity: 0.7 }}>
                                   {formatRateRange(rate.min_days, rate.max_days, locale)}
                                 </div>
                                 <div style={{ marginTop: 6, fontSize: 13, lineHeight: 1.4, opacity: 0.86 }}>
@@ -793,7 +793,7 @@ export default function PricesPage() {
                                     className="br-mono"
                                     style={{
                                       marginBottom: 6,
-                                      fontSize: 10,
+                                      fontSize: 12,
                                       letterSpacing: '0.14em',
                                       color: '#FFD700',
                                     }}
@@ -804,12 +804,12 @@ export default function PricesPage() {
                                 <div className="br-display" style={{ fontSize: 28, lineHeight: 0.95, letterSpacing: '-0.03em' }}>
                                   {convertedTotal}
                                 </div>
-                                <div className="br-mono" style={{ marginTop: 4, fontSize: 10, letterSpacing: '0.1em', opacity: 0.7 }}>
+                                <div className="br-mono" style={{ marginTop: 4, fontSize: 12, letterSpacing: '0.1em', opacity: 0.7 }}>
                                   {convertedDaily}
                                   {copy.perDay}
                                 </div>
                                 {convertedTotalApprox ? (
-                                  <div className="br-mono" style={{ marginTop: 2, fontSize: 10, letterSpacing: '0.06em', opacity: 0.55 }}>
+                                  <div className="br-mono" style={{ marginTop: 2, fontSize: 12, letterSpacing: '0.06em', opacity: 0.55 }}>
                                     {convertedTotalApprox}
                                   </div>
                                 ) : null}
@@ -866,7 +866,7 @@ export default function PricesPage() {
           }}
         >
           <div style={{ maxWidth: 700 }}>
-            <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.18em', color: '#FFD700', marginBottom: 14 }}>
+            <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: '#FFD700', marginBottom: 14 }}>
               {copy.ctaEyebrow}
             </div>
             <h2 className="br-display" style={{ margin: 0, fontSize: 'clamp(36px, 5vw, 64px)', lineHeight: 0.95, letterSpacing: '-0.04em' }}>

@@ -433,7 +433,7 @@ function BookingPageInner() {
         <div className="br-booking-payment-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 420px', gap: 24, alignItems: 'start' }}>
           <div className="br-booking-main-column" style={{ display: 'grid', gap: 24 }}>
             <div className="br-booking-card" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 22, padding: 24 }}>
-              <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
+              <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
                 <span {...marker('booking.selectedScooter')}>{copy.selectedScooter}</span>
               </div>
               {loadingScooter ? (
@@ -471,7 +471,7 @@ function BookingPageInner() {
             </div>
 
             <div className="br-booking-card" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 22, padding: 24 }}>
-              <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
+              <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
                 <span {...marker('booking.timeTitle')}>{copy.timeTitle}</span>
               </div>
               <div className="br-booking-time-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 14, marginTop: 18 }}>
@@ -502,7 +502,7 @@ function BookingPageInner() {
             />
 
             <div className="br-booking-card" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 22, padding: 24 }}>
-              <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
+              <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
                
               </div>
               <div style={{ display: 'grid', gap: 14, marginTop: 18 }}>
@@ -557,7 +557,7 @@ function BookingPageInner() {
             </div>
 
             <div className="br-booking-card" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 22, padding: 24 }}>
-              <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
+              <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
                 <span {...marker('booking.addonsTitle')}>{copy.addonsTitle}</span>
               </div>
               <p {...marker('booking.addonsHelp')} style={{ margin: '12px 0 0', color: 'rgba(0,0,0,0.62)', lineHeight: 1.55 }}>
@@ -596,9 +596,9 @@ function BookingPageInner() {
                         <span>{getAddonName(addon, locale)}</span>
                         <span className="br-mono" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 2 }}>
                           <span>{fmtIdr(addonPriceIdrValue(addon) || convertPrice(addonPriceValue(addon), 'IDR'))}</span>
-                          <span style={{ fontSize: 11, opacity: 0.6 }}>{formatAddonPriceType(addon, locale)}</span>
+                          <span style={{ fontSize: 12, opacity: 0.6 }}>{formatAddonPriceType(addon, locale)}</span>
                           {showSecondaryCurrency ? (
-                            <span style={{ fontSize: 11, opacity: 0.6 }}>≈ {formatCurrencyAmount(convertPrice(addonPriceValue(addon)), selectedCurrency)}</span>
+                            <span style={{ fontSize: 12, opacity: 0.6 }}>≈ {formatCurrencyAmount(convertPrice(addonPriceValue(addon)), selectedCurrency)}</span>
                           ) : null}
                         </span>
                       </button>
@@ -615,7 +615,7 @@ function BookingPageInner() {
 
           <aside className="br-booking-summary-aside" style={{ position: 'sticky', top: 90, display: 'grid', gap: 18 }}>
             <div className="br-booking-summary-card" style={{ borderRadius: 22, background: '#F5F5F5', padding: 24 }}>
-              <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
+              <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
                 <span {...marker('booking.summaryTitle')}>{copy.summaryTitle}</span>
               </div>
               <div className="br-display" style={{ marginTop: 12, fontSize: 28, lineHeight: 1 }}>
@@ -672,7 +672,7 @@ function BookingPageInner() {
                     <span {...marker('booking.discountLabel')} style={{ color: '#16A34A', fontSize: 13 }}>{copy.discountLabel} ({promoCode})</span>
                     <span className="br-mono" style={{ color: '#16A34A', fontWeight: 700, display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 2 }}>
                       <span>−{fmtIdr(discountTotalIdr)}</span>
-                      {showSecondaryCurrency ? <span style={{ fontSize: 11, opacity: 0.7 }}>≈ −{formatCurrencyAmount(discountTotal, currency)}</span> : null}
+                      {showSecondaryCurrency ? <span style={{ fontSize: 12, opacity: 0.7 }}>≈ −{formatCurrencyAmount(discountTotal, currency)}</span> : null}
                     </span>
                   </div>
                 ) : null}
@@ -843,7 +843,7 @@ function AvailabilityCalendarBlock({
   return (
     <div className="br-booking-card br-booking-calendar-panel" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 20, padding: '20px 22px' }}>
       <div className="br-booking-calendar-head" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
-        <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
+        <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>
           <span {...marker('booking.calendarTitle')}>{copy.calendarTitle}</span>
         </div>
         <div style={{ display: 'flex', gap: 6 }}>
@@ -852,14 +852,14 @@ function AvailabilityCalendarBlock({
         </div>
       </div>
 
-      <div className="br-booking-calendar-legend" style={{ display: 'flex', gap: 14, marginTop: 10, color: 'rgba(0,0,0,0.62)', fontSize: 11 }}>
+      <div className="br-booking-calendar-legend" style={{ display: 'flex', gap: 14, marginTop: 10, color: 'rgba(0,0,0,0.62)', fontSize: 12 }}>
         <Legend color="#16A34A" label={copy.legendAvailable} contentKey="booking.legendAvailable" />
         <Legend color="#DC2626" label={copy.legendBooked} contentKey="booking.legendBooked" />
         <Legend color="#FFD700" label={copy.legendSelected} contentKey="booking.legendSelected" />
       </div>
 
-      {loading && <div className="br-mono" style={{ marginTop: 12, color: 'rgba(0,0,0,0.55)', fontSize: 11 }}>{t.common.loading}</div>}
-      {error && <div className="br-mono" style={{ marginTop: 12, color: '#B91C1C', fontSize: 11 }}>{error}</div>}
+      {loading && <div className="br-mono" style={{ marginTop: 12, color: 'rgba(0,0,0,0.55)', fontSize: 12 }}>{t.common.loading}</div>}
+      {error && <div className="br-mono" style={{ marginTop: 12, color: '#B91C1C', fontSize: 12 }}>{error}</div>}
 
       <div className="br-booking-calendar-months" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 16, marginTop: 14 }}>
         {months.map((m) => (
@@ -879,7 +879,7 @@ function AvailabilityCalendarBlock({
       </div>
 
       {startDateKey && !endDateKey ? (
-        <div className="br-mono" {...marker('booking.pickEndDate')} style={{ marginTop: 12, color: 'rgba(0,0,0,0.62)', fontSize: 11 }}>
+        <div className="br-mono" {...marker('booking.pickEndDate')} style={{ marginTop: 12, color: 'rgba(0,0,0,0.62)', fontSize: 12 }}>
           {copy.pickEndDate.replace('{date}', startDateKey)}
         </div>
       ) : null}
@@ -921,12 +921,12 @@ function MonthGrid({
 
   return (
     <div className="br-booking-month-grid" style={{ background: 'rgba(0,0,0,0.015)', borderRadius: 14, padding: 12, border: '1px solid rgba(0,0,0,0.05)' }}>
-      <div className="br-mono" style={{ fontSize: 11, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.7)', textAlign: 'center', marginBottom: 8 }}>
+      <div className="br-mono" style={{ fontSize: 12, fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.7)', textAlign: 'center', marginBottom: 8 }}>
         {monthLabel}
       </div>
-      <div className="br-booking-month-days" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 3, fontSize: 10 }}>
+      <div className="br-booking-month-days" style={{ display: 'grid', gridTemplateColumns: 'repeat(7, 1fr)', gap: 3, fontSize: 12 }}>
         {weekdays.map((d, i) => (
-          <div key={i} className="br-mono" style={{ textAlign: 'center', color: 'rgba(0,0,0,0.4)', padding: '2px 0', fontSize: 10 }}>
+          <div key={i} className="br-mono" style={{ textAlign: 'center', color: 'rgba(0,0,0,0.4)', padding: '2px 0', fontSize: 12 }}>
             {d}
           </div>
         ))}
@@ -973,7 +973,7 @@ function MonthGrid({
                 background: bg,
                 color,
                 cursor: isAvailable ? 'pointer' : 'not-allowed',
-                fontSize: 11,
+                fontSize: 12,
                 fontFamily: 'var(--br-mono)',
                 fontWeight: selected ? 700 : 500,
                 display: 'grid',
@@ -1024,7 +1024,7 @@ function Field({ label, children, contentKey }: { label: string; children: React
   const { marker } = useSiteContentPreview();
   return (
     <label style={{ display: 'grid', gap: 8 }}>
-      <span {...(contentKey ? marker(contentKey) : {})} className="br-mono" style={{ fontSize: 11, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
+      <span {...(contentKey ? marker(contentKey) : {})} className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
         {label.toUpperCase()}
       </span>
       {children}
@@ -1039,7 +1039,7 @@ function PriceRow({ label, value, secondary, contentKey }: { label: string; valu
       <span {...(contentKey ? marker(contentKey) : {})} style={{ color: 'rgba(0,0,0,0.58)' }}>{label}</span>
       <span className="br-mono" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 2 }}>
         <span>{value}</span>
-        {secondary ? <span style={{ fontSize: 11, opacity: 0.6 }}>{secondary}</span> : null}
+        {secondary ? <span style={{ fontSize: 12, opacity: 0.6 }}>{secondary}</span> : null}
       </span>
     </div>
   );

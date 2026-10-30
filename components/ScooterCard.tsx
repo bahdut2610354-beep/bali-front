@@ -86,23 +86,23 @@ export default function ScooterCard({ s, dark = false, large = false }: { s: Dis
         <div style={{ position: 'absolute', top: 14, right: 14 }}>
           <BRChip status={s.status} />
         </div>
-        <div style={{ position: 'absolute', bottom: 14, left: 14, background: '#FFD700', color: '#000', fontFamily: 'var(--br-mono)', fontSize: 10, padding: '5px 10px', letterSpacing: '0.12em', borderRadius: 4, boxShadow: '0 4px 12px -4px rgba(0,0,0,0.3)' }}>
+        <div style={{ position: 'absolute', bottom: 14, left: 14, background: '#FFD700', color: '#000', fontFamily: 'var(--br-mono)', fontSize: 12, padding: '5px 10px', letterSpacing: '0.12em', borderRadius: 4, boxShadow: '0 4px 12px -4px rgba(0,0,0,0.3)' }}>
           {s.tag}
         </div>
       </div>
       <div className="br-scooter-card-body" style={{ padding: 22, color: fg, display: 'flex', flexDirection: 'column', flex: 1 }}>
         <div className="br-scooter-card-head" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
           <div style={{ minWidth: 0, width: '100%' }}>
-            <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.14em', color: sub }}>{s.type.toUpperCase()}{s.cc ? ` · ${s.cc}CC` : ''}</div>
+            <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: sub }}>{s.type.toUpperCase()}{s.cc ? ` · ${s.cc}CC` : ''}</div>
             <div className="br-display br-scooter-card-title" style={{ fontSize: 22, marginTop: 4, letterSpacing: '-0.02em' }}>{s.name}</div>
           </div>
           <div style={{ display: 'flex', justifyContent: 'flex-end', alignItems: 'flex-end', flexDirection: 'column', gap: 2 }}>
             <div style={{ display: 'inline-flex', alignItems: 'baseline', gap: 6 }}>
-              <span {...marker('catalog.from')} className="br-mono" style={{ fontSize: 10, color: sub }}>{t.catalog.from}</span>
+              <span {...marker('catalog.from')} className="br-mono" style={{ fontSize: 12, color: sub }}>{t.catalog.from}</span>
               <BRPrice amount={s.price} amountIdr={s.priceIdr} size={20} />
             </div>
             {approxLabel ? (
-              <span className="br-mono" style={{ fontSize: 11, color: sub }}>
+              <span className="br-mono" style={{ fontSize: 12, color: sub }}>
                 {approxLabel}
               </span>
             ) : null}
@@ -121,7 +121,7 @@ export default function ScooterCard({ s, dark = false, large = false }: { s: Dis
               <span {...marker('catalog.reserve')}>{t.catalog.reserve}</span> <span aria-hidden>→</span>
             </div>
           ) : (
-            <div className="br-mono" style={{ width: '100%', padding: '14px', textAlign: 'center', fontSize: 11, letterSpacing: '0.14em', color: sub, border: `1px dashed ${dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}`, borderRadius: 999 }}>
+            <div className="br-mono" style={{ width: '100%', padding: '14px', textAlign: 'center', fontSize: 12, letterSpacing: '0.14em', color: sub, border: `1px dashed ${dark ? 'rgba(255,255,255,0.12)' : 'rgba(0,0,0,0.12)'}`, borderRadius: 999 }}>
               <span {...marker('catalog.reserve')}>{t.catalog.reserve.toUpperCase()}</span> · —
             </div>
           )}

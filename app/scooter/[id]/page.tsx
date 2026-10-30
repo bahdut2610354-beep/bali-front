@@ -262,7 +262,7 @@ export default function ScooterDetailPage() {
         <nav
           aria-label="Breadcrumb"
           className="br-mono"
-          style={{ fontSize: 11, color: sub, letterSpacing: '0.12em', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8, rowGap: 4 }}
+          style={{ fontSize: 12, color: sub, letterSpacing: '0.12em', display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 8, rowGap: 4 }}
         >
           <Link href={catalogPath} style={breadcrumbLinkStyle}>
             {t.nav.catalog}
@@ -300,6 +300,8 @@ export default function ScooterDetailPage() {
               <SeoImage
                 src={photoSrc}
                 alt={scooter.name}
+                loading="eager"
+                fetchPriority="high"
                 style={{
                   width: '100%',
                   height: '100%',
@@ -330,7 +332,7 @@ export default function ScooterDetailPage() {
               }}
             >
               <div style={{ textAlign: 'center', maxWidth: 340 }}>
-                <div className="br-mono" style={{ fontSize: 11, color: sub, letterSpacing: '0.14em' }}>
+                <div className="br-mono" style={{ fontSize: 12, color: sub, letterSpacing: '0.14em' }}>
                   <span {...marker(gallery.length ? 'detail.photoGallery' : 'detail.photoPreview')}>{gallery.length ? t.detail.photoGallery : t.detail.photoPreview}</span>
                 </div>
                 <div className="br-display" style={{ fontSize: 36, lineHeight: 1, marginTop: 12 }}>
@@ -363,7 +365,7 @@ export default function ScooterDetailPage() {
               {specItems.map(([Icon, l, v], i) => (
                 <div key={i} style={{ background: bg, padding: '20px 16px' }}>
                   <div style={{ color: '#FFD700' }}><Icon size={22} color="#D4A400" /></div>
-                  <div className="br-mono" style={{ fontSize: 10, color: sub, marginTop: 8, letterSpacing: '0.12em' }}>{l.toUpperCase()}</div>
+                  <div className="br-mono" style={{ fontSize: 12, color: sub, marginTop: 8, letterSpacing: '0.12em' }}>{l.toUpperCase()}</div>
                   <div className="br-display" style={{ fontSize: 18, marginTop: 2 }}>{v}</div>
                 </div>
               ))}
@@ -439,7 +441,7 @@ export default function ScooterDetailPage() {
                         Rp {formatGroupedAmount(tier.price_idr != null ? Number(tier.price_idr) : convertPrice(Number(tier.price_usd || 0), 'IDR'), 0)}
                       </span>
                       {currency !== 'IDR' ? (
-                        <span style={{ fontSize: 10, opacity: 0.65 }}>
+                        <span style={{ fontSize: 12, opacity: 0.65 }}>
                           ≈ {symbol}{formatGroupedAmount(convertPrice(Number(tier.price_usd || 0)), 2)}
                         </span>
                       ) : null}
@@ -476,7 +478,7 @@ export default function ScooterDetailPage() {
                       </div>
                       <div style={{ flex: 1 }}>
                         <div style={{ fontSize: 14, fontWeight: 500 }}>{a.name}</div>
-                        <div className="br-mono" style={{ fontSize: 11, color: sub }}>
+                        <div className="br-mono" style={{ fontSize: 12, color: sub }}>
                           Rp {formatGroupedAmount(a.priceIdr ?? convertPrice(a.price, 'IDR'), 0)} · {formatAddonPriceType(a, locale)}
                           {currency !== 'IDR' ? (
                             <span style={{ opacity: 0.65 }}> · ≈ {symbol}{formatGroupedAmount(convertPrice(a.price), 2)}</span>
@@ -491,7 +493,7 @@ export default function ScooterDetailPage() {
                           border: `1px solid ${selected ? '#FFD700' : border}`,
                           background: selected ? '#FFD700' : 'transparent',
                           color: selected ? '#000' : fg,
-                          fontSize: 11,
+                          fontSize: 12,
                           letterSpacing: '0.08em',
                         }}
                       >
@@ -512,7 +514,7 @@ export default function ScooterDetailPage() {
                 </span>
               </div>
               <BRPrimary onClick={goBook} full style={{ marginTop: 20, padding: '18px', fontSize: 15 }}><span {...marker('detail.reserve')}>{t.detail.reserve}</span></BRPrimary>
-              <div {...marker('detail.cancel')} className="br-mono" style={{ fontSize: 10, color: sub, marginTop: 12, textAlign: 'center', letterSpacing: '0.1em' }}>{t.detail.cancel}</div>
+              <div {...marker('detail.cancel')} className="br-mono" style={{ fontSize: 12, color: sub, marginTop: 12, textAlign: 'center', letterSpacing: '0.1em' }}>{t.detail.cancel}</div>
             </div>
           </div>
         </div>
@@ -520,7 +522,7 @@ export default function ScooterDetailPage() {
 
       <div className="br-mobile-sticky-cta">
         <div style={{ display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-          <span className="br-mono" style={{ fontSize: 10, color: sub, letterSpacing: '0.12em' }}><span {...marker('detail.total')}>{t.detail.total.toUpperCase()}</span> · <span {...marker('detail.withAddons')}>{t.detail.withAddons}</span></span>
+          <span className="br-mono" style={{ fontSize: 12, color: sub, letterSpacing: '0.12em' }}><span {...marker('detail.total')}>{t.detail.total.toUpperCase()}</span> · <span {...marker('detail.withAddons')}>{t.detail.withAddons}</span></span>
           <span className="br-display" style={{ fontSize: 22, letterSpacing: '-0.02em' }}>
             {symbol}
             {currency === 'IDR' ? formatGroupedAmount(totalIdr, 0) : formatGroupedAmount(convertPrice(total), 2)}

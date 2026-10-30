@@ -15,11 +15,12 @@ import { resolveScooterImage, resolveScooterRouteId } from './displayScooter';
 import type { Locale } from './i18n/dictionaries';
 import { getRequestLocale } from './i18n/requestLocale';
 import { HREFLANG_BY_LOCALE, OG_LOCALE_BY_LOCALE, ROUTE_LOCALES, localizePath } from './i18n/routing';
-import { LEGAL_DOC_KEYS, LEGAL_PATHS, getLegalContent, type LegalDocKey } from './legal';
+import { COMPANY, LEGAL_DOC_KEYS, LEGAL_PATHS, getLegalContent, type LegalDocKey } from './legal';
 
 const DEFAULT_SITE_URL = 'https://bali.bike';
 const SITE_NAME = 'TROPICAL BIKES';
-const DEFAULT_OG_IMAGE = '/logo1.svg';
+/** 1200×630 PNG: social networks do not show SVG previews. */
+const DEFAULT_OG_IMAGE = '/og-image.png';
 const SEO_REVALIDATE_SECONDS = 60;
 
 const INDEXED_PAGE_KEYS = ['home', 'catalog', 'prices', 'how', 'locations', 'contacts', 'news'] as const;
@@ -137,6 +138,8 @@ function localizedOpenGraphLocale(locale: Locale) {
 type SeoImage = {
   url: string;
   alt?: string;
+  width?: number;
+  height?: number;
 };
 
 function trimTrailingSlash(value: string) {
@@ -253,7 +256,12 @@ export const getSitemapScooters = cache(async () => {
 });
 
 function defaultImages(title: string, alts: Record<string, string> = {}): SeoImage[] {
-  return [{ url: toAbsoluteUrl(DEFAULT_OG_IMAGE), alt: getImageAlt(alts, DEFAULT_OG_IMAGE, title) }];
+  return [{ url: toAbsoluteUrl(DEFAULT_OG_IMAGE), width: 1200, height: 630, alt: getImageAlt(alts, DEFAULT_OG_IMAGE, title) }];
+}
+
+/** Date of the deployed build (set in next.config.js); the last change of texts that ship with the code. */
+export function getBuildDate() {
+  return process.env.NEXT_PUBLIC_BUILD_DATE || new Date().toISOString();
 }
 
 function buildRobots(index: boolean): NonNullable<Metadata['robots']> {
@@ -436,6 +444,7 @@ export function buildLegalMetadata(docKey: LegalDocKey): Metadata {
   const doc = getLegalContent(locale).docs[docKey];
   const path = LEGAL_PATHS[docKey];
   const title = `${doc.title} | ${SITE_NAME}`;
+  const images = defaultImages(title);
   return {
     title,
     description: doc.description,
@@ -447,6 +456,13 @@ export function buildLegalMetadata(docKey: LegalDocKey): Metadata {
       siteName: SITE_NAME,
       type: 'website',
       ...localizedOpenGraphLocale(locale),
+      images,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: doc.description,
+      images: images.map((image) => image.url),
     },
     robots: buildRobots(true),
   };
@@ -508,23 +524,47 @@ export async function buildBusinessJsonLd(locale: Locale = 'en') {
     '@type': 'AutoRental',
     '@id': `${siteUrl}/#business`,
     name: address.businessName?.trim() || SITE_NAME,
+    legalName: COMPANY.name,
     url: toAbsoluteUrl(localizePath('/', locale)),
+    email: COMPANY.email,
     logo: toAbsoluteUrl('/logo-tropical-bikes.png'),
     image: toAbsoluteUrl('/logo-tropical-bikes.png'),
     description: getPageDescription('home', locale),
-    telephone: phoneFromWhatsApp(social.whatsapp),
+    telephone: phoneFromWhatsApp(social.whatsapp) || COMPANY.phone,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: address.street?.trim() || undefined,
-      addressLocality: district ? district.charAt(0) + district.slice(1).toLowerCase() : undefined,
+      streetAddress: address.street?.trim() || 'Jl. Sunset Road No. 39B',
+      addressLocality: district ? district.charAt(0) + district.slice(1).toLowerCase() : 'Seminyak',
       addressRegion: 'Bali',
-      postalCode: address.postalCode?.trim() || undefined,
+      postalCode: address.postalCode?.trim() || '80361',
       addressCountry: 'ID',
+    },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'customer support',
+      telephone: phoneFromWhatsApp(social.whatsapp) || COMPANY.phone,
+      email: COMPANY.email,
+      areaServed: 'ID',
+      availableLanguage: ['English', 'Russian', 'Indonesian', 'Chinese', 'German', 'French'],
     },
     areaServed: { '@type': 'AdministrativeArea', name: 'Bali' },
     currenciesAccepted: 'IDR',
     availableLanguage: ['en', 'ru', 'id', 'zh', 'de', 'fr'],
     sameAs: sameAs.length ? sameAs : undefined,
+  };
+}
+
+/** schema.org WebSite: ties every page to the site and its publisher. */
+export function buildWebsiteJsonLd(locale: Locale = 'en') {
+  const siteUrl = getSiteUrl();
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': `${siteUrl}/#website`,
+    url: toAbsoluteUrl(localizePath('/', locale)),
+    name: SITE_NAME,
+    inLanguage: locale,
+    publisher: { '@id': `${siteUrl}/#business` },
   };
 }
 

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import PageSeo from '@/components/PageSeo';
 import { ScooterSeoProvider } from '@/components/ScooterSeoContext';
 import { getRequestLocale } from '@/lib/i18n/requestLocale';
 import { buildScooterJsonLd, buildScooterMetadata, serializeJsonLd } from '@/lib/seo';
@@ -26,7 +27,7 @@ export default async function ScooterDetailLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }} />
       ) : null}
       <ScooterSeoProvider value={jsonLd ? { name: jsonLd.name, description: jsonLd.description } : null}>
-        {children}
+        <PageSeo scooterId={params.id}>{children}</PageSeo>
       </ScooterSeoProvider>
     </>
   );

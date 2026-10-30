@@ -52,7 +52,7 @@ export default function LegalPage({ docKey }: { docKey: LegalDocKey }) {
           </section>
 
           <nav style={{ marginTop: 32, display: 'flex', gap: 12, flexWrap: 'wrap', alignItems: 'center' }}>
-            <span className="br-mono" style={{ fontSize: 11, color: sub, letterSpacing: '0.12em' }}>{content.ui.related.toUpperCase()}</span>
+            <span className="br-mono" style={{ fontSize: 12, color: sub, letterSpacing: '0.12em' }}>{content.ui.related.toUpperCase()}</span>
             {LEGAL_DOC_KEYS.filter((key) => key !== docKey).map((key) => (
               <Link key={key} href={localizePath(LEGAL_PATHS[key], locale)} style={{ color: '#000', fontSize: 15, textDecoration: 'underline' }}>
                 {content.docs[key].title}

@@ -30,7 +30,7 @@ export default function CurrencySwitcher({ dark = false }: { dark?: boolean }) {
         style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 10px', borderRadius: 999, border: `1px solid ${border}`, background: 'transparent', color: fg, fontSize: 12, cursor: 'pointer', letterSpacing: '0.06em' }}>
         <span style={{ fontSize: 14 }}>💱</span>
         <span>{currency}</span>
-        <span style={{ fontSize: 9, opacity: 0.5 }}>▾</span>
+        <span style={{ fontSize: 12, opacity: 0.5 }}>▾</span>
       </button>
       {open && (
         <div style={{
