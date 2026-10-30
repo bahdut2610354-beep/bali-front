@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import { BR_LOCATIONS } from '@/lib/data';
 import {
   ArrowRightIcon, CheckIcon,
-  ScooterIcon, StarIcon,
+  ScooterIcon,
   SupportIcon,
   TelegramIcon,
   WhatsAppIcon,
@@ -328,9 +328,8 @@ export default function LandingPage({ reviews }: { reviews?: ReactNode } = {}) {
             transition={{ duration: 0.5, delay: 0.42 }}
             style={{ marginTop: 20, display: 'flex', alignItems: 'center', gap: 6 }}
           >
-            <StarIcon size={13} color="#FFD700" />
             <span style={{ color: 'rgba(255,255,255,0.55)', fontSize: 13, fontFamily: 'var(--br-mono)' }}>
-              4.97 · 12 000+ riders · <span {...marker('home.priceFrom')}>{t.home.priceFrom}</span> <strong style={{ color: '#FFD700' }}>{minPriceLabel}/<span {...marker('common.day')}>{t.common.day}</span></strong>
+              <span {...marker('home.priceFrom')}>{t.home.priceFrom}</span> <strong style={{ color: '#FFD700' }}>{minPriceLabel}/<span {...marker('common.day')}>{t.common.day}</span></strong>
             </span>
           </motion.div>
         </div>
