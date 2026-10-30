@@ -93,7 +93,7 @@ export default function SiteFooter() {
       <Breadcrumbs locale={locale} />
       <div className="br-site-footer-grid" style={{ display: 'grid', gridTemplateColumns: footerGridTemplate, gap: 40, paddingBottom: 40, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <div>
-          <BRLogo dark size={22} />
+          <BRLogo dark size={36} />
           <p style={{ fontSize: 14, color: 'rgba(255,255,255,0.6)', marginTop: 18, lineHeight: 1.55, maxWidth: 320 }}>
             <span {...marker('footer.tagline')}>{t.footer.tagline}</span>
           </p>

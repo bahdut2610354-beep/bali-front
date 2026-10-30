@@ -28,15 +28,17 @@ function canConvertToWebp(src: string) {
   return /\.(jpe?g|png)$/.test(path);
 }
 
-function webpSrcSet(src: string) {
-  return WEBP_WIDTHS.map((width) => `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=80 ${width}w`).join(', ');
+function webpSrcSet(src: string, quality = 80) {
+  return WEBP_WIDTHS.map((width) => `/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=${quality} ${width}w`).join(', ');
 }
 
 /**
  * Image with admin-managed alt text. Loads lazily by default (pass `loading="eager"` for the
  * first screen) and offers a WebP version through `<picture>`, falling back to the original file.
  */
-export default function SeoImage({ src = '', alt = '', loading, decoding, sizes, onError, ...props }: ImgHTMLAttributes<HTMLImageElement>) {
+export default function SeoImage({
+  src = '', alt = '', loading, decoding, sizes, onError, webpQuality, ...props
+}: ImgHTMLAttributes<HTMLImageElement> & { /** WebP quality for the image optimizer, 1-100 (default 80). */ webpQuality?: number }) {
   const { imageAlts } = useSeoSettings();
   const [webpFailed, setWebpFailed] = useState(false);
   const img = (
@@ -57,7 +59,7 @@ export default function SeoImage({ src = '', alt = '', loading, decoding, sizes,
 
   return (
     <picture style={{ display: 'contents' }}>
-      <source type="image/webp" srcSet={webpSrcSet(src)} sizes={sizes || DEFAULT_SIZES} />
+      <source type="image/webp" srcSet={webpSrcSet(src, webpQuality)} sizes={sizes || DEFAULT_SIZES} />
       {img}
     </picture>
   );
