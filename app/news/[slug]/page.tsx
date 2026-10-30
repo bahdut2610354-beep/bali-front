@@ -304,14 +304,14 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
                 {/* Meta */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 20, flexWrap: 'wrap' }}>
                   <span style={{
-                    fontFamily: 'var(--br-mono)', fontSize: 10, fontWeight: 700,
+                    fontFamily: 'var(--br-mono)', fontSize: 12, fontWeight: 700,
                     letterSpacing: '0.14em', color: '#0A0A0F', textTransform: 'uppercase',
                     background: '#FFD700', padding: '4px 12px', borderRadius: 999,
                   }}>
                     News
                   </span>
                   <time style={{
-                    fontFamily: 'var(--br-mono)', fontSize: 11,
+                    fontFamily: 'var(--br-mono)', fontSize: 12,
                     color: 'rgba(0,0,0,0.38)', letterSpacing: '0.1em',
                     textTransform: 'uppercase',
                   }}>
@@ -319,7 +319,7 @@ export function NewsArticlePageContent({ slugOverride }: { slugOverride?: string
                   </time>
                   {allImages.length > 1 && (
                     <span style={{
-                      fontFamily: 'var(--br-mono)', fontSize: 11,
+                      fontFamily: 'var(--br-mono)', fontSize: 12,
                       color: 'rgba(0,0,0,0.45)', letterSpacing: '0.08em',
                     }}>
                       · 📷 {allImages.length} photos

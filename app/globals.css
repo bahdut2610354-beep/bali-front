@@ -68,7 +68,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   overflow: hidden;
   color: rgba(0,0,0,0.55);
   font-family: var(--br-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -86,7 +86,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
   color: #fff;
   padding: 4px 8px;
   border-radius: 4px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .br-photo.warm {
   background:
@@ -232,7 +232,7 @@ button, a { -webkit-tap-highlight-color: transparent; }
 /* Uppercase eyebrow */
 .br-eyebrow {
   font-family: var(--br-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--br-muted);
@@ -2017,7 +2017,7 @@ input[type="time"]:hover::-webkit-calendar-picker-indicator {
   }
 
   .br-booking-month-days {
-    font-size: 10px !important;
+    font-size: 12px !important;
   }
 
   .br-calendar-day {
@@ -2363,4 +2363,51 @@ input[type="time"]:hover::-webkit-calendar-picker-indicator {
   .br-contacts-grid {
     grid-template-columns: 1fr !important;
   }
+}
+
+/* ── Breadcrumbs + page update date (top of the footer) ───────────────── */
+.br-breadcrumbs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  padding-bottom: 28px;
+  margin-bottom: 36px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+.br-breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.br-breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.br-breadcrumbs li + li::before {
+  content: '›';
+  color: rgba(255, 255, 255, 0.35);
+}
+.br-breadcrumbs a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+.br-breadcrumbs a:hover {
+  color: #ffd700;
+}
+.br-breadcrumbs [aria-current='page'] {
+  color: #fff;
+}
+.br-breadcrumbs-updated {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
 }

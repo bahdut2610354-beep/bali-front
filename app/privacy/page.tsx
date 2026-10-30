@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 import LegalPage from '@/components/LegalPage';
+import PageSeo from '@/components/PageSeo';
 import { buildLegalMetadata } from '@/lib/seo';
 
 export const dynamic = 'force-dynamic';
@@ -10,5 +11,9 @@ export function generateMetadata(): Metadata {
 }
 
 export default function Page() {
-  return <LegalPage docKey="privacy" />;
+  return (
+    <PageSeo legal="privacy">
+      <LegalPage docKey="privacy" />
+    </PageSeo>
+  );
 }

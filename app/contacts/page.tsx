@@ -143,7 +143,7 @@ export default function ContactsPage() {
           09
         </div>
         <div style={{ maxWidth: 1240, margin: '0 auto', position: 'relative' }}>
-          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }} className="br-mono" style={{ fontSize: 11, letterSpacing: '0.18em', color: '#FFD700', marginBottom: 18, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
+          <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }} className="br-mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: '#FFD700', marginBottom: 18, display: 'inline-flex', alignItems: 'center', gap: 10 }}>
             <span style={{ width: 28, height: 1, background: '#FFD700' }} />
             {copy.eyebrow}
           </motion.div>
@@ -169,7 +169,7 @@ export default function ContactsPage() {
       <section style={{ padding: 'clamp(52px, 7vw, 96px) clamp(16px, 5vw, 56px)', background: '#fff' }}>
         <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-70px' }} className="br-contacts-grid" style={{ maxWidth: 1240, margin: '0 auto', display: 'grid', gridTemplateColumns: 'minmax(0, 1.2fr) minmax(320px, 0.8fr)', gap: 24, alignItems: 'start' }}>
           <motion.div variants={fadeUp} style={{ display: 'grid', gap: 14 }}>
-            <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.46)', textTransform: 'uppercase' }}>
+            <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.46)', textTransform: 'uppercase' }}>
               {copy.channels}
             </div>
             {channels.map((item) => (
@@ -207,7 +207,7 @@ export default function ContactsPage() {
             <div style={{ padding: '28px', background: '#FAFAF5', border: '1px solid rgba(0,0,0,0.08)', borderRadius: 18 }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 16 }}>
                 <MapPinIcon size={20} color="#0A0A0F" />
-                <span className="br-mono" style={{ fontSize: 11, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.46)', textTransform: 'uppercase' }}>{copy.address}</span>
+                <span className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.46)', textTransform: 'uppercase' }}>{copy.address}</span>
               </div>
               <h2 className="br-display" style={{ fontSize: 26, lineHeight: 1.05, letterSpacing: '-0.025em', margin: '0 0 12px' }}>
                 {copy.officeTitle}
@@ -222,7 +222,7 @@ export default function ContactsPage() {
 
             <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '16px 18px', borderRadius: 16, background: 'rgba(34,197,94,0.09)', color: '#16A34A', border: '1px solid rgba(34,197,94,0.16)' }}>
               <CheckIcon size={16} color="#16A34A" strokeWidth={2.5} />
-              <span className="br-mono" style={{ fontSize: 11, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              <span className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase' }}>
                 {copy.reliable}
               </span>
             </div>

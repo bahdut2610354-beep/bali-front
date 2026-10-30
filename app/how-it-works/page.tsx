@@ -92,7 +92,7 @@ export default function HowItWorksPage() {
           <div
             className="br-mono"
             style={{
-              fontSize: 11,
+              fontSize: 12,
               letterSpacing: '0.18em',
               color: sub,
               marginBottom: 18,
@@ -161,7 +161,7 @@ export default function HowItWorksPage() {
             <div
               className="br-mono"
               style={{
-                fontSize: 11,
+                fontSize: 12,
                 letterSpacing: '0.18em',
                 color: sub,
                 marginBottom: 18,
@@ -351,7 +351,7 @@ export default function HowItWorksPage() {
             <div
               className="br-mono"
               style={{
-                fontSize: 11,
+                fontSize: 12,
                 letterSpacing: '0.18em',
                 color: '#FFD700',
                 marginBottom: 18,
@@ -465,7 +465,7 @@ export default function HowItWorksPage() {
             <div
               className="br-mono"
               style={{
-                fontSize: 11,
+                fontSize: 12,
                 letterSpacing: '0.18em',
                 color: sub,
                 marginBottom: 18,
@@ -578,7 +578,7 @@ export default function HowItWorksPage() {
             <div
               className="br-mono"
               style={{
-                fontSize: 11,
+                fontSize: 12,
                 letterSpacing: '0.18em',
                 color: '#FFD700',
                 marginBottom: 18,
@@ -628,7 +628,7 @@ export default function HowItWorksPage() {
                     position: 'absolute',
                     top: 18,
                     right: 20,
-                    fontSize: 11,
+                    fontSize: 12,
                     letterSpacing: '0.18em',
                     color: 'rgba(255,255,255,0.35)',
                   }}
@@ -726,7 +726,7 @@ export default function HowItWorksPage() {
         </div>
         <div
           className="br-mono"
-          style={{ fontSize: 11, marginTop: 32, letterSpacing: '0.14em', opacity: 0.7 }}
+          style={{ fontSize: 12, marginTop: 32, letterSpacing: '0.14em', opacity: 0.7 }}
         >
           <span {...marker('cta.terms')}>{t.cta.terms}</span>
         </div>

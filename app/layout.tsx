@@ -2,7 +2,7 @@ import './globals.css';
 import type { Metadata } from 'next';
 import Providers from '@/components/Providers';
 import { SeoProvider } from '@/components/SeoImage';
-import { buildBusinessJsonLd, buildManagedPageMetadata, getSiteUrl, getSeoSettings, serializeJsonLd } from '@/lib/seo';
+import { buildBusinessJsonLd, buildManagedPageMetadata, buildWebsiteJsonLd, getSiteUrl, getSeoSettings, serializeJsonLd } from '@/lib/seo';
 import { getRequestRouteLocale } from '@/lib/i18n/requestLocale';
 
 const GOOGLE_TAG_MANAGER_ID = 'GTM-M6JD3FLW';
@@ -14,6 +14,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     metadataBase: new URL(getSiteUrl()),
     applicationName: 'TROPICAL BIKES',
+    authors: [{ name: 'TROPICAL BIKES', url: getSiteUrl() }],
+    creator: 'TROPICAL BIKES',
+    publisher: 'PT ART TREADING GLOBAL',
     title: metadata.title,
     description: metadata.description,
     alternates: metadata.alternates,
@@ -26,6 +29,10 @@ export async function generateMetadata(): Promise<Metadata> {
       apple: '/logo1.svg',
     },
     manifest: '/manifest.webmanifest',
+    other: {
+      HandheldFriendly: 'true',
+      MobileOptimized: 'width',
+    },
     formatDetection: {
       email: false,
       address: false,
@@ -38,6 +45,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const seoSettings = await getSeoSettings();
   const routeLocale = getRequestRouteLocale();
   const businessJsonLd = await buildBusinessJsonLd(routeLocale || 'en');
+  const websiteJsonLd = buildWebsiteJsonLd(routeLocale || 'en');
   return (
     <html lang={routeLocale || 'en'}>
       <head>
@@ -93,6 +101,10 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: serializeJsonLd(businessJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: serializeJsonLd(websiteJsonLd) }}
         />
         <SeoProvider settings={seoSettings}><Providers routeLocale={routeLocale}>{children}</Providers></SeoProvider>
         <script src="/bali-bike-messenger-conversions.js" defer />

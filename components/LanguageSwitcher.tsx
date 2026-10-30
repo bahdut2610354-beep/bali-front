@@ -28,7 +28,7 @@ export default function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
         style={{ display: 'flex', alignItems: 'center', gap: 6, padding: '6px 10px', borderRadius: 999, border: `1px solid ${border}`, background: 'transparent', color: fg, fontSize: 12, cursor: 'pointer', letterSpacing: '0.06em' }}>
         <FlagIcon code={current.code} name={current.name} size={18} />
         <span>{current.code.toUpperCase()}</span>
-        <span style={{ fontSize: 9, opacity: 0.5 }}>▾</span>
+        <span style={{ fontSize: 12, opacity: 0.5 }}>▾</span>
       </button>
       {open && (
         <div style={{
@@ -49,7 +49,7 @@ export default function LanguageSwitcher({ dark = false }: { dark?: boolean }) {
               style={{ display: 'flex', alignItems: 'center', gap: 10, width: '100%', padding: '8px 10px', borderRadius: 8, border: 0, background: locale === l.code ? (dark ? 'rgba(255,215,0,0.12)' : '#FFF6CC') : 'transparent', color: fg, cursor: 'pointer', textAlign: 'left', fontSize: 13 }}>
               <FlagIcon code={l.code} name={l.name} size={20} />
               <span style={{ flex: 1 }}>{l.name}</span>
-              <span className="br-mono" style={{ fontSize: 10, opacity: 0.5 }}>{l.code.toUpperCase()}</span>
+              <span className="br-mono" style={{ fontSize: 12, opacity: 0.5 }}>{l.code.toUpperCase()}</span>
             </button>
           ))}
         </div>

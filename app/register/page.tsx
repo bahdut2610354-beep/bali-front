@@ -47,7 +47,7 @@ export default function RegisterPage() {
     transition: 'border-color 160ms, box-shadow 160ms',
   };
   const labelStyle: React.CSSProperties = {
-    display: 'block', fontFamily: 'var(--br-mono)', fontSize: 10,
+    display: 'block', fontFamily: 'var(--br-mono)', fontSize: 12,
     letterSpacing: '0.12em', textTransform: 'uppercase',
     color: 'rgba(0,0,0,0.45)', marginBottom: 6,
   };
@@ -83,7 +83,7 @@ export default function RegisterPage() {
             </div>
             <div style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
               {Array.from({ length: 5 }).map((_, i) => <StarIcon key={i} size={13} color="#FFD700" />)}
-              <span style={{ fontFamily: 'var(--br-mono)', fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 6, letterSpacing: '0.06em' }}>4.97</span>
+              <span style={{ fontFamily: 'var(--br-mono)', fontSize: 12, color: 'rgba(255,255,255,0.4)', marginLeft: 6, letterSpacing: '0.06em' }}>4.97</span>
             </div>
           </div>
 
@@ -115,7 +115,7 @@ export default function RegisterPage() {
           <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: 13, lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
             <span {...marker('auth.registerQuote')}>"{t.auth.registerQuote}"</span>
           </p>
-          <p style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.1em', marginTop: 8, textTransform: 'uppercase' }}>
+          <p style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em', marginTop: 8, textTransform: 'uppercase' }}>
             <span {...marker('auth.registerQuoteMeta')}>{t.auth.registerQuoteMeta}</span>
           </p>
         </div>
@@ -177,7 +177,7 @@ export default function RegisterPage() {
                   onFocus={onFocus} onBlur={onBlur}
                 />
                 <button type="button" onClick={() => setShowPass((s) => !s)}
-                  style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,0,0,0.35)', fontSize: 11, fontFamily: 'var(--br-mono)', padding: 4, letterSpacing: '0.06em' }}>
+                  style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,0,0,0.35)', fontSize: 12, fontFamily: 'var(--br-mono)', padding: 4, letterSpacing: '0.06em' }}>
                   {showPass ? 'HIDE' : 'SHOW'}
                 </button>
               </div>

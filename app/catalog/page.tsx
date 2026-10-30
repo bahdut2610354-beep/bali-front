@@ -172,7 +172,7 @@ export default function CatalogPage() {
           ))}
         </div>
         <div className="br-catalog-sort" style={{ display: 'flex', gap: 8, alignItems: 'center', flexShrink: 0 }}>
-          <span {...marker('catalog.sort')} className="br-mono" style={{ fontSize: 11, color: sub, letterSpacing: '0.1em' }}>{t.catalog.sort}</span>
+          <span {...marker('catalog.sort')} className="br-mono" style={{ fontSize: 12, color: sub, letterSpacing: '0.1em' }}>{t.catalog.sort}</span>
           <select
             value={sort}
             onChange={(e) => setSort(e.target.value)}

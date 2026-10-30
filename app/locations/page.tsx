@@ -106,7 +106,7 @@ export default function LocationsPage() {
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
             <div className="br-mono" style={{
-              fontSize: 11, letterSpacing: '0.18em', color: '#FFD700',
+              fontSize: 12, letterSpacing: '0.18em', color: '#FFD700',
               marginBottom: 18, display: 'inline-flex', alignItems: 'center', gap: 10,
             }}>
               <span style={{ width: 28, height: 1, background: '#FFD700' }} />
@@ -154,7 +154,7 @@ export default function LocationsPage() {
               padding: '8px 16px', borderRadius: 999,
             }}>
               <DeliveryIcon size={14} color="#FFD700" />
-              <span className="br-mono" style={{ fontSize: 11, color: '#FFD700', letterSpacing: '0.12em' }}>
+              <span className="br-mono" style={{ fontSize: 12, color: '#FFD700', letterSpacing: '0.12em' }}>
                 <span {...marker('delivery.zonesCount')}>{deliveryCopy.zonesCount.replace('{n}', String(activeZones.length))}</span>
               </span>
             </div>
@@ -164,7 +164,7 @@ export default function LocationsPage() {
               padding: '8px 16px', borderRadius: 999,
             }}>
               <CheckIcon size={12} color="#22C55E" strokeWidth={2.5} />
-              <span className="br-mono" style={{ fontSize: 11, color: '#22C55E', letterSpacing: '0.12em' }}>
+              <span className="br-mono" style={{ fontSize: 12, color: '#22C55E', letterSpacing: '0.12em' }}>
                 <span {...marker('delivery.freeInMostZones')}>{deliveryCopy.freeInMostZones}</span>
               </span>
             </div>
@@ -181,7 +181,7 @@ export default function LocationsPage() {
             style={{ marginBottom: 48 }}
           >
             <motion.div variants={fadeUp} className="br-mono" style={{
-              fontSize: 11, letterSpacing: '0.18em', color: 'rgba(0,0,0,0.45)',
+              fontSize: 12, letterSpacing: '0.18em', color: 'rgba(0,0,0,0.45)',
               marginBottom: 16, display: 'inline-flex', alignItems: 'center', gap: 10,
             }}>
               <span style={{ width: 28, height: 1, background: '#000' }} />
@@ -227,7 +227,7 @@ export default function LocationsPage() {
                 }}>
                   <div aria-hidden className="br-mono" style={{
                     position: 'absolute', top: 14, right: 14,
-                    fontSize: 11, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.16)',
+                    fontSize: 12, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.16)',
                   }}>
                     {String(i + 1).padStart(2, '0')}
                   </div>
@@ -253,14 +253,14 @@ export default function LocationsPage() {
                     {zone.freeDelivery !== false ? (
                       <>
                         <CheckIcon size={12} color="#22C55E" strokeWidth={2.5} />
-                        <span className="br-mono" style={{ fontSize: 11, color: '#22C55E', letterSpacing: '0.1em' }}>
+                        <span className="br-mono" style={{ fontSize: 12, color: '#22C55E', letterSpacing: '0.1em' }}>
                           {`${t.home.deliveryFree} ${deliveryCopy.deliverySuffix}`}
                         </span>
                       </>
                     ) : (
                       <>
                         <DeliveryIcon size={12} color="rgba(0,0,0,0.45)" />
-                        <span className="br-mono" style={{ fontSize: 11, color: 'rgba(0,0,0,0.45)', letterSpacing: '0.1em' }}>
+                        <span className="br-mono" style={{ fontSize: 12, color: 'rgba(0,0,0,0.45)', letterSpacing: '0.1em' }}>
                           {zone.deliveryFeeIDR || zone.deliveryFeeUSD
                             ? deliveryCopy.paidFrom.replace('{price}', `Rp ${formatGroupedAmount(zone.deliveryFeeIDR || convertPrice(zone.deliveryFeeUSD || 0, 'IDR'), 0)}`)
                             : deliveryCopy.smallFee
@@ -272,7 +272,7 @@ export default function LocationsPage() {
 
                   {zone.timeMinutes ? (
                     <div className="br-mono" style={{
-                      marginTop: 8, fontSize: 10, color: 'rgba(0,0,0,0.35)',
+                      marginTop: 8, fontSize: 12, color: 'rgba(0,0,0,0.35)',
                       letterSpacing: '0.1em',
                     }}>
                       {deliveryCopy.minDelivery.replace('{n}', String(zone.timeMinutes))}
@@ -303,7 +303,7 @@ export default function LocationsPage() {
             style={{ marginBottom: 48 }}
           >
             <motion.div variants={fadeUp} className="br-mono" style={{
-              fontSize: 11, letterSpacing: '0.18em', color: '#FFD700',
+              fontSize: 12, letterSpacing: '0.18em', color: '#FFD700',
               marginBottom: 16, display: 'inline-flex', alignItems: 'center', gap: 10,
             }}>
               <span style={{ width: 28, height: 1, background: '#FFD700' }} />
@@ -385,7 +385,7 @@ export default function LocationsPage() {
             border: '1px solid rgba(255,255,255,0.1)',
           }}>
             <div className="br-mono" style={{
-              fontSize: 10, letterSpacing: '0.16em', color: '#FFD700',
+              fontSize: 12, letterSpacing: '0.16em', color: '#FFD700',
               marginBottom: 4, textTransform: 'uppercase',
             }}>
               <span {...marker('home.mapEyebrow')}>{t.home.mapEyebrow}</span>
@@ -398,7 +398,7 @@ export default function LocationsPage() {
             color: 'rgba(255,255,255,0.6)', padding: '8px 12px', borderRadius: 8,
             border: '1px solid rgba(255,255,255,0.08)',
           }}>
-            <span className="br-mono" style={{ fontSize: 10, letterSpacing: '0.12em' }}>
+            <span className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em' }}>
               <span {...marker('home.mapDrag')}>{t.home.mapDrag}</span>
             </span>
           </div>
@@ -416,7 +416,7 @@ export default function LocationsPage() {
           viewport={{ once: true }} transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
         >
           <p className="br-mono" style={{
-            fontSize: 11, letterSpacing: '0.18em', color: 'rgba(0,0,0,0.5)',
+            fontSize: 12, letterSpacing: '0.18em', color: 'rgba(0,0,0,0.5)',
             marginBottom: 14, textTransform: 'uppercase',
           }}>
             <span {...marker('cta.eyebrow')}>{t.cta.eyebrow}</span>
@@ -458,7 +458,7 @@ export default function LocationsPage() {
             </a>
           </div>
           <p className="br-mono" style={{
-            fontSize: 10, marginTop: 28, letterSpacing: '0.14em',
+            fontSize: 12, marginTop: 28, letterSpacing: '0.14em',
             color: 'rgba(0,0,0,0.40)', textTransform: 'uppercase',
           }}>
             <span {...marker('cta.terms')}>{t.cta.terms}</span>

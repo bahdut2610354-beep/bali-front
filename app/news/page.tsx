@@ -74,14 +74,14 @@ function NewsCard({ article, locale, readMoreLabel, href }: { article: ApiNewsAr
               background: 'radial-gradient(circle at 70% 30%, rgba(255,215,0,0.12), transparent 55%), linear-gradient(135deg, #f5f3ef 0%, #e8e4da 100%)',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
             }}>
-              <span style={{ fontFamily: 'var(--br-mono)', fontSize: 11, letterSpacing: '0.1em', color: 'rgba(0,0,0,0.28)', textTransform: 'uppercase' }}>No image</span>
+              <span style={{ fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em', color: 'rgba(0,0,0,0.28)', textTransform: 'uppercase' }}>No image</span>
             </div>
           )}
           {totalPhotos > 1 && (
             <div style={{
               position: 'absolute', top: 12, right: 12,
               background: 'rgba(10,10,15,0.78)', backdropFilter: 'blur(6px)',
-              color: '#FFD700', fontFamily: 'var(--br-mono)', fontSize: 11, fontWeight: 700,
+              color: '#FFD700', fontFamily: 'var(--br-mono)', fontSize: 12, fontWeight: 700,
               padding: '4px 9px', borderRadius: 999, letterSpacing: '0.04em',
               display: 'flex', alignItems: 'center', gap: 4, zIndex: 2,
             }}>
@@ -98,7 +98,7 @@ function NewsCard({ article, locale, readMoreLabel, href }: { article: ApiNewsAr
 
         <div style={{ padding: 'clamp(18px, 2.5vw, 26px)', display: 'flex', flexDirection: 'column', flex: 1 }}>
           <time style={{
-            fontFamily: 'var(--br-mono)', fontSize: 10, fontWeight: 600,
+            fontFamily: 'var(--br-mono)', fontSize: 12, fontWeight: 600,
             color: 'rgba(0,0,0,0.36)', letterSpacing: '0.12em',
             textTransform: 'uppercase', marginBottom: 10, display: 'block',
           }}>
@@ -189,7 +189,7 @@ export default function NewsPage() {
             variants={stagger} initial="hidden" animate="visible"
           >
             <motion.p variants={fadeUp} style={{
-              fontFamily: 'var(--br-mono)', fontSize: 11, fontWeight: 700,
+              fontFamily: 'var(--br-mono)', fontSize: 12, fontWeight: 700,
               letterSpacing: '0.16em', color: 'rgba(0,0,0,0.36)',
               textTransform: 'uppercase', marginBottom: 18,
             }}>
@@ -230,12 +230,12 @@ export default function NewsPage() {
             </div>
           ) : error ? (
             <div style={{ textAlign: 'center', padding: 'clamp(60px, 8vw, 100px) 0' }}>
-              <p style={{ fontFamily: 'var(--br-mono)', fontSize: 11, letterSpacing: '0.14em', color: '#dc2626', textTransform: 'uppercase', marginBottom: 12 }}>Error</p>
+              <p style={{ fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.14em', color: '#dc2626', textTransform: 'uppercase', marginBottom: 12 }}>Error</p>
               <p style={{ fontFamily: 'var(--br-display)', fontSize: 'clamp(22px, 3vw, 32px)', color: '#0A0A0F', letterSpacing: '-0.02em' }}><span {...marker('news.error')}>{d.error}</span></p>
             </div>
           ) : articles.length === 0 ? (
             <div style={{ textAlign: 'center', padding: 'clamp(60px, 8vw, 100px) 0' }}>
-              <p style={{ fontFamily: 'var(--br-mono)', fontSize: 11, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.36)', textTransform: 'uppercase', marginBottom: 12 }}>Nothing here</p>
+              <p style={{ fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.36)', textTransform: 'uppercase', marginBottom: 12 }}>Nothing here</p>
               <p style={{ fontFamily: 'var(--br-display)', fontSize: 'clamp(22px, 3vw, 32px)', color: '#0A0A0F', letterSpacing: '-0.02em' }}><span {...marker('news.empty')}>{d.empty}</span></p>
             </div>
           ) : (

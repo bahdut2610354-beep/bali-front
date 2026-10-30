@@ -130,7 +130,7 @@ export default function LoginPage() {
             </div>
             <div style={{ display: 'flex', gap: 2, alignItems: 'center' }}>
               {Array.from({ length: 5 }).map((_, i) => <StarIcon key={i} size={13} color="#FFD700" />)}
-              <span style={{ fontFamily: 'var(--br-mono)', fontSize: 11, color: 'rgba(255,255,255,0.4)', marginLeft: 6, letterSpacing: '0.06em' }}>4.97</span>
+              <span style={{ fontFamily: 'var(--br-mono)', fontSize: 12, color: 'rgba(255,255,255,0.4)', marginLeft: 6, letterSpacing: '0.06em' }}>4.97</span>
             </div>
           </div>
 
@@ -162,7 +162,7 @@ export default function LoginPage() {
           <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: 13, lineHeight: 1.6, margin: 0, fontStyle: 'italic' }}>
             <span {...marker('auth.loginQuote')}>"{t.auth.loginQuote}"</span>
           </p>
-          <p style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.1em', marginTop: 8, textTransform: 'uppercase' }}>
+          <p style={{ color: 'rgba(255,255,255,0.25)', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em', marginTop: 8, textTransform: 'uppercase' }}>
             <span {...marker('auth.loginQuoteMeta')}>{t.auth.loginQuoteMeta}</span>
           </p>
         </div>
@@ -203,7 +203,7 @@ export default function LoginPage() {
           <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
 
             <div>
-              <label style={{ display: 'block', fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)', marginBottom: 6 }}>
+              <label style={{ display: 'block', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)', marginBottom: 6 }}>
                 <span {...marker('auth.email')}>{t.auth.email}</span>
               </label>
               <input
@@ -218,7 +218,7 @@ export default function LoginPage() {
             </div>
 
             <div>
-              <label style={{ display: 'block', fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)', marginBottom: 6 }}>
+              <label style={{ display: 'block', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(0,0,0,0.45)', marginBottom: 6 }}>
                 <span {...marker('auth.password')}>{t.auth.password}</span>
               </label>
               <div style={{ position: 'relative' }}>
@@ -231,7 +231,7 @@ export default function LoginPage() {
                   onBlur={(e) => { e.target.style.borderColor = 'rgba(0,0,0,0.12)'; e.target.style.boxShadow = 'none'; }}
                 />
                 <button type="button" onClick={() => setShowPass((s) => !s)}
-                  style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,0,0,0.35)', fontSize: 11, fontFamily: 'var(--br-mono)', padding: 4, letterSpacing: '0.06em' }}>
+                  style={{ position: 'absolute', right: 14, top: '50%', transform: 'translateY(-50%)', background: 'none', border: 'none', cursor: 'pointer', color: 'rgba(0,0,0,0.35)', fontSize: 12, fontFamily: 'var(--br-mono)', padding: 4, letterSpacing: '0.06em' }}>
                   {showPass ? 'HIDE' : 'SHOW'}
                 </button>
               </div>

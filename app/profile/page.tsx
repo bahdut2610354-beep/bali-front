@@ -318,7 +318,7 @@ function ProfilePageContent() {
           <div aria-hidden style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 60% 50% at 70% 0%, rgba(255,215,0,0.10) 0%, transparent 100%)', pointerEvents: 'none' }} />
           <div aria-hidden style={{ position: 'absolute', bottom: -60, left: -20, fontFamily: 'var(--br-display)', fontSize: 'clamp(180px, 24vw, 360px)', fontWeight: 800, letterSpacing: '-0.06em', lineHeight: 0.8, color: 'rgba(255,255,255,0.025)', userSelect: 'none', pointerEvents: 'none' }}>01</div>
           <div style={{ maxWidth: 520, textAlign: 'center', position: 'relative' }}>
-            <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 20 }}>TROPICAL BIKES — RIDER PORTAL</div>
+            <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 20 }}>TROPICAL BIKES — RIDER PORTAL</div>
             <h1 className="br-display" style={{ margin: '0 0 16px', fontSize: 'clamp(36px, 5vw, 60px)', lineHeight: 1.0, letterSpacing: '-0.03em', color: '#fff' }}>
               {copy.signInRequired}
             </h1>
@@ -347,7 +347,7 @@ function ProfilePageContent() {
 
                 {/* Name + info */}
                 <div style={{ flex: 1, minWidth: 200 }}>
-                  <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 10 }}>
+                  <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 10 }}>
                     {copy.riderProfile.toUpperCase()}
                   </div>
                   <h1 className="br-display" style={{ margin: 0, fontSize: 'clamp(28px, 3.5vw, 48px)', lineHeight: 1.05, letterSpacing: '-0.03em' }}>
@@ -358,17 +358,17 @@ function ProfilePageContent() {
                     {user?.phone ? <span style={{ marginLeft: 14, color: 'rgba(255,255,255,0.3)' }}>· {user.phone}</span> : null}
                   </div>
                   <div style={{ display: 'flex', gap: 8, marginTop: 14, flexWrap: 'wrap' }}>
-                    <span style={{ padding: '4px 12px', borderRadius: 100, background: 'rgba(255,215,0,0.15)', color: '#FFD700', fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.1em' }}>
+                    <span style={{ padding: '4px 12px', borderRadius: 100, background: 'rgba(255,215,0,0.15)', color: '#FFD700', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em' }}>
                       {(user?.role || 'rider').toUpperCase()}
                     </span>
-                    <span style={{ padding: '4px 12px', borderRadius: 100, background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.1em' }}>
+                    <span style={{ padding: '4px 12px', borderRadius: 100, background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em' }}>
                       {activeCurrency}
                     </span>
-                    <span style={{ padding: '4px 12px', borderRadius: 100, background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.1em' }}>
+                    <span style={{ padding: '4px 12px', borderRadius: 100, background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em' }}>
                       {PROFILE_LANGUAGES.find((l) => l.value === (user?.language || locale))?.label || locale}
                     </span>
                     {user?.country ? (
-                      <span style={{ padding: '4px 12px', borderRadius: 100, background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.1em' }}>
+                      <span style={{ padding: '4px 12px', borderRadius: 100, background: 'rgba(255,255,255,0.08)', color: 'rgba(255,255,255,0.6)', fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.1em' }}>
                         {user.country}
                       </span>
                     ) : null}
@@ -395,11 +395,11 @@ function ProfilePageContent() {
                     key={tab.key}
                     onClick={() => setActiveTab(tab.key)}
                     className="br-mono"
-                    style={{ padding: '18px 24px', background: 'transparent', border: 'none', borderBottom: `2px solid ${activeTab === tab.key ? '#FFD700' : 'transparent'}`, color: activeTab === tab.key ? '#FFD700' : 'rgba(255,255,255,0.4)', fontSize: 10, letterSpacing: '0.18em', cursor: 'pointer', transition: 'color 0.2s, border-color 0.2s', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 8 }}
+                    style={{ padding: '18px 24px', background: 'transparent', border: 'none', borderBottom: `2px solid ${activeTab === tab.key ? '#FFD700' : 'transparent'}`, color: activeTab === tab.key ? '#FFD700' : 'rgba(255,255,255,0.4)', fontSize: 12, letterSpacing: '0.18em', cursor: 'pointer', transition: 'color 0.2s, border-color 0.2s', whiteSpace: 'nowrap', display: 'flex', alignItems: 'center', gap: 8 }}
                   >
                     {tab.label}
                     {tab.count !== undefined && tab.count > 0 && (
-                      <span style={{ minWidth: 20, height: 20, borderRadius: 10, background: activeTab === tab.key ? '#FFD700' : 'rgba(255,255,255,0.1)', color: activeTab === tab.key ? '#0A0A0A' : 'rgba(255,255,255,0.45)', fontSize: 10, display: 'grid', placeItems: 'center', padding: '0 6px' }}>
+                      <span style={{ minWidth: 20, height: 20, borderRadius: 10, background: activeTab === tab.key ? '#FFD700' : 'rgba(255,255,255,0.1)', color: activeTab === tab.key ? '#0A0A0A' : 'rgba(255,255,255,0.45)', fontSize: 12, display: 'grid', placeItems: 'center', padding: '0 6px' }}>
                         {tab.count}
                       </span>
                     )}
@@ -416,7 +416,7 @@ function ProfilePageContent() {
 
                 {/* Edit form */}
                 <form onSubmit={handleSaveProfile} style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: '32px' }}>
-                  <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 10 }}>
+                  <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 10 }}>
                     {copy.editProfile}
                   </div>
                   <div className="br-display" style={{ fontSize: 26, letterSpacing: '-0.025em', marginBottom: 28, lineHeight: 1.1 }}>
@@ -446,7 +446,7 @@ function ProfilePageContent() {
                   </div>
 
                   {saveMessage ? (
-                    <div className="br-mono" style={{ marginTop: 16, fontSize: 11, letterSpacing: '0.12em', color: saveState === 'error' ? '#FCA5A5' : '#86EFAC' }}>
+                    <div className="br-mono" style={{ marginTop: 16, fontSize: 12, letterSpacing: '0.12em', color: saveState === 'error' ? '#FCA5A5' : '#86EFAC' }}>
                       {saveMessage}
                     </div>
                   ) : null}
@@ -460,7 +460,7 @@ function ProfilePageContent() {
 
                 {/* Quick actions */}
                 <div style={{ background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: 20, padding: '32px' }}>
-                  <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 10 }}>
+                  <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 10 }}>
                     {copy.quickActions}
                   </div>
                   <div className="br-display" style={{ fontSize: 26, letterSpacing: '-0.025em', marginBottom: 12, lineHeight: 1.1 }}>
@@ -486,7 +486,7 @@ function ProfilePageContent() {
                 {/* Header row */}
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 16, marginBottom: 28, flexWrap: 'wrap' }}>
                   <div>
-                    <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.22em', color: 'rgba(0,0,0,0.4)', marginBottom: 8 }}>{copy.myBookings}</div>
+                    <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.22em', color: 'rgba(0,0,0,0.4)', marginBottom: 8 }}>{copy.myBookings}</div>
                     <h2 className="br-display" style={{ margin: 0, fontSize: 'clamp(28px, 3vw, 40px)', letterSpacing: '-0.03em', lineHeight: 1 }}>{copy.bookingHistory}</h2>
                   </div>
                   <BROutline href={catalogPath}>{t.nav.book}</BROutline>
@@ -494,7 +494,7 @@ function ProfilePageContent() {
 
                 {/* Filter chips */}
                 <div style={{ display: 'flex', gap: 8, marginBottom: 28, flexWrap: 'wrap', alignItems: 'center' }}>
-                  <span className="br-mono" style={{ fontSize: 10, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.35)', marginRight: 4 }}>{copy.filterLabel.toUpperCase()}</span>
+                  <span className="br-mono" style={{ fontSize: 12, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.35)', marginRight: 4 }}>{copy.filterLabel.toUpperCase()}</span>
                   {([
                     { key: 'all' as BookingFilter, label: copy.all, count: totals.total },
                     { key: 'active' as BookingFilter, label: copy.active, count: totals.active },
@@ -504,7 +504,7 @@ function ProfilePageContent() {
                       key={f.key}
                       onClick={() => setBookingFilter(f.key)}
                       className="br-mono"
-                      style={{ padding: '7px 16px', borderRadius: 100, border: 'none', cursor: 'pointer', background: bookingFilter === f.key ? '#0A0A0A' : 'rgba(0,0,0,0.07)', color: bookingFilter === f.key ? '#fff' : 'rgba(0,0,0,0.5)', fontSize: 10, letterSpacing: '0.14em', transition: 'all 0.18s' }}
+                      style={{ padding: '7px 16px', borderRadius: 100, border: 'none', cursor: 'pointer', background: bookingFilter === f.key ? '#0A0A0A' : 'rgba(0,0,0,0.07)', color: bookingFilter === f.key ? '#fff' : 'rgba(0,0,0,0.5)', fontSize: 12, letterSpacing: '0.14em', transition: 'all 0.18s' }}
                     >
                       {f.label.toUpperCase()} ({f.count})
                     </button>
@@ -533,7 +533,7 @@ function ProfilePageContent() {
                       >
                         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 16, flexWrap: 'wrap' }}>
                           <div style={{ flex: '1 1 260px' }}>
-                            <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.18em', color: 'rgba(0,0,0,0.35)', marginBottom: 10 }}>
+                            <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.18em', color: 'rgba(0,0,0,0.35)', marginBottom: 10 }}>
                               #{booking.order_number}
                             </div>
                             <div className="br-display" style={{ fontSize: 24, lineHeight: 1.05, letterSpacing: '-0.025em' }}>
@@ -584,7 +584,7 @@ function ProfilePageContent() {
 
                 {/* Header */}
                 <div style={{ marginBottom: 28 }}>
-                  <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 10 }}>{copy.support}</div>
+                  <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.22em', color: '#FFD700', marginBottom: 10 }}>{copy.support}</div>
                   <h2 className="br-display" style={{ margin: '0 0 10px', fontSize: 'clamp(24px, 3vw, 36px)', letterSpacing: '-0.025em', lineHeight: 1.05 }}>{copy.supportTitle}</h2>
                   <p style={{ margin: 0, color: 'rgba(255,255,255,0.4)', fontSize: 14, lineHeight: 1.65, maxWidth: 560 }}>{copy.supportHint}</p>
                 </div>
@@ -597,7 +597,7 @@ function ProfilePageContent() {
                         key={thread.id}
                         onClick={() => setActiveSupportThreadId(thread.id)}
                         className="br-mono"
-                        style={{ padding: '6px 14px', borderRadius: 100, border: 'none', cursor: 'pointer', background: activeSupportThreadId === thread.id ? '#FFD700' : 'rgba(255,255,255,0.08)', color: activeSupportThreadId === thread.id ? '#0A0A0A' : 'rgba(255,255,255,0.55)', fontSize: 10, letterSpacing: '0.14em' }}
+                        style={{ padding: '6px 14px', borderRadius: 100, border: 'none', cursor: 'pointer', background: activeSupportThreadId === thread.id ? '#FFD700' : 'rgba(255,255,255,0.08)', color: activeSupportThreadId === thread.id ? '#0A0A0A' : 'rgba(255,255,255,0.55)', fontSize: 12, letterSpacing: '0.14em' }}
                       >
                         {thread.title || 'Support Chat'}
                         {thread.status === 'closed' ? ` · ${copy.supportStatusClosed}` : ''}
@@ -615,15 +615,15 @@ function ProfilePageContent() {
                     <div style={{ padding: '14px 20px', borderBottom: '1px solid rgba(255,255,255,0.07)', display: 'flex', alignItems: 'center', gap: 10 }}>
                       <span style={{ width: 7, height: 7, borderRadius: '50%', background: activeSupportThread.status === 'closed' ? 'rgba(255,255,255,0.3)' : '#22C55E', flexShrink: 0 }} />
                       <span style={{ color: 'rgba(255,255,255,0.6)', fontSize: 13 }}>{activeSupportThread.title || 'Support Chat'}</span>
-                      <span className="br-mono" style={{ marginLeft: 'auto', fontSize: 10, letterSpacing: '0.12em', color: activeSupportThread.status === 'closed' ? 'rgba(255,255,255,0.3)' : '#FFD700' }}>
+                      <span className="br-mono" style={{ marginLeft: 'auto', fontSize: 12, letterSpacing: '0.12em', color: activeSupportThread.status === 'closed' ? 'rgba(255,255,255,0.3)' : '#FFD700' }}>
                         {activeSupportThread.status === 'closed' ? copy.supportStatusClosed : copy.supportStatusOpen}
                       </span>
                       {activeSupportThread.has_unread_support_reply ? (
-                        <span className="br-mono" style={{ fontSize: 10, letterSpacing: '0.12em', color: '#0A0A0A', padding: '5px 8px', borderRadius: 999, background: '#FFD700' }}>
+                        <span className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', color: '#0A0A0A', padding: '5px 8px', borderRadius: 999, background: '#FFD700' }}>
                           {copy.newReply}
                         </span>
                       ) : activeSupportThread.last_message?.is_from_support ? (
-                        <span className="br-mono" style={{ fontSize: 10, letterSpacing: '0.12em', color: '#86EFAC', padding: '5px 8px', borderRadius: 999, background: 'rgba(34,197,94,0.12)' }}>
+                        <span className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', color: '#86EFAC', padding: '5px 8px', borderRadius: 999, background: 'rgba(34,197,94,0.12)' }}>
                           {copy.supportReplied}
                         </span>
                       ) : null}
@@ -658,10 +658,10 @@ function ProfilePageContent() {
                             <div key={message.id} style={{ display: 'flex', justifyContent: isSupport ? 'flex-start' : 'flex-end' }}>
                               <div style={{ maxWidth: '72%', borderRadius: isSupport ? '4px 18px 18px 18px' : '18px 4px 18px 18px', padding: '12px 16px', background: isSupport ? 'rgba(255,255,255,0.09)' : '#FFD700', color: isSupport ? '#fff' : '#0A0A0A' }}>
                                 {isSupport && (
-                                  <div className="br-mono" style={{ fontSize: 9, letterSpacing: '0.14em', color: '#FFD700', marginBottom: 6, opacity: 0.85 }}>SUPPORT</div>
+                                  <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.14em', color: '#FFD700', marginBottom: 6, opacity: 0.85 }}>SUPPORT</div>
                                 )}
                                 <div style={{ fontSize: 14, lineHeight: 1.6 }}>{message.text}</div>
-                                <div style={{ marginTop: 6, fontSize: 11, opacity: 0.5, textAlign: 'right', fontFamily: 'var(--br-mono)' }}>
+                                <div style={{ marginTop: 6, fontSize: 12, opacity: 0.5, textAlign: 'right', fontFamily: 'var(--br-mono)' }}>
                                   {formatDateTime(message.created_at, locale)}
                                 </div>
                               </div>
@@ -713,7 +713,7 @@ function StatCell({ label, value, accent }: { label: string; value: number; acce
       <div className="br-display" style={{ fontSize: 52, lineHeight: 1, letterSpacing: '-0.04em', color: accent ? '#FFD700' : '#fff' }}>
         {value}
       </div>
-      <div className="br-mono" style={{ marginTop: 8, fontSize: 10, letterSpacing: '0.18em', color: accent ? 'rgba(255,215,0,0.55)' : 'rgba(255,255,255,0.35)' }}>
+      <div className="br-mono" style={{ marginTop: 8, fontSize: 12, letterSpacing: '0.18em', color: accent ? 'rgba(255,215,0,0.55)' : 'rgba(255,255,255,0.35)' }}>
         {label.toUpperCase()}
       </div>
     </div>
@@ -723,7 +723,7 @@ function StatCell({ label, value, accent }: { label: string; value: number; acce
 function BookingMeta({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="br-mono" style={{ fontSize: 10, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.4)' }}>{label.toUpperCase()}</div>
+      <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.16em', color: 'rgba(0,0,0,0.4)' }}>{label.toUpperCase()}</div>
       <div className="br-display" style={{ marginTop: 6, fontSize: 17, letterSpacing: '-0.01em' }}>{value}</div>
     </div>
   );
@@ -732,7 +732,7 @@ function BookingMeta({ label, value }: { label: string; value: string }) {
 function ProfileField({ label, children }: { label: string; children: ReactNode }) {
   return (
     <label style={{ display: 'grid', gap: 8 }}>
-      <span className="br-mono" style={{ fontSize: 10, letterSpacing: '0.16em', color: 'rgba(255,255,255,0.45)' }}>
+      <span className="br-mono" style={{ fontSize: 12, letterSpacing: '0.16em', color: 'rgba(255,255,255,0.45)' }}>
         {label.toUpperCase()}
       </span>
       {children}

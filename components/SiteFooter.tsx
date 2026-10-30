@@ -2,6 +2,7 @@
 import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { BRLogo } from './BR';
+import Breadcrumbs from './Breadcrumbs';
 import { TelegramIcon } from './Icons';
 import { useLocale } from '@/lib/i18n/LocaleProvider';
 import { useCurrency } from '@/lib/i18n/CurrencyProvider';
@@ -29,7 +30,7 @@ const contactButtonStyle: CSSProperties = {
 };
 
 export default function SiteFooter() {
-  const { t, localizeHref } = useLocale();
+  const { t, locale, localizeHref } = useLocale();
   const termsPath = localizeHref(LEGAL_PATHS.terms);
   const refundPath = localizeHref(LEGAL_PATHS.refund);
   const privacyPath = localizeHref(LEGAL_PATHS.privacy);
@@ -88,7 +89,8 @@ export default function SiteFooter() {
   ].filter((item) => item.href);
 
   return (
-    <div className="br-site-footer" style={{ background: '#000', color: '#fff', padding: '60px 48px 24px', marginTop: 'auto', flexShrink: 0 }}>
+    <footer className="br-site-footer" style={{ background: '#000', color: '#fff', padding: '60px 48px 24px', marginTop: 'auto', flexShrink: 0 }}>
+      <Breadcrumbs locale={locale} />
       <div className="br-site-footer-grid" style={{ display: 'grid', gridTemplateColumns: footerGridTemplate, gap: 40, paddingBottom: 40, borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
         <div>
           <BRLogo dark size={22} />
@@ -120,7 +122,7 @@ export default function SiteFooter() {
                     border: '1px solid rgba(255,255,255,0.14)',
                     borderRadius: 999,
                     padding: '8px 12px',
-                    fontSize: 11,
+                    fontSize: 12,
                     letterSpacing: '0.08em',
                   }}
                 >
@@ -132,7 +134,7 @@ export default function SiteFooter() {
         </div>
         {cols.map((col) => (
           <div key={col.heading}>
-            <div {...marker('footer.cols')} className="br-mono" style={{ fontSize: 10, color: '#FFD700', letterSpacing: '0.16em', marginBottom: 14 }}>{col.heading.toUpperCase()}</div>
+            <div {...marker('footer.cols')} className="br-mono" style={{ fontSize: 12, color: '#FFD700', letterSpacing: '0.16em', marginBottom: 14 }}>{col.heading.toUpperCase()}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
               {col.items.map((item) => (
                 <Link {...marker('footer.cols')} key={item.label} href={item.href} style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', fontSize: 14 }}>{item.label}</Link>
@@ -143,17 +145,17 @@ export default function SiteFooter() {
       </div>
       <div className="br-site-footer-legal" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 24, gap: 16, flexWrap: 'wrap' }}>
         <div style={{ fontSize: 12, color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>
-          <strong style={{ color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>{COMPANY.name}</strong> · {COMPANY.address} · {COMPANY.email}
+          <strong style={{ color: 'rgba(255,255,255,0.85)', fontWeight: 600 }}>{COMPANY.name}</strong> · <address style={{ display: 'inline', fontStyle: 'normal' }}>{COMPANY.address}</address> · <a href={`tel:${COMPANY.phone.replace(/[^+\d]/g, '')}`} style={{ color: 'inherit', whiteSpace: 'nowrap' }}>{COMPANY.phone}</a> · <a href={`mailto:${COMPANY.email}`} style={{ color: 'inherit' }}>{COMPANY.email}</a>
         </div>
       </div>
       <div className="br-site-footer-meta" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 24, gap: 16, flexWrap: 'wrap' }}>
         {/* The address is already shown in the company line above, so only the brand and copyright stay here. */}
-        <div className="br-mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{[addresses.businessName || COMPANY.brand, addresses.copyright || `© ${new Date().getFullYear()}`].join(' · ')}</div>
+        <div className="br-mono" style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)', letterSpacing: '0.1em' }}>{[addresses.businessName || COMPANY.brand, addresses.copyright || `© ${new Date().getFullYear()}`].join(' · ')}</div>
         <div style={{ display: 'flex', gap: 14, alignItems: 'center' }}>
-          <span {...marker('footer.localesLine')} className="br-mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)' }}>{footer.localesLine || 'EN · ID · RU · DE · FR · ZH'}</span>
-          <span className="br-mono" style={{ fontSize: 11, color: 'rgba(255,255,255,0.5)' }}>{supportedCurrencies}</span>
+          <span {...marker('footer.localesLine')} className="br-mono" style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{footer.localesLine || 'EN · ID · RU · DE · FR · ZH'}</span>
+          <span className="br-mono" style={{ fontSize: 12, color: 'rgba(255,255,255,0.5)' }}>{supportedCurrencies}</span>
         </div>
       </div>
-    </div>
+    </footer>
   );
 }

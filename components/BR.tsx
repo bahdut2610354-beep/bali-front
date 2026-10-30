@@ -38,6 +38,8 @@ export function BRLogo({
       <SeoImage
         src="/logo-tropical-bikes.png"
         alt="Tropical Bikes Bali Scooter Rental"
+        loading="eager"
+        sizes="200px"
         style={{
           height: logoHeight,
           width: 'auto',
@@ -80,7 +82,7 @@ export function BRChip({ status }: { status: string }) {
     (t.common.statusLabels as Record<string, string> | undefined)?.available ||
     s.text;
   return (
-    <span className="br-chip br-mono" style={{ color: s.color, background: s.bg, fontFamily: 'var(--br-mono)', fontSize: 10, letterSpacing: '0.08em' }}>
+    <span className="br-chip br-mono" style={{ color: s.color, background: s.bg, fontFamily: 'var(--br-mono)', fontSize: 12, letterSpacing: '0.08em' }}>
       <span className="br-chip-dot" style={{ background: s.color }} />
       <span {...marker(`common.statusLabels.${status in STATUS_MAP ? status : 'available'}`)}>{label}</span>
     </span>

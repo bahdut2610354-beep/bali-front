@@ -294,8 +294,8 @@ function PaymentInner() {
       <PageTitleSync pageKey="payment" />
       <SiteHeader />
       <div className="br-payment-topbar" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '20px 40px', borderBottom: `1px solid ${border}` }}>
-        <span className="br-mono" {...marker('payment.topbar')} style={{ fontSize: 11, color: sub, letterSpacing: '0.12em' }}>{copy.topbar}</span>
-        <span className="br-mono" style={{ fontSize: 11, color: sub }}>{summary.currency}</span>
+        <span className="br-mono" {...marker('payment.topbar')} style={{ fontSize: 12, color: sub, letterSpacing: '0.12em' }}>{copy.topbar}</span>
+        <span className="br-mono" style={{ fontSize: 12, color: sub }}>{summary.currency}</span>
       </div>
       <div className="br-payment-shell" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 460px', gap: 0 }}>
         <div className="br-payment-main" style={{ padding: '60px 60px' }}>
@@ -308,14 +308,14 @@ function PaymentInner() {
 
           {paymentUrl && (
             <div style={{ background: '#FFF6CC', padding: 20, borderRadius: 12 }}>
-              <div className="br-mono" style={{ fontSize: 11, letterSpacing: '0.1em' }}>{t.payment.redirect}</div>
+              <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.1em' }}>{t.payment.redirect}</div>
               <a href={paymentUrl} className="br-mono" style={{ display: 'inline-block', marginTop: 8, color: '#000' }}>{paymentUrl}</a>
             </div>
           )}
 
           {paid ? (
             <div style={{ background: '#FFD700', borderRadius: 14, padding: 32 }}>
-              <div className="br-mono" {...marker(reserveOnly ? 'payment.reserved' : 'payment.confirmed')} style={{ fontSize: 11, letterSpacing: '0.14em' }}>{reserveOnly ? copy.reserved : copy.confirmed}</div>
+              <div className="br-mono" {...marker(reserveOnly ? 'payment.reserved' : 'payment.confirmed')} style={{ fontSize: 12, letterSpacing: '0.14em' }}>{reserveOnly ? copy.reserved : copy.confirmed}</div>
               <div className="br-display" style={{ fontSize: 40, marginTop: 8, letterSpacing: '-0.03em' }}>#{booking?.order_number || booking?.id || '—'}</div>
               <p {...marker(reserveOnly ? 'payment.reservedDesc' : 'payment.confirmedDesc')} style={{ marginTop: 16, fontSize: 15, lineHeight: 1.55, maxWidth: 460 }}>
                 {reserveOnly ? copy.reservedDesc : t.payment.confirmedDesc}
@@ -360,7 +360,7 @@ function PaymentInner() {
 
                 {!user && (
                   <div className="br-payment-card" style={{ border: `1px solid ${border}`, borderRadius: 14, padding: 18, marginBottom: 20 }}>
-                    <div className="br-mono" {...marker('payment.contactDetails')} style={{ fontSize: 11, letterSpacing: '0.12em', color: sub }}>{copy.contactDetails}</div>
+                    <div className="br-mono" {...marker('payment.contactDetails')} style={{ fontSize: 12, letterSpacing: '0.12em', color: sub }}>{copy.contactDetails}</div>
                     <div className="br-payment-guest-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 12, marginTop: 14 }}>
                       <Field label={t.auth.name} contentKey="auth.name">
                         <input value={guestName} onChange={(e) => setGuestName(e.target.value)} style={inputStyle} />
@@ -369,7 +369,7 @@ function PaymentInner() {
                         <input value={guestPhone} onChange={(e) => setGuestPhone(e.target.value)} style={inputStyle} />
                       </Field>
                       <div style={{ gridColumn: '1 / -1' }}>
-                        <div className="br-mono" {...marker('payment.messengerTitle')} style={{ fontSize: 11, letterSpacing: '0.1em', color: sub, marginBottom: 8 }}>{copy.messengerTitle}</div>
+                        <div className="br-mono" {...marker('payment.messengerTitle')} style={{ fontSize: 12, letterSpacing: '0.1em', color: sub, marginBottom: 8 }}>{copy.messengerTitle}</div>
                         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
                           {messengerOptions.map((item) => (
                             <label
@@ -440,7 +440,7 @@ function PaymentInner() {
                   />
                 )}
 
-                <div className="br-mono" style={{ display: 'flex', gap: 16, marginTop: 24, fontSize: 11, color: sub, letterSpacing: '0.1em', flexWrap: 'wrap' }}>
+                <div className="br-mono" style={{ display: 'flex', gap: 16, marginTop: 24, fontSize: 12, color: sub, letterSpacing: '0.1em', flexWrap: 'wrap' }}>
                   {trustMarks.map(({ icon: Icon, label, contentKey }) => (
                     <span key={label} style={{ display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                       <Icon size={12} color="currentColor" />
@@ -512,7 +512,7 @@ function PaymentInner() {
             </div>
           </div>
           <div style={{ marginTop: 28, padding: 16, background: bg, borderRadius: 10 }}>
-            <div className="br-mono" style={{ fontSize: 10, color: sub, letterSpacing: '0.14em', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
+            <div className="br-mono" style={{ fontSize: 12, color: sub, letterSpacing: '0.14em', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
               <LockIcon size={12} color="currentColor" />
               <span {...marker('payment.protected')}>{stripLeadingSymbol(t.payment.protected)}</span>
             </div>
@@ -558,7 +558,7 @@ function CardTemplate({
   }
   return (
     <div className="br-payment-card" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 14, padding: 22, background: '#fff' }}>
-      <div className="br-mono" {...marker('payment.bankCard')} style={{ fontSize: 11, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
+      <div className="br-mono" {...marker('payment.bankCard')} style={{ fontSize: 12, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
         {copy.bankCard}
       </div>
       <p {...marker('payment.bankCardDesc')} style={{ margin: '10px 0 18px', color: 'rgba(0,0,0,0.62)', fontSize: 13, lineHeight: 1.6 }}>
@@ -625,7 +625,7 @@ function CashTemplate({
   const { marker } = useSiteContentPreview();
   return (
     <div className="br-payment-card" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 14, padding: 22, background: '#fff' }}>
-      <div className="br-mono" {...marker('payment.cashTitle')} style={{ fontSize: 11, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
+      <div className="br-mono" {...marker('payment.cashTitle')} style={{ fontSize: 12, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
         {copy.cashTitle}
       </div>
       <p {...marker('payment.cashDesc')} style={{ margin: '10px 0 14px', color: 'rgba(0,0,0,0.62)', fontSize: 14, lineHeight: 1.6 }}>
@@ -633,7 +633,7 @@ function CashTemplate({
       </p>
       {deliveryAddress ? (
         <div style={{ background: '#F5F5F5', borderRadius: 10, padding: '12px 14px', fontSize: 13 }}>
-          <div className="br-mono" {...marker('payment.deliveryAddress')} style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>{copy.deliveryAddress}</div>
+          <div className="br-mono" {...marker('payment.deliveryAddress')} style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>{copy.deliveryAddress}</div>
           <div style={{ marginTop: 4 }}>{deliveryAddress}</div>
         </div>
       ) : (
@@ -675,13 +675,13 @@ function CryptoTemplate({
   const { marker } = useSiteContentPreview();
   return (
     <div className="br-payment-card" style={{ border: '1px solid rgba(0,0,0,0.08)', borderRadius: 14, padding: 22, background: '#fff' }}>
-      <div className="br-mono" {...marker('payment.cryptoTitle')} style={{ fontSize: 11, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
+      <div className="br-mono" {...marker('payment.cryptoTitle')} style={{ fontSize: 12, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
         {copy.cryptoTitle}
       </div>
       <p {...marker('payment.cryptoDesc')} style={{ margin: '10px 0 18px', color: 'rgba(0,0,0,0.62)', fontSize: 14, lineHeight: 1.6 }}>
         {copy.cryptoDesc}
       </p>
-      <div className="br-mono" {...marker('payment.selectCurrency')} style={{ fontSize: 11, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
+      <div className="br-mono" {...marker('payment.selectCurrency')} style={{ fontSize: 12, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
         {copy.selectCurrency}
       </div>
       <div className="br-payment-crypto-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr)', gap: 10, marginTop: 12 }}>
@@ -695,13 +695,13 @@ function CryptoTemplate({
           }}
         >
           <div className="br-display" style={{ fontSize: 18 }}>USDT</div>
-          <div className="br-mono" {...marker('payment.cryptoNetwork')} style={{ fontSize: 10, color: 'rgba(0,0,0,0.55)', marginTop: 4 }}>
+          <div className="br-mono" {...marker('payment.cryptoNetwork')} style={{ fontSize: 12, color: 'rgba(0,0,0,0.55)', marginTop: 4 }}>
             {copy.cryptoNetwork}
           </div>
         </div>
       </div>
       <div style={{ marginTop: 18, background: '#F5F5F5', borderRadius: 10, padding: '12px 14px', fontSize: 13 }}>
-        <div className="br-mono" {...marker('payment.amount')} style={{ fontSize: 10, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>{copy.amount}</div>
+        <div className="br-mono" {...marker('payment.amount')} style={{ fontSize: 12, letterSpacing: '0.14em', color: 'rgba(0,0,0,0.55)' }}>{copy.amount}</div>
         <div style={{ marginTop: 4 }}>
           {formatCurrencyAmount(total, displayCurrency)} → {currency} (<span {...marker('payment.amountHint')}>{copy.amountHint}</span>)
         </div>
@@ -714,7 +714,7 @@ function Field({ label, children, contentKey }: { label: string; children: React
   const { marker } = useSiteContentPreview();
   return (
     <label style={{ display: 'grid', gap: 8 }}>
-      <span {...(contentKey ? marker(contentKey) : {})} className="br-mono" style={{ fontSize: 11, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
+      <span {...(contentKey ? marker(contentKey) : {})} className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', color: 'rgba(0,0,0,0.55)' }}>
         {label.toUpperCase()}
       </span>
       {children}

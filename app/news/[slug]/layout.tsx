@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 
+import PageSeo from '@/components/PageSeo';
 import { buildNewsArticleMetadata } from '@/lib/seo';
 
 export async function generateMetadata({
@@ -10,6 +11,6 @@ export async function generateMetadata({
   return buildNewsArticleMetadata(params.slug);
 }
 
-export default function NewsArticleLayout({ children }: { children: React.ReactNode }) {
-  return children;
+export default function NewsArticleLayout({ children, params }: { children: React.ReactNode; params: { slug: string } }) {
+  return <PageSeo newsSlug={params.slug}>{children}</PageSeo>;
 }
