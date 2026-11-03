@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { getPathLocale, ROUTE_LOCALE_HEADER, stripLocalePrefix } from './lib/i18n/routing';
 
 /** Maintenance mode: every page shows /maintenance.html (contacts only). Set to false to bring the site back. */
-const MAINTENANCE_MODE = false;
+const MAINTENANCE_MODE = true;
 
 /** Header with the language-free path, so server components (breadcrumbs, JSON-LD) know the current page. */
 const ROUTE_PATH_HEADER = 'x-site-path';
