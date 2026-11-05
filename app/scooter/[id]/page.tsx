@@ -278,7 +278,7 @@ export default function ScooterDetailPage() {
         </nav>
       </div>
 
-      <div className="br-detail-shell" style={{ display: 'grid', gridTemplateColumns: '55fr 45fr', gridTemplateAreas: '"media side" "info side"', gap: 0 }}>
+      <div className="br-detail-shell" style={{ display: 'grid', gridTemplateColumns: '55fr 45fr', gridTemplateAreas: '"media side" "info info"', gap: 0 }}>
         <div className="br-detail-media-column" style={{ gridArea: 'media', padding: '40px 0 0 40px' }}>
           {photoSrc ? (
             // eslint-disable-next-line @next/next/no-img-element
@@ -359,9 +359,9 @@ export default function ScooterDetailPage() {
           </div>
         </div>
 
-        <div className="br-detail-info-column" style={{ gridArea: 'info', padding: '48px 0 40px 40px' }}>
+        <div className="br-detail-info-column" style={{ gridArea: 'info', padding: '48px 40px 40px 40px' }}>
             <BREyebrow><span {...marker('detail.specs')}>{t.detail.specs}</span></BREyebrow>
-            <div className="br-detail-specs" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 1, marginTop: 16, background: border }}>
+            <div className="br-detail-specs" style={{ display: 'grid', gridTemplateColumns: 'repeat(8, minmax(0, 1fr))', gap: 1, marginTop: 16, background: border }}>
               {specItems.map(([Icon, l, v], i) => (
                 <div key={i} style={{ background: bg, padding: '20px 16px' }}>
                   <div style={{ color: '#FFD700' }}><Icon size={22} color="#D4A400" /></div>
@@ -372,7 +372,7 @@ export default function ScooterDetailPage() {
             </div>
 
             {(description || rentalTerms) && (
-              <div className="br-detail-text-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 16, marginTop: 20 }}>
+              <div className="br-detail-text-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 3fr) minmax(0, 2fr)', gap: 16, marginTop: 20 }}>
                 {description && (
                   <div style={{ background: surf, borderRadius: 12, padding: 18 }}>
                     <BREyebrow><span {...marker('detail.descriptionTitle')}>{t.detail.descriptionTitle}</span></BREyebrow>
