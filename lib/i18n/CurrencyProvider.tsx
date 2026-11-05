@@ -115,6 +115,12 @@ export function formatCurrencyAmount(
   const normalizedCurrency = normalizeCurrencyCode(currency) || 'IDR';
   const displayToken = getCurrencyDisplayToken(normalizedCurrency);
   const normalizedAmount = Number.isFinite(amount) ? amount : 0;
+  if (normalizedCurrency === 'IDR' && !options) {
+    // Rupiah: whole numbers, space-grouped ("Rp 1 200 000").
+    const whole = Math.round(normalizedAmount);
+    const grouped = Math.abs(whole).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return `${whole < 0 ? '-' : ''}Rp ${grouped}`;
+  }
   const formattedAmount = new Intl.NumberFormat(locale, {
     minimumFractionDigits: options?.minimumFractionDigits ?? 2,
     maximumFractionDigits: options?.maximumFractionDigits ?? 2,
