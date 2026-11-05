@@ -8961,7 +8961,7 @@ function BookingsView({
             const duration = formatBookingRentalDuration(item.start_datetime, item.end_datetime);
             return (
               <Panel key={item.id} style={{ padding: isMobile ? 14 : 20 }}>
-                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.2fr 1.1fr 1fr', gap: isMobile ? 10 : 16, alignItems: 'start' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'minmax(0, 1fr)' : 'minmax(0, 1.2fr) minmax(0, 1.1fr) minmax(0, 1fr)', gap: isMobile ? 10 : 16, alignItems: 'start', minWidth: 0, overflowWrap: 'anywhere' }}>
                   <div>
                     <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap', marginBottom: 8, alignItems: 'center' }}>
                       <Badge color={bookingBadgeColor(item.status)}>{item.status}</Badge>
@@ -9065,7 +9065,7 @@ function BookingsView({
                       <div style={{ color: A.g500, fontSize: 12 }}>↓ until</div>
                       {formatDateTime(item.end_datetime)}
                     </div>
-                    <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 12, color: A.g700, marginTop: 8 }}>
+                    <div style={{ fontFamily: 'Inter, sans-serif', fontSize: 12, color: A.g700, marginTop: 8, overflowWrap: 'anywhere', wordBreak: 'break-word' }}>
                       <strong>Delivery:</strong> {item.delivery_address || 'Not specified'}
                     </div>
                     {item.delivery_time && (
