@@ -282,6 +282,18 @@ function PaymentInner() {
         currency: selectedCurrency,
       };
     }
+    if (selectedCurrency === 'IDR' && quote && quote.total_price_idr != null) {
+      // Use the server's exact rupiah amounts instead of re-converting from USD.
+      return {
+        base: Number(quote.base_price_idr || 0),
+        addons: Number(quote.add_ons_price_idr || 0),
+        delivery: Number(quote.delivery_price_idr || 0),
+        discount: Number(quote.discount_amount_idr || 0),
+        markup: Number(quote.markup_amount_idr || 0),
+        total: Number(quote.total_price_idr || 0),
+        currency: selectedCurrency,
+      };
+    }
     return {
       base: toSelectedCurrency(quote?.base_price, pricingSourceCurrency),
       addons: toSelectedCurrency(quote?.add_ons_price, pricingSourceCurrency),
