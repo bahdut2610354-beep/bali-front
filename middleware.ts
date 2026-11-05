@@ -5,6 +5,10 @@ import { getPathLocale, ROUTE_LOCALE_HEADER, stripLocalePrefix } from './lib/i18
 /** Maintenance mode: every page shows /maintenance.html (contacts only). Set to false to bring the site back. */
 const MAINTENANCE_MODE = true;
 
+/** Owner preview while maintenance is on: open any page with ?preview=<token> once; a cookie keeps access for 30 days. */
+const PREVIEW_TOKEN = 'tb-preview-ccc0fef8';
+const PREVIEW_COOKIE = 'bb_preview';
+
 /** Header with the language-free path, so server components (breadcrumbs, JSON-LD) know the current page. */
 const ROUTE_PATH_HEADER = 'x-site-path';
 
@@ -41,14 +45,37 @@ function withCacheHeaders(response: NextResponse, path: string) {
  * `/en/...` is redirected to the unprefixed English URL so each page has one address.
  */
 export function middleware(request: NextRequest) {
-  const { pathname } = request.nextUrl;
-
   if (MAINTENANCE_MODE) {
-    const response = NextResponse.rewrite(new URL('/maintenance.html', request.url));
-    response.headers.set('Cache-Control', 'no-store');
-    response.headers.set('X-Robots-Tag', 'noindex');
-    return response;
+    if (request.nextUrl.searchParams.get('preview') === PREVIEW_TOKEN) {
+      const url = request.nextUrl.clone();
+      url.searchParams.delete('preview');
+      const redirect = NextResponse.redirect(url);
+      redirect.cookies.set(PREVIEW_COOKIE, PREVIEW_TOKEN, {
+        path: '/',
+        maxAge: 60 * 60 * 24 * 30,
+        httpOnly: true,
+        secure: true,
+        sameSite: 'lax',
+      });
+      redirect.headers.set('Cache-Control', 'no-store');
+      return redirect;
+    }
+    if (request.cookies.get(PREVIEW_COOKIE)?.value !== PREVIEW_TOKEN) {
+      const response = NextResponse.rewrite(new URL('/maintenance.html', request.url));
+      response.headers.set('Cache-Control', 'no-store');
+      response.headers.set('X-Robots-Tag', 'noindex');
+      return response;
+    }
+    const preview = route(request);
+    preview.headers.set('Cache-Control', 'private, no-store');
+    preview.headers.set('X-Robots-Tag', 'noindex');
+    return preview;
   }
+  return route(request);
+}
+
+function route(request: NextRequest) {
+  const { pathname } = request.nextUrl;
 
   if (pathname === '/en' || pathname.startsWith('/en/')) {
     const url = request.nextUrl.clone();
