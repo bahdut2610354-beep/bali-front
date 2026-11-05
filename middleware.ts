@@ -3,7 +3,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { getPathLocale, ROUTE_LOCALE_HEADER, stripLocalePrefix } from './lib/i18n/routing';
 
 /** Maintenance mode: every page shows /maintenance.html (contacts only). Set to false to bring the site back. */
-const MAINTENANCE_MODE = true;
+const MAINTENANCE_MODE = false;
 
 /** Owner preview while maintenance is on: open any page with ?preview=<token> once; a cookie keeps access for 30 days. */
 const PREVIEW_TOKEN = 'tb-preview-ccc0fef8';
