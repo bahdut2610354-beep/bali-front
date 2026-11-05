@@ -22,6 +22,16 @@ import { PageTitleSync, usePagePath } from '@/lib/usePageSettings';
 
 type PaymentMethod = 'card' | 'cash' | 'crypto';
 
+// Card and crypto are temporarily unavailable: show a notice instead of the forms.
+const MAINT_COPY = {
+  en: { title: 'TEMPORARILY UNAVAILABLE', text: 'Technical work is in progress. Please choose cash on delivery for now.' },
+  ru: { title: 'ВРЕМЕННО НЕДОСТУПНО', text: 'Ведутся технические работы. Пока выберите оплату наличными при доставке.' },
+  zh: { title: '暂时不可用', text: '系统正在进行技术维护。目前请选择交车时现金支付。' },
+  id: { title: 'SEMENTARA TIDAK TERSEDIA', text: 'Sedang ada pemeliharaan teknis. Untuk saat ini silakan pilih bayar tunai saat pengantaran.' },
+  de: { title: 'VORÜBERGEHEND NICHT VERFÜGBAR', text: 'Es finden technische Arbeiten statt. Bitte wähle vorerst Barzahlung bei Lieferung.' },
+  fr: { title: 'TEMPORAIREMENT INDISPONIBLE', text: 'Des travaux techniques sont en cours. Choisissez pour l’instant le paiement en espèces à la livraison.' },
+} as const;
+
 export default function PaymentPage() {
   return (
     <Suspense fallback={null}>
@@ -49,7 +59,7 @@ function PaymentInner() {
   const [booking, setBooking] = useState<ApiBooking | null>(null);
   const [quote, setQuote] = useState<ApiBookingQuote | null>(null);
   const [pm, setPm] = useState<PaymentMethod>(
-    search.get('payment') === 'cash' ? 'cash' : search.get('payment') === 'crypto' ? 'crypto' : 'card'
+    search.get('payment') === 'card' ? 'card' : search.get('payment') === 'crypto' ? 'crypto' : 'cash'
   );
   const [guestName, setGuestName] = useState('');
   const [guestPhone, setGuestPhone] = useState('');
@@ -329,7 +339,7 @@ function PaymentInner() {
             !paymentUrl && !loading && (
               <>
                 <div className="br-payment-methods" style={{ display: 'flex', gap: 8, marginBottom: 24, flexWrap: 'wrap' }}>
-                  {(['card', 'cash', 'crypto'] as const).map((p) => (
+                  {(['cash', 'card', 'crypto'] as const).map((p) => (
                     <button
                       key={p}
                       onClick={() => setPm(p)}
@@ -409,17 +419,10 @@ function PaymentInner() {
                 )}
 
                 {pm === 'card' && (
-                  <CardTemplate
-                    copy={copy}
-                    cardName={cardName}
-                    setCardName={setCardName}
-                    cardNumber={cardNumber}
-                    setCardNumber={setCardNumber}
-                    cardExpiry={cardExpiry}
-                    setCardExpiry={setCardExpiry}
-                    cardCvc={cardCvc}
-                    setCardCvc={setCardCvc}
-                  />
+                  <div style={{ border: `1px solid ${border}`, borderRadius: 16, padding: 24, background: surf }}>
+                    <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', color: sub, marginBottom: 8 }}>{(MAINT_COPY[locale as keyof typeof MAINT_COPY] || MAINT_COPY.en).title}</div>
+                    <div style={{ fontSize: 15, lineHeight: 1.6 }}>{(MAINT_COPY[locale as keyof typeof MAINT_COPY] || MAINT_COPY.en).text}</div>
+                  </div>
                 )}
 
                 {pm === 'cash' && (
@@ -432,12 +435,10 @@ function PaymentInner() {
                 )}
 
                 {pm === 'crypto' && (
-                  <CryptoTemplate
-                    copy={copy}
-                    currency={cryptoCurrency}
-                    total={summary.total}
-                    displayCurrency={summary.currency}
-                  />
+                  <div style={{ border: `1px solid ${border}`, borderRadius: 16, padding: 24, background: surf }}>
+                    <div className="br-mono" style={{ fontSize: 12, letterSpacing: '0.12em', color: sub, marginBottom: 8 }}>{(MAINT_COPY[locale as keyof typeof MAINT_COPY] || MAINT_COPY.en).title}</div>
+                    <div style={{ fontSize: 15, lineHeight: 1.6 }}>{(MAINT_COPY[locale as keyof typeof MAINT_COPY] || MAINT_COPY.en).text}</div>
+                  </div>
                 )}
 
                 <div className="br-mono" style={{ display: 'flex', gap: 16, marginTop: 24, fontSize: 12, color: sub, letterSpacing: '0.1em', flexWrap: 'wrap' }}>
@@ -450,7 +451,7 @@ function PaymentInner() {
                 </div>
                 {error && <div className="br-mono" style={{ marginTop: 20, color: '#B91C1C', fontSize: 13 }}>{error}</div>}
                 <div className="br-payment-cta-wrap" style={{ marginTop: 40 }}>
-                  <BRPrimary onClick={handleConfirm} disabled={submitting || (!booking && !draft)} style={{ padding: '20px 36px', fontSize: 15 }}>
+                  <BRPrimary onClick={handleConfirm} disabled={submitting || (!booking && !draft) || pm !== 'cash'} style={{ padding: '20px 36px', fontSize: 15 }}>
                     {submitting
                       ? t.common.loading
                       : pm === 'cash'
