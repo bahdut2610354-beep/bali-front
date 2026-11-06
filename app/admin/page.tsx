@@ -7708,7 +7708,7 @@ function OverviewView({
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)', gap: isMobile ? 10 : 16, marginBottom: isMobile ? 16 : 28 }}>
         <StatCard label="Revenue" value={formatMoney(revenue.revenue)} helper={`${revenue.bookings_count} paid bookings`} icon={<DollarIcon size={18} color={A.g700} />} />
         <StatCard label="Active Bookings" value={String(activeBookings.length)} helper={`${upcomingBookings.length} upcoming confirmed`} icon={<ClipboardIcon size={18} color={A.g700} />} />
-        <StatCard label="Fleet Utilization" value={`${utilization}%`} helper={`${unitsInUse} of ${fleetUnits} units rented now`} icon={<ScooterIcon size={18} color={A.g700} />} />
+        <StatCard key={`fleet-util-${unitsInUse}-${fleetUnits}`} label="Fleet Utilization" value={`${utilization}%`} helper={`${unitsInUse} of ${fleetUnits} units rented now`} icon={<ScooterIcon size={18} color={A.g700} />} />
         <StatCard label="Average Booking" value={formatMoney(averageBookingValue)} helper={`${paidBookings.length} paid bookings`} icon={<DiamondIcon size={18} color={A.g700} />} />
       </div>
 
