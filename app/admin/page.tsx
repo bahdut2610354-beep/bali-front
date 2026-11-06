@@ -7605,7 +7605,7 @@ function OverviewView({
   // Units out right now come from the availability calendar (synced from the operations sheet every 20 min),
   // capped per listing at its quantity. Booking statuses alone overcount: imported bookings are often
   // attached to the wrong colour card or overlap. Falls back to the booking count while loading.
-  const [busyUnitsNow, setBusyUnitsNow] = useState<number | null>(null);
+  const [blocksNowByVehicle, setBlocksNowByVehicle] = useState<Map<number, number> | null>(null);
   useEffect(() => {
     let cancelled = false;
     (async () => {
@@ -7618,14 +7618,14 @@ function OverviewView({
           const response = await endpoints.adminAvailabilityBlocks({ start_at: startIso, end_at: endIso, page });
           unwrapList(response).forEach((block) => {
             if (block.type === 'maintenance') return;
-            perVehicle.set(Number(block.vehicle), (perVehicle.get(Number(block.vehicle)) || 0) + 1);
+            const raw = block.vehicle as unknown;
+            const vehicleId = Number(typeof raw === 'object' && raw !== null ? (raw as { id?: number }).id : raw);
+            if (!Number.isFinite(vehicleId)) return;
+            perVehicle.set(vehicleId, (perVehicle.get(vehicleId) || 0) + 1);
           });
           if (Array.isArray(response) || !response.next) break;
         }
-        const busy = scooters
-          .filter((item) => item.status !== 'inactive')
-          .reduce((sum, item) => sum + Math.min(perVehicle.get(Number(item.id)) || 0, Math.max(Number(item.quantity) || 1, 1)), 0);
-        if (!cancelled) setBusyUnitsNow(busy);
+        if (!cancelled) setBlocksNowByVehicle(perVehicle);
       } catch {
         // keep the booking-based fallback
       }
@@ -7633,7 +7633,12 @@ function OverviewView({
     return () => {
       cancelled = true;
     };
-  }, [scooters]);
+  }, []);
+  const busyUnitsNow = blocksNowByVehicle
+    ? scooters
+        .filter((item) => item.status !== 'inactive')
+        .reduce((sum, item) => sum + Math.min(blocksNowByVehicle.get(Number(item.id)) || 0, Math.max(Number(item.quantity) || 1, 1)), 0)
+    : null;
   const unitsInUse = busyUnitsNow ?? Math.min(activeBookings.length, fleetUnits);
   const utilization = fleetUnits ? Math.round((unitsInUse / fleetUnits) * 100) : 0;
   const averageBookingValue = paidBookings.length
