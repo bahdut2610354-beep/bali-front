@@ -932,7 +932,7 @@ export const endpoints = {
     api<{ detail: string }>(`/admin/users/${id}/set-password/`, { method: 'POST', body, auth: true }),
   changeMyPassword: (body: { current_password: string; new_password: string }) =>
     api<{ detail: string }>('/users/me/change-password/', { method: 'POST', body, auth: true }),
-  adminAvailabilityBlocks: (params?: { vehicle?: number | string; start_at?: string; end_at?: string }) =>
+  adminAvailabilityBlocks: (params?: { vehicle?: number | string; start_at?: string; end_at?: string; page?: number }) =>
     api<Paginated<ApiAvailabilityBlock> | ApiAvailabilityBlock[]>('/availability-calendar/', { auth: true, query: params }),
   adminCreateAvailabilityBlock: (body: Partial<ApiAvailabilityBlock>) =>
     api<ApiAvailabilityBlock>('/availability-calendar/', { method: 'POST', body, auth: true }),
