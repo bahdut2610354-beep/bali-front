@@ -7589,8 +7589,10 @@ function OverviewView({
   const formatMoney = useAdminMoneyFormatter();
   const { currency, convertAmountValue } = useCurrency();
 
+  // Отменённые брони не считаем ни в выручке, ни в среднем чеке.
   const paidBookings = bookings.filter(
-    (item) => item.payment_status === 'paid' || item.latest_payment?.status === 'succeeded',
+    (item) => item.status !== 'cancelled'
+      && (item.payment_status === 'paid' || item.latest_payment?.status === 'succeeded'),
   );
   // Bookings whose scooter is out with a customer right now (delivered or in use, including overdue returns).
   const activeBookings = bookings.filter((item) => ['delivery', 'active'].includes(item.status));
@@ -7641,9 +7643,13 @@ function OverviewView({
     : null;
   const unitsInUse = busyUnitsNow ?? Math.min(activeBookings.length, fleetUnits);
   const utilization = fleetUnits ? Math.round((unitsInUse / fleetUnits) * 100) : 0;
-  const averageBookingValue = paidBookings.length
-    ? paidBookings.reduce((sum, item) => sum + Number(item.total_price || 0), 0) / paidBookings.length
-    : 0;
+  // Средний чек считаем из той же выручки и того же числа броней, что и карточка «Выручка».
+  const avgCount = Number(revenue.bookings_count) || paidBookings.length;
+  const averageBookingValue = Number(revenue.bookings_count)
+    ? Number(revenue.revenue || 0) / Number(revenue.bookings_count)
+    : (paidBookings.length
+      ? paidBookings.reduce((sum, item) => sum + Number(item.total_price || 0), 0) / paidBookings.length
+      : 0);
 
   type MonthlyStat = { amount: number; count: number };
   const monthlyMap = new Map<string, MonthlyStat>();
@@ -7709,7 +7715,7 @@ function OverviewView({
         <StatCard label="Revenue" value={formatMoney(revenue.revenue)} helper={`${revenue.bookings_count} paid bookings`} icon={<DollarIcon size={18} color={A.g700} />} />
         <StatCard label="Active Bookings" value={String(activeBookings.length)} helper={`${upcomingBookings.length} upcoming confirmed`} icon={<ClipboardIcon size={18} color={A.g700} />} />
         <StatCard key={`fleet-util-${unitsInUse}-${fleetUnits}`} label="Fleet Utilization" value={`${utilization}%`} helper={`${unitsInUse} of ${fleetUnits} units rented now`} icon={<ScooterIcon size={18} color={A.g700} />} />
-        <StatCard label="Average Booking" value={formatMoney(averageBookingValue)} helper={`${paidBookings.length} paid bookings`} icon={<DiamondIcon size={18} color={A.g700} />} />
+        <StatCard label="Average Booking" value={formatMoney(averageBookingValue)} helper={`${avgCount} paid bookings`} icon={<DiamondIcon size={18} color={A.g700} />} />
       </div>
 
       <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1.6fr 1fr', gap: isMobile ? 12 : 16, marginBottom: isMobile ? 12 : 28 }}>
