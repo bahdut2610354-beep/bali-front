@@ -8833,8 +8833,15 @@ function BookingsView({
       if (sortBy === 'price_asc') {
         return Number(a.total_price || 0) - Number(b.total_price || 0);
       }
-      // default: latest_created
-      return (b.created_at ? new Date(b.created_at).getTime() : b.id) - (a.created_at ? new Date(a.created_at).getTime() : a.id);
+      // default: latest_created; bookings created within the same 10 min (bulk import) -> by start date
+      const ca = a.created_at ? new Date(a.created_at).getTime() : 0;
+      const cb = b.created_at ? new Date(b.created_at).getTime() : 0;
+      const bucket = 10 * 60 * 1000;
+      const byCreated = Math.floor(cb / bucket) - Math.floor(ca / bucket);
+      if (byCreated !== 0) return byCreated;
+      const byStart = new Date(b.start_datetime).getTime() - new Date(a.start_datetime).getTime();
+      if (byStart) return byStart;
+      return (cb - ca) || (Number(b.id) - Number(a.id));
     });
 
     return sorted;
